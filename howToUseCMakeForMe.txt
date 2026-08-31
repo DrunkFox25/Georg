@@ -1,0 +1,3 @@
+configure: cmake -B build -S .
+compile: cmake --build build
+run ./build/geo
