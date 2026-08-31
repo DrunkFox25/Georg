@@ -1,0 +1,23 @@
+TEST 2
+NVARS 12
+VARS ax ay bx by cx cy hx hy gx gy kx ky
+VALS 1 0 -0.5 0.866 -0.5 -0.866 0 -0.1 -0.1 0.1 0 0
+FIXED 0 0 0 0 0 0 1 1 1 1 1 1
+CONSTR 6
+POLY ax + bx + cx - 3 gx
+POLY ay + by + cy - 3 gy
+POLY ax ay by - ax by ^ 2 - ay ^ 2 bx + ay bx by + bx by cy - bx cy ^ 2 - by ^ 2 cx + by cx cy + cx cy ay - cx ay ^ 2 - cy ^ 2 ax + cy ax ay - ax by hx + ax cy hx - bx cy hx + ay bx hx - ay cx hx + by cx hx
+POLY ay ax bx - ay bx ^ 2 - ax ^ 2 by + ax by bx + by bx cx - by cx ^ 2 - bx ^ 2 cy + bx cy cx + cy cx ax - cy ax ^ 2 - cx ^ 2 ay + cx ay ax - ay bx hy + ay cx hy - by cx hy + ax by hy - ax cy hy + bx cy hy
+POLY ax bx ^ 2 + ax cx ^ 2 - 2 ax bx cx + ax by ^ 2 + ax cy ^ 2 - 2 ax by cy - kx bx ^ 2 - kx cx ^ 2 + 2 kx bx cx - kx by ^ 2 - kx cy ^ 2 + 2 kx by cy + cx ax ^ 2 + cx bx ^ 2 - 2 cx ax bx + cx ay ^ 2 + cx by ^ 2 - 2 cx ay by - kx ax ^ 2 - kx bx ^ 2 + 2 kx ax bx - kx ay ^ 2 - kx by ^ 2 + 2 kx ay by + bx cx ^ 2 + bx ax ^ 2 - 2 bx cx ax + bx cy ^ 2 + bx ay ^ 2 - 2 bx cy ay - kx cx ^ 2 - kx ax ^ 2 + 2 kx cx ax - kx cy ^ 2 - kx ay ^ 2 + 2 kx cy ay
+POLY ay by ^ 2 + ay cy ^ 2 - 2 ay by cy + ay bx ^ 2 + ay cx ^ 2 - 2 ay bx cx - ky by ^ 2 - ky cy ^ 2 + 2 ky by cy - ky bx ^ 2 - ky cx ^ 2 + 2 ky bx cx + cy ay ^ 2 + cy by ^ 2 - 2 cy ay by + cy ax ^ 2 + cy bx ^ 2 - 2 cy ax bx - ky ay ^ 2 - ky by ^ 2 + 2 ky ay by - ky ax ^ 2 - ky bx ^ 2 + 2 ky ax bx + by cy ^ 2 + by ay ^ 2 - 2 by cy ay + by cx ^ 2 + by ax ^ 2 - 2 by cx ax - ky cy ^ 2 - ky ay ^ 2 + 2 ky cy ay - ky cx ^ 2 - ky ax ^ 2 + 2 ky cx ax
+DONE
+
+// POLY ax ^ 2 - 2 ax ox + ay ^ 2 - 2 ay oy - sR
+// POLY bx ^ 2 - 2 bx ox + by ^ 2 - 2 by oy - sR
+// POLY cx ^ 2 - 2 cx ox + cy ^ 2 - 2 cy oy - sR
+
+// https://www.geogebra.org/calculator/bx447a6c:
+
+> runn 100
+> query
+> exit

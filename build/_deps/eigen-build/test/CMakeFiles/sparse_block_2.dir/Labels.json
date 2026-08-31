@@ -2,6 +2,9 @@
 	"sources" : 
 	[
 		{
+			"file" : "/workspaces/Georg/build/_deps/eigen-build/test/sparse_block_2_autogen/mocs_compilation.cpp"
+		},
+		{
 			"file" : "/workspaces/Georg/build/_deps/eigen-src/test/sparse_block.cpp"
 		}
 	],

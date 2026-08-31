@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/class_CwiseUnaryOp_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/class_CwiseUnaryOp_autogen.dir/ParseCache.txt"
+  "class_CwiseUnaryOp_autogen"
   "CMakeFiles/class_CwiseUnaryOp.dir/class_CwiseUnaryOp.cpp.o"
   "CMakeFiles/class_CwiseUnaryOp.dir/class_CwiseUnaryOp.cpp.o.d"
+  "CMakeFiles/class_CwiseUnaryOp.dir/class_CwiseUnaryOp_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/class_CwiseUnaryOp.dir/class_CwiseUnaryOp_autogen/mocs_compilation.cpp.o.d"
   "class_CwiseUnaryOp"
   "class_CwiseUnaryOp.pdb"
 )

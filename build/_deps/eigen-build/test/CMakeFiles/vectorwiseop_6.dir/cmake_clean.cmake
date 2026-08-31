@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/vectorwiseop_6_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/vectorwiseop_6_autogen.dir/ParseCache.txt"
+  "vectorwiseop_6_autogen"
   "CMakeFiles/vectorwiseop_6.dir/vectorwiseop.cpp.o"
   "CMakeFiles/vectorwiseop_6.dir/vectorwiseop.cpp.o.d"
+  "CMakeFiles/vectorwiseop_6.dir/vectorwiseop_6_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/vectorwiseop_6.dir/vectorwiseop_6_autogen/mocs_compilation.cpp.o.d"
   "vectorwiseop_6"
   "vectorwiseop_6.pdb"
 )

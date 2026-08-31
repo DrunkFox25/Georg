@@ -1,0 +1,27 @@
+{
+  "name": "Qt6 C++ Lightweight Environment",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
+  "features": {
+    "ghcr.io/devcontainers/features/desktop-lite:1": {}
+  },
+  "forwardPorts": [
+    6767// https://youtu.be/40SnEd1RWUU?t=161
+  ],
+  "portsAttributes": {
+    "6767": {
+      "label": "VNC Desktop",
+      "onAutoForward": "silent"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-vscode.cpptools-extension-pack",
+        "twxs.cmake",
+        "ms-vscode.cmake-tools"
+      ]
+    }
+  },
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y build-essential cmake qt6-base-dev qt6-tools-dev libgl1-mesa-dev"
+}

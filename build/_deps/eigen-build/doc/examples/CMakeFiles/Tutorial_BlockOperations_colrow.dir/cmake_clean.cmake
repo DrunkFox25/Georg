@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Tutorial_BlockOperations_colrow_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/Tutorial_BlockOperations_colrow_autogen.dir/ParseCache.txt"
+  "Tutorial_BlockOperations_colrow_autogen"
   "CMakeFiles/Tutorial_BlockOperations_colrow.dir/Tutorial_BlockOperations_colrow.cpp.o"
   "CMakeFiles/Tutorial_BlockOperations_colrow.dir/Tutorial_BlockOperations_colrow.cpp.o.d"
+  "CMakeFiles/Tutorial_BlockOperations_colrow.dir/Tutorial_BlockOperations_colrow_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/Tutorial_BlockOperations_colrow.dir/Tutorial_BlockOperations_colrow_autogen/mocs_compilation.cpp.o.d"
   "Tutorial_BlockOperations_colrow"
   "Tutorial_BlockOperations_colrow.pdb"
 )

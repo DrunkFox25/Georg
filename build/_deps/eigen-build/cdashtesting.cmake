@@ -2,8 +2,8 @@
 set(CTEST_SOURCE_DIRECTORY  "/workspaces/Georg")
 set(CTEST_BINARY_DIRECTORY  "/workspaces/Georg/build")
 set(CTEST_CMAKE_GENERATOR   "Unix Makefiles")
-set(CTEST_BUILD_NAME        "linux-6.8.0-1052-azure-_-13.3.0-sse2-64bit")
-set(CTEST_SITE              "codespaces-6ca863")
+set(CTEST_BUILD_NAME        "linux-6.8.0-1052-azure-g++-11.4.0-sse2-64bit")
+set(CTEST_SITE              "codespaces-c83a46")
 
 set(MODEL Experimental)
 if(${CTEST_SCRIPT_ARG} MATCHES Nightly)

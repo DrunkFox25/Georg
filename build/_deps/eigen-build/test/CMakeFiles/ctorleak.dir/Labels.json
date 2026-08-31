@@ -2,6 +2,9 @@
 	"sources" : 
 	[
 		{
+			"file" : "/workspaces/Georg/build/_deps/eigen-build/test/ctorleak_autogen/mocs_compilation.cpp"
+		},
+		{
 			"file" : "/workspaces/Georg/build/_deps/eigen-src/test/ctorleak.cpp"
 		}
 	],

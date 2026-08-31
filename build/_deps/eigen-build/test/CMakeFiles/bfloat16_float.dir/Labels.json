@@ -2,6 +2,9 @@
 	"sources" : 
 	[
 		{
+			"file" : "/workspaces/Georg/build/_deps/eigen-build/test/bfloat16_float_autogen/mocs_compilation.cpp"
+		},
+		{
 			"file" : "/workspaces/Georg/build/_deps/eigen-src/test/bfloat16_float.cpp"
 		}
 	],

@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/compile_MatrixBase_isIdentity_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/compile_MatrixBase_isIdentity_autogen.dir/ParseCache.txt"
+  "compile_MatrixBase_isIdentity_autogen"
   "CMakeFiles/compile_MatrixBase_isIdentity.dir/compile_MatrixBase_isIdentity.cpp.o"
   "CMakeFiles/compile_MatrixBase_isIdentity.dir/compile_MatrixBase_isIdentity.cpp.o.d"
+  "CMakeFiles/compile_MatrixBase_isIdentity.dir/compile_MatrixBase_isIdentity_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/compile_MatrixBase_isIdentity.dir/compile_MatrixBase_isIdentity_autogen/mocs_compilation.cpp.o.d"
   "compile_MatrixBase_isIdentity"
   "compile_MatrixBase_isIdentity.pdb"
 )

@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/eigensolver_complex_2_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/eigensolver_complex_2_autogen.dir/ParseCache.txt"
+  "eigensolver_complex_2_autogen"
   "CMakeFiles/eigensolver_complex_2.dir/eigensolver_complex.cpp.o"
   "CMakeFiles/eigensolver_complex_2.dir/eigensolver_complex.cpp.o.d"
+  "CMakeFiles/eigensolver_complex_2.dir/eigensolver_complex_2_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/eigensolver_complex_2.dir/eigensolver_complex_2_autogen/mocs_compilation.cpp.o.d"
   "eigensolver_complex_2"
   "eigensolver_complex_2.pdb"
 )

@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Cwise_lgamma_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/Cwise_lgamma_autogen.dir/ParseCache.txt"
+  "Cwise_lgamma_autogen"
   "CMakeFiles/Cwise_lgamma.dir/Cwise_lgamma.cpp.o"
   "CMakeFiles/Cwise_lgamma.dir/Cwise_lgamma.cpp.o.d"
+  "CMakeFiles/Cwise_lgamma.dir/Cwise_lgamma_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/Cwise_lgamma.dir/Cwise_lgamma_autogen/mocs_compilation.cpp.o.d"
   "Cwise_lgamma"
   "Cwise_lgamma.pdb"
 )

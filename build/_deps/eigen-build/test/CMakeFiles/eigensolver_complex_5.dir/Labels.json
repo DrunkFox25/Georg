@@ -2,6 +2,9 @@
 	"sources" : 
 	[
 		{
+			"file" : "/workspaces/Georg/build/_deps/eigen-build/test/eigensolver_complex_5_autogen/mocs_compilation.cpp"
+		},
+		{
 			"file" : "/workspaces/Georg/build/_deps/eigen-src/test/eigensolver_complex.cpp"
 		}
 	],

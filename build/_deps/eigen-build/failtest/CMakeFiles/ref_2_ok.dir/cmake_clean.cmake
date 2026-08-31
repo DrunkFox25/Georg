@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/ref_2_ok_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/ref_2_ok_autogen.dir/ParseCache.txt"
+  "ref_2_ok_autogen"
   "CMakeFiles/ref_2_ok.dir/ref_2.cpp.o"
   "CMakeFiles/ref_2_ok.dir/ref_2.cpp.o.d"
+  "CMakeFiles/ref_2_ok.dir/ref_2_ok_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/ref_2_ok.dir/ref_2_ok_autogen/mocs_compilation.cpp.o.d"
   "ref_2_ok"
   "ref_2_ok.pdb"
 )

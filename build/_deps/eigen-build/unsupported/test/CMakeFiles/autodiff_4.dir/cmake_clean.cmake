@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/autodiff_4_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/autodiff_4_autogen.dir/ParseCache.txt"
+  "autodiff_4_autogen"
   "CMakeFiles/autodiff_4.dir/autodiff.cpp.o"
   "CMakeFiles/autodiff_4.dir/autodiff.cpp.o.d"
+  "CMakeFiles/autodiff_4.dir/autodiff_4_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/autodiff_4.dir/autodiff_4_autogen/mocs_compilation.cpp.o.d"
   "autodiff_4"
   "autodiff_4.pdb"
 )

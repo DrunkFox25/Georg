@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/geo_hyperplane_5_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/geo_hyperplane_5_autogen.dir/ParseCache.txt"
+  "geo_hyperplane_5_autogen"
   "CMakeFiles/geo_hyperplane_5.dir/geo_hyperplane.cpp.o"
   "CMakeFiles/geo_hyperplane_5.dir/geo_hyperplane.cpp.o.d"
+  "CMakeFiles/geo_hyperplane_5.dir/geo_hyperplane_5_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/geo_hyperplane_5.dir/geo_hyperplane_5_autogen/mocs_compilation.cpp.o.d"
   "geo_hyperplane_5"
   "geo_hyperplane_5.pdb"
 )

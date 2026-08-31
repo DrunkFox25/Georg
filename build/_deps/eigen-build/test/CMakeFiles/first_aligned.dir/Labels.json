@@ -2,6 +2,9 @@
 	"sources" : 
 	[
 		{
+			"file" : "/workspaces/Georg/build/_deps/eigen-build/test/first_aligned_autogen/mocs_compilation.cpp"
+		},
+		{
 			"file" : "/workspaces/Georg/build/_deps/eigen-src/test/first_aligned.cpp"
 		}
 	],

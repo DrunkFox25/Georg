@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/polynomialutils_4_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/polynomialutils_4_autogen.dir/ParseCache.txt"
+  "polynomialutils_4_autogen"
   "CMakeFiles/polynomialutils_4.dir/polynomialutils.cpp.o"
   "CMakeFiles/polynomialutils_4.dir/polynomialutils.cpp.o.d"
+  "CMakeFiles/polynomialutils_4.dir/polynomialutils_4_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/polynomialutils_4.dir/polynomialutils_4_autogen/mocs_compilation.cpp.o.d"
   "polynomialutils_4"
   "polynomialutils_4.pdb"
 )

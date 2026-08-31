@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/mpl2only_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/mpl2only_autogen.dir/ParseCache.txt"
+  "mpl2only_autogen"
   "CMakeFiles/mpl2only.dir/mpl2only.cpp.o"
   "CMakeFiles/mpl2only.dir/mpl2only.cpp.o.d"
+  "CMakeFiles/mpl2only.dir/mpl2only_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/mpl2only.dir/mpl2only_autogen/mocs_compilation.cpp.o.d"
   "mpl2only"
   "mpl2only.pdb"
 )

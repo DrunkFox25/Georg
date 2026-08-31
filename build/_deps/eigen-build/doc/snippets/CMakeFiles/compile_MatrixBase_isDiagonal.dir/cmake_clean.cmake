@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/compile_MatrixBase_isDiagonal_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/compile_MatrixBase_isDiagonal_autogen.dir/ParseCache.txt"
+  "compile_MatrixBase_isDiagonal_autogen"
   "CMakeFiles/compile_MatrixBase_isDiagonal.dir/compile_MatrixBase_isDiagonal.cpp.o"
   "CMakeFiles/compile_MatrixBase_isDiagonal.dir/compile_MatrixBase_isDiagonal.cpp.o.d"
+  "CMakeFiles/compile_MatrixBase_isDiagonal.dir/compile_MatrixBase_isDiagonal_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/compile_MatrixBase_isDiagonal.dir/compile_MatrixBase_isDiagonal_autogen/mocs_compilation.cpp.o.d"
   "compile_MatrixBase_isDiagonal"
   "compile_MatrixBase_isDiagonal.pdb"
 )

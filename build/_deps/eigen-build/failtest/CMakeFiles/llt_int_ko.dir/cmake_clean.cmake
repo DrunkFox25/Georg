@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/llt_int_ko_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/llt_int_ko_autogen.dir/ParseCache.txt"
+  "llt_int_ko_autogen"
   "CMakeFiles/llt_int_ko.dir/llt_int.cpp.o"
   "CMakeFiles/llt_int_ko.dir/llt_int.cpp.o.d"
+  "CMakeFiles/llt_int_ko.dir/llt_int_ko_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/llt_int_ko.dir/llt_int_ko_autogen/mocs_compilation.cpp.o.d"
   "llt_int_ko"
   "llt_int_ko.pdb"
 )

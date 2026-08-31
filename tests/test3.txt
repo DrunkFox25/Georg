@@ -1,0 +1,19 @@
+TEST 3
+NVARS 14
+VARS ax ay bx by cx cy px py qx qy rx ry sx sy
+VALS -0.3 -4.7 2.2 0 7.1 -1.6 0.5 7.4 -0.1 -1.2 2.6 -1.4 4.9 1.4
+FIXED 1 1 1 1 1 1 0 0 0 0 0 0 0 0
+CONSTR 8
+POLY px qy - px ay + qx ay - qx py + ax py - ax qy
+POLY px ry - px by + rx by - rx py + bx py - bx ry
+POLY px sy - px cy + sx cy - sx py + cx py - cx sy
+POLY rx sy - rx ay + sx ay - sx ry + ax ry - ax sy
+POLY qx sy - qx by + sx by - sx qy + bx qy - bx sy
+POLY qx ry - qx cy + rx cy - rx qy + cx qy - cx ry
+POLY qx ^ 2 - 2 px qx + qy ^ 2 - 2 py qy - sx ^ 2 + 2 px sx - sy ^ 2 + 2 py sy
+POLY qx ^ 2 - 2 rx qx + qy ^ 2 - 2 ry qy - sx ^ 2 + 2 rx sx - sy ^ 2 + 2 ry sy
+DONE
+
+> runn 100
+> query
+> exit

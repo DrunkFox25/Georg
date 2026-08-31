@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/array_reverse_4_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/array_reverse_4_autogen.dir/ParseCache.txt"
+  "array_reverse_4_autogen"
   "CMakeFiles/array_reverse_4.dir/array_reverse.cpp.o"
   "CMakeFiles/array_reverse_4.dir/array_reverse.cpp.o.d"
+  "CMakeFiles/array_reverse_4.dir/array_reverse_4_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/array_reverse_4.dir/array_reverse_4_autogen/mocs_compilation.cpp.o.d"
   "array_reverse_4"
   "array_reverse_4.pdb"
 )

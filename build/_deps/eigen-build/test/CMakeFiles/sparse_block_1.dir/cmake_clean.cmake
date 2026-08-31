@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/sparse_block_1_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/sparse_block_1_autogen.dir/ParseCache.txt"
+  "sparse_block_1_autogen"
   "CMakeFiles/sparse_block_1.dir/sparse_block.cpp.o"
   "CMakeFiles/sparse_block_1.dir/sparse_block.cpp.o.d"
+  "CMakeFiles/sparse_block_1.dir/sparse_block_1_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/sparse_block_1.dir/sparse_block_1_autogen/mocs_compilation.cpp.o.d"
   "sparse_block_1"
   "sparse_block_1.pdb"
 )

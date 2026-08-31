@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/compile_Cwise_boolean_and_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/compile_Cwise_boolean_and_autogen.dir/ParseCache.txt"
+  "compile_Cwise_boolean_and_autogen"
   "CMakeFiles/compile_Cwise_boolean_and.dir/compile_Cwise_boolean_and.cpp.o"
   "CMakeFiles/compile_Cwise_boolean_and.dir/compile_Cwise_boolean_and.cpp.o.d"
+  "CMakeFiles/compile_Cwise_boolean_and.dir/compile_Cwise_boolean_and_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/compile_Cwise_boolean_and.dir/compile_Cwise_boolean_and_autogen/mocs_compilation.cpp.o.d"
   "compile_Cwise_boolean_and"
   "compile_Cwise_boolean_and.pdb"
 )

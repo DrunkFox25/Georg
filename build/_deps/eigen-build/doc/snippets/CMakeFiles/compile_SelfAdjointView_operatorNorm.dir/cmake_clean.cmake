@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/compile_SelfAdjointView_operatorNorm_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/compile_SelfAdjointView_operatorNorm_autogen.dir/ParseCache.txt"
+  "compile_SelfAdjointView_operatorNorm_autogen"
   "CMakeFiles/compile_SelfAdjointView_operatorNorm.dir/compile_SelfAdjointView_operatorNorm.cpp.o"
   "CMakeFiles/compile_SelfAdjointView_operatorNorm.dir/compile_SelfAdjointView_operatorNorm.cpp.o.d"
+  "CMakeFiles/compile_SelfAdjointView_operatorNorm.dir/compile_SelfAdjointView_operatorNorm_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/compile_SelfAdjointView_operatorNorm.dir/compile_SelfAdjointView_operatorNorm_autogen/mocs_compilation.cpp.o.d"
   "compile_SelfAdjointView_operatorNorm"
   "compile_SelfAdjointView_operatorNorm.pdb"
 )

@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/compile_Matrix_initializer_list_vector_cxx11_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/compile_Matrix_initializer_list_vector_cxx11_autogen.dir/ParseCache.txt"
+  "compile_Matrix_initializer_list_vector_cxx11_autogen"
   "CMakeFiles/compile_Matrix_initializer_list_vector_cxx11.dir/compile_Matrix_initializer_list_vector_cxx11.cpp.o"
   "CMakeFiles/compile_Matrix_initializer_list_vector_cxx11.dir/compile_Matrix_initializer_list_vector_cxx11.cpp.o.d"
+  "CMakeFiles/compile_Matrix_initializer_list_vector_cxx11.dir/compile_Matrix_initializer_list_vector_cxx11_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/compile_Matrix_initializer_list_vector_cxx11.dir/compile_Matrix_initializer_list_vector_cxx11_autogen/mocs_compilation.cpp.o.d"
   "compile_Matrix_initializer_list_vector_cxx11"
   "compile_Matrix_initializer_list_vector_cxx11.pdb"
 )

@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/QuickStart_example_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/QuickStart_example_autogen.dir/ParseCache.txt"
+  "QuickStart_example_autogen"
   "CMakeFiles/QuickStart_example.dir/QuickStart_example.cpp.o"
   "CMakeFiles/QuickStart_example.dir/QuickStart_example.cpp.o.d"
+  "CMakeFiles/QuickStart_example.dir/QuickStart_example_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/QuickStart_example.dir/QuickStart_example_autogen/mocs_compilation.cpp.o.d"
   "QuickStart_example"
   "QuickStart_example.pdb"
 )

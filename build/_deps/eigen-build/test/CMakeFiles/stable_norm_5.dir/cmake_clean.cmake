@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/stable_norm_5_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/stable_norm_5_autogen.dir/ParseCache.txt"
+  "stable_norm_5_autogen"
   "CMakeFiles/stable_norm_5.dir/stable_norm.cpp.o"
   "CMakeFiles/stable_norm_5.dir/stable_norm.cpp.o.d"
+  "CMakeFiles/stable_norm_5.dir/stable_norm_5_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/stable_norm_5.dir/stable_norm_5_autogen/mocs_compilation.cpp.o.d"
   "stable_norm_5"
   "stable_norm_5.pdb"
 )

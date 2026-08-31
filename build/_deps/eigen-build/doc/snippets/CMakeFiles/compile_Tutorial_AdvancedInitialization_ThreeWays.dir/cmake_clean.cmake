@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/compile_Tutorial_AdvancedInitialization_ThreeWays_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/compile_Tutorial_AdvancedInitialization_ThreeWays_autogen.dir/ParseCache.txt"
+  "compile_Tutorial_AdvancedInitialization_ThreeWays_autogen"
   "CMakeFiles/compile_Tutorial_AdvancedInitialization_ThreeWays.dir/compile_Tutorial_AdvancedInitialization_ThreeWays.cpp.o"
   "CMakeFiles/compile_Tutorial_AdvancedInitialization_ThreeWays.dir/compile_Tutorial_AdvancedInitialization_ThreeWays.cpp.o.d"
+  "CMakeFiles/compile_Tutorial_AdvancedInitialization_ThreeWays.dir/compile_Tutorial_AdvancedInitialization_ThreeWays_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/compile_Tutorial_AdvancedInitialization_ThreeWays.dir/compile_Tutorial_AdvancedInitialization_ThreeWays_autogen/mocs_compilation.cpp.o.d"
   "compile_Tutorial_AdvancedInitialization_ThreeWays"
   "compile_Tutorial_AdvancedInitialization_ThreeWays.pdb"
 )

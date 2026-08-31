@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/reshape_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/reshape_autogen.dir/ParseCache.txt"
+  "reshape_autogen"
   "CMakeFiles/reshape.dir/reshape.cpp.o"
   "CMakeFiles/reshape.dir/reshape.cpp.o.d"
+  "CMakeFiles/reshape.dir/reshape_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/reshape.dir/reshape_autogen/mocs_compilation.cpp.o.d"
   "reshape"
   "reshape.pdb"
 )

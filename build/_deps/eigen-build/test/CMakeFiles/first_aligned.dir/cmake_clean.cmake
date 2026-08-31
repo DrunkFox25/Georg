@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/first_aligned_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/first_aligned_autogen.dir/ParseCache.txt"
+  "first_aligned_autogen"
   "CMakeFiles/first_aligned.dir/first_aligned.cpp.o"
   "CMakeFiles/first_aligned.dir/first_aligned.cpp.o.d"
+  "CMakeFiles/first_aligned.dir/first_aligned_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/first_aligned.dir/first_aligned_autogen/mocs_compilation.cpp.o.d"
   "first_aligned"
   "first_aligned.pdb"
 )

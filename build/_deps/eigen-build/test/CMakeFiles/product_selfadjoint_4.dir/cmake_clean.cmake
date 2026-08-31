@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/product_selfadjoint_4_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/product_selfadjoint_4_autogen.dir/ParseCache.txt"
+  "product_selfadjoint_4_autogen"
   "CMakeFiles/product_selfadjoint_4.dir/product_selfadjoint.cpp.o"
   "CMakeFiles/product_selfadjoint_4.dir/product_selfadjoint.cpp.o.d"
+  "CMakeFiles/product_selfadjoint_4.dir/product_selfadjoint_4_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/product_selfadjoint_4.dir/product_selfadjoint_4_autogen/mocs_compilation.cpp.o.d"
   "product_selfadjoint_4"
   "product_selfadjoint_4.pdb"
 )

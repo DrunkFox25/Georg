@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/compile_MatrixBase_cwiseAbs2_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/compile_MatrixBase_cwiseAbs2_autogen.dir/ParseCache.txt"
+  "compile_MatrixBase_cwiseAbs2_autogen"
   "CMakeFiles/compile_MatrixBase_cwiseAbs2.dir/compile_MatrixBase_cwiseAbs2.cpp.o"
   "CMakeFiles/compile_MatrixBase_cwiseAbs2.dir/compile_MatrixBase_cwiseAbs2.cpp.o.d"
+  "CMakeFiles/compile_MatrixBase_cwiseAbs2.dir/compile_MatrixBase_cwiseAbs2_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/compile_MatrixBase_cwiseAbs2.dir/compile_MatrixBase_cwiseAbs2_autogen/mocs_compilation.cpp.o.d"
   "compile_MatrixBase_cwiseAbs2"
   "compile_MatrixBase_cwiseAbs2.pdb"
 )

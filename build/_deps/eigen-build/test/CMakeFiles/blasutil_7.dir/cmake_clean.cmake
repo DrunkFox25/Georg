@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/blasutil_7_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/blasutil_7_autogen.dir/ParseCache.txt"
+  "blasutil_7_autogen"
   "CMakeFiles/blasutil_7.dir/blasutil.cpp.o"
   "CMakeFiles/blasutil_7.dir/blasutil.cpp.o.d"
+  "CMakeFiles/blasutil_7.dir/blasutil_7_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/blasutil_7.dir/blasutil_7_autogen/mocs_compilation.cpp.o.d"
   "blasutil_7"
   "blasutil_7.pdb"
 )

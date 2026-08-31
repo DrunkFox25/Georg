@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/splines_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/splines_autogen.dir/ParseCache.txt"
+  "splines_autogen"
   "CMakeFiles/splines.dir/splines.cpp.o"
   "CMakeFiles/splines.dir/splines.cpp.o.d"
+  "CMakeFiles/splines.dir/splines_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/splines.dir/splines_autogen/mocs_compilation.cpp.o.d"
   "splines"
   "splines.pdb"
 )

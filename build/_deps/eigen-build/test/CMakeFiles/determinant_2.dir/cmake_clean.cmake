@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/determinant_2_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/determinant_2_autogen.dir/ParseCache.txt"
+  "determinant_2_autogen"
   "CMakeFiles/determinant_2.dir/determinant.cpp.o"
   "CMakeFiles/determinant_2.dir/determinant.cpp.o.d"
+  "CMakeFiles/determinant_2.dir/determinant_2_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/determinant_2.dir/determinant_2_autogen/mocs_compilation.cpp.o.d"
   "determinant_2"
   "determinant_2.pdb"
 )

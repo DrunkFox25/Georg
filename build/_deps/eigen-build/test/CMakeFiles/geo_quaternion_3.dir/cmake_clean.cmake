@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/geo_quaternion_3_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/geo_quaternion_3_autogen.dir/ParseCache.txt"
+  "geo_quaternion_3_autogen"
   "CMakeFiles/geo_quaternion_3.dir/geo_quaternion.cpp.o"
   "CMakeFiles/geo_quaternion_3.dir/geo_quaternion.cpp.o.d"
+  "CMakeFiles/geo_quaternion_3.dir/geo_quaternion_3_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/geo_quaternion_3.dir/geo_quaternion_3_autogen/mocs_compilation.cpp.o.d"
   "geo_quaternion_3"
   "geo_quaternion_3.pdb"
 )

@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/prec_inverse_4x4_2_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/prec_inverse_4x4_2_autogen.dir/ParseCache.txt"
+  "prec_inverse_4x4_2_autogen"
   "CMakeFiles/prec_inverse_4x4_2.dir/prec_inverse_4x4.cpp.o"
   "CMakeFiles/prec_inverse_4x4_2.dir/prec_inverse_4x4.cpp.o.d"
+  "CMakeFiles/prec_inverse_4x4_2.dir/prec_inverse_4x4_2_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/prec_inverse_4x4_2.dir/prec_inverse_4x4_2_autogen/mocs_compilation.cpp.o.d"
   "prec_inverse_4x4_2"
   "prec_inverse_4x4_2.pdb"
 )

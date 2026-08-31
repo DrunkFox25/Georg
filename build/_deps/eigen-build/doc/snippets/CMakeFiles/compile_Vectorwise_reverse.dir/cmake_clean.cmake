@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/compile_Vectorwise_reverse_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/compile_Vectorwise_reverse_autogen.dir/ParseCache.txt"
+  "compile_Vectorwise_reverse_autogen"
   "CMakeFiles/compile_Vectorwise_reverse.dir/compile_Vectorwise_reverse.cpp.o"
   "CMakeFiles/compile_Vectorwise_reverse.dir/compile_Vectorwise_reverse.cpp.o.d"
+  "CMakeFiles/compile_Vectorwise_reverse.dir/compile_Vectorwise_reverse_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/compile_Vectorwise_reverse.dir/compile_Vectorwise_reverse_autogen/mocs_compilation.cpp.o.d"
   "compile_Vectorwise_reverse"
   "compile_Vectorwise_reverse.pdb"
 )

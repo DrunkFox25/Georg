@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/incomplete_cholesky_1_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/incomplete_cholesky_1_autogen.dir/ParseCache.txt"
+  "incomplete_cholesky_1_autogen"
   "CMakeFiles/incomplete_cholesky_1.dir/incomplete_cholesky.cpp.o"
   "CMakeFiles/incomplete_cholesky_1.dir/incomplete_cholesky.cpp.o.d"
+  "CMakeFiles/incomplete_cholesky_1.dir/incomplete_cholesky_1_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/incomplete_cholesky_1.dir/incomplete_cholesky_1_autogen/mocs_compilation.cpp.o.d"
   "incomplete_cholesky_1"
   "incomplete_cholesky_1.pdb"
 )

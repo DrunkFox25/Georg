@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/array_for_matrix_3_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/array_for_matrix_3_autogen.dir/ParseCache.txt"
+  "array_for_matrix_3_autogen"
   "CMakeFiles/array_for_matrix_3.dir/array_for_matrix.cpp.o"
   "CMakeFiles/array_for_matrix_3.dir/array_for_matrix.cpp.o.d"
+  "CMakeFiles/array_for_matrix_3.dir/array_for_matrix_3_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/array_for_matrix_3.dir/array_for_matrix_3_autogen/mocs_compilation.cpp.o.d"
   "array_for_matrix_3"
   "array_for_matrix_3.pdb"
 )

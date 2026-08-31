@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/smallvectors_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/smallvectors_autogen.dir/ParseCache.txt"
+  "smallvectors_autogen"
   "CMakeFiles/smallvectors.dir/smallvectors.cpp.o"
   "CMakeFiles/smallvectors.dir/smallvectors.cpp.o.d"
+  "CMakeFiles/smallvectors.dir/smallvectors_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/smallvectors.dir/smallvectors_autogen/mocs_compilation.cpp.o.d"
   "smallvectors"
   "smallvectors.pdb"
 )

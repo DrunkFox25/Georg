@@ -1,4 +1,5 @@
 # Target labels
  BuildOfficial
 # Source files and their labels
+/workspaces/Georg/build/_deps/eigen-build/test/product_small_43_autogen/mocs_compilation.cpp
 /workspaces/Georg/build/_deps/eigen-src/test/product_small.cpp

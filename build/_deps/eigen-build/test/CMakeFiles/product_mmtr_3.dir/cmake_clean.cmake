@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/product_mmtr_3_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/product_mmtr_3_autogen.dir/ParseCache.txt"
+  "product_mmtr_3_autogen"
   "CMakeFiles/product_mmtr_3.dir/product_mmtr.cpp.o"
   "CMakeFiles/product_mmtr_3.dir/product_mmtr.cpp.o.d"
+  "CMakeFiles/product_mmtr_3.dir/product_mmtr_3_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/product_mmtr_3.dir/product_mmtr_3_autogen/mocs_compilation.cpp.o.d"
   "product_mmtr_3"
   "product_mmtr_3.pdb"
 )

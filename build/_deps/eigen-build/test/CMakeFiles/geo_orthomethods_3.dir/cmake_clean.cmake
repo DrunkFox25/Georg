@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/geo_orthomethods_3_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/geo_orthomethods_3_autogen.dir/ParseCache.txt"
+  "geo_orthomethods_3_autogen"
   "CMakeFiles/geo_orthomethods_3.dir/geo_orthomethods.cpp.o"
   "CMakeFiles/geo_orthomethods_3.dir/geo_orthomethods.cpp.o.d"
+  "CMakeFiles/geo_orthomethods_3.dir/geo_orthomethods_3_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/geo_orthomethods_3.dir/geo_orthomethods_3_autogen/mocs_compilation.cpp.o.d"
   "geo_orthomethods_3"
   "geo_orthomethods_3.pdb"
 )

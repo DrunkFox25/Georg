@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/tut_arithmetic_redux_basic_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/tut_arithmetic_redux_basic_autogen.dir/ParseCache.txt"
+  "tut_arithmetic_redux_basic_autogen"
   "CMakeFiles/tut_arithmetic_redux_basic.dir/tut_arithmetic_redux_basic.cpp.o"
   "CMakeFiles/tut_arithmetic_redux_basic.dir/tut_arithmetic_redux_basic.cpp.o.d"
+  "CMakeFiles/tut_arithmetic_redux_basic.dir/tut_arithmetic_redux_basic_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/tut_arithmetic_redux_basic.dir/tut_arithmetic_redux_basic_autogen/mocs_compilation.cpp.o.d"
   "tut_arithmetic_redux_basic"
   "tut_arithmetic_redux_basic.pdb"
 )

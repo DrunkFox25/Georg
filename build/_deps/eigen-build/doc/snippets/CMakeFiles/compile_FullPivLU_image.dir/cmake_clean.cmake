@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/compile_FullPivLU_image_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/compile_FullPivLU_image_autogen.dir/ParseCache.txt"
+  "compile_FullPivLU_image_autogen"
   "CMakeFiles/compile_FullPivLU_image.dir/compile_FullPivLU_image.cpp.o"
   "CMakeFiles/compile_FullPivLU_image.dir/compile_FullPivLU_image.cpp.o.d"
+  "CMakeFiles/compile_FullPivLU_image.dir/compile_FullPivLU_image_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/compile_FullPivLU_image.dir/compile_FullPivLU_image_autogen/mocs_compilation.cpp.o.d"
   "compile_FullPivLU_image"
   "compile_FullPivLU_image.pdb"
 )

@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Tutorial_PartialLU_solve_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/Tutorial_PartialLU_solve_autogen.dir/ParseCache.txt"
+  "Tutorial_PartialLU_solve_autogen"
   "CMakeFiles/Tutorial_PartialLU_solve.dir/Tutorial_PartialLU_solve.cpp.o"
   "CMakeFiles/Tutorial_PartialLU_solve.dir/Tutorial_PartialLU_solve.cpp.o.d"
+  "CMakeFiles/Tutorial_PartialLU_solve.dir/Tutorial_PartialLU_solve_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/Tutorial_PartialLU_solve.dir/Tutorial_PartialLU_solve_autogen/mocs_compilation.cpp.o.d"
   "Tutorial_PartialLU_solve"
   "Tutorial_PartialLU_solve.pdb"
 )

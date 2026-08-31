@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/stddeque_4_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/stddeque_4_autogen.dir/ParseCache.txt"
+  "stddeque_4_autogen"
   "CMakeFiles/stddeque_4.dir/stddeque.cpp.o"
   "CMakeFiles/stddeque_4.dir/stddeque.cpp.o.d"
+  "CMakeFiles/stddeque_4.dir/stddeque_4_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/stddeque_4.dir/stddeque_4_autogen/mocs_compilation.cpp.o.d"
   "stddeque_4"
   "stddeque_4.pdb"
 )

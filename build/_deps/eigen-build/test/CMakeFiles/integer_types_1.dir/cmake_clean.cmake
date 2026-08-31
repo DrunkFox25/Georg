@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/integer_types_1_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/integer_types_1_autogen.dir/ParseCache.txt"
+  "integer_types_1_autogen"
   "CMakeFiles/integer_types_1.dir/integer_types.cpp.o"
   "CMakeFiles/integer_types_1.dir/integer_types.cpp.o.d"
+  "CMakeFiles/integer_types_1.dir/integer_types_1_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/integer_types_1.dir/integer_types_1_autogen/mocs_compilation.cpp.o.d"
   "integer_types_1"
   "integer_types_1.pdb"
 )

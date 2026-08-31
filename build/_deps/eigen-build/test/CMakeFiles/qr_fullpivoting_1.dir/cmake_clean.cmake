@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/qr_fullpivoting_1_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/qr_fullpivoting_1_autogen.dir/ParseCache.txt"
+  "qr_fullpivoting_1_autogen"
   "CMakeFiles/qr_fullpivoting_1.dir/qr_fullpivoting.cpp.o"
   "CMakeFiles/qr_fullpivoting_1.dir/qr_fullpivoting.cpp.o.d"
+  "CMakeFiles/qr_fullpivoting_1.dir/qr_fullpivoting_1_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/qr_fullpivoting_1.dir/qr_fullpivoting_1_autogen/mocs_compilation.cpp.o.d"
   "qr_fullpivoting_1"
   "qr_fullpivoting_1.pdb"
 )

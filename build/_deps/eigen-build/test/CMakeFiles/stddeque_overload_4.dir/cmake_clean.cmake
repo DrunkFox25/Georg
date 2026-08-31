@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/stddeque_overload_4_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/stddeque_overload_4_autogen.dir/ParseCache.txt"
+  "stddeque_overload_4_autogen"
   "CMakeFiles/stddeque_overload_4.dir/stddeque_overload.cpp.o"
   "CMakeFiles/stddeque_overload_4.dir/stddeque_overload.cpp.o.d"
+  "CMakeFiles/stddeque_overload_4.dir/stddeque_overload_4_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/stddeque_overload_4.dir/stddeque_overload_4_autogen/mocs_compilation.cpp.o.d"
   "stddeque_overload_4"
   "stddeque_overload_4.pdb"
 )

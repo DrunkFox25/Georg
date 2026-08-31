@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/compile_DenseBase_LinSpaced_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/compile_DenseBase_LinSpaced_autogen.dir/ParseCache.txt"
+  "compile_DenseBase_LinSpaced_autogen"
   "CMakeFiles/compile_DenseBase_LinSpaced.dir/compile_DenseBase_LinSpaced.cpp.o"
   "CMakeFiles/compile_DenseBase_LinSpaced.dir/compile_DenseBase_LinSpaced.cpp.o.d"
+  "CMakeFiles/compile_DenseBase_LinSpaced.dir/compile_DenseBase_LinSpaced_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/compile_DenseBase_LinSpaced.dir/compile_DenseBase_LinSpaced_autogen/mocs_compilation.cpp.o.d"
   "compile_DenseBase_LinSpaced"
   "compile_DenseBase_LinSpaced.pdb"
 )

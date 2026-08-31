@@ -1,0 +1,27 @@
+TEST 6
+NVARS 12
+VARS ax ay bx by cx cy dx dy ex ey fx fy
+VALS 2 0 -1 1.732 -1 -1.732 -1 0 0.5 -0.866 0.5 0.866
+FIXED 0 0 0 0 0 0 1 1 1 1 1 1
+CONSTR 6
+POLY bx cy - bx dy + cx dy - cx by + dx by - dx cy
+POLY ax cy - ax ey + cx ey - cx ay + ex ay - ex cy
+POLY bx ay - bx fy + ax fy - ax by + fx by - fx ay
+POLY dx bx - dx cx - ax bx + ax cx + dy by - dy cy - ay by + ay cy
+POLY ex ax - ex cx - bx ax + bx cx + ey ay - ey cy - by ay + by cy
+POLY fx bx - fx ax - cx bx + cx ax + fy by - fy ay - cy by + cy ay
+DONE
+
+> modify dx -1.1
+> runn 10
+> query
+> modify dx -1.2
+> runn 10
+> query
+> modify dx -1.3
+> runn 10
+> query
+> modify dx -1.4
+> runn 10
+> query
+> exit

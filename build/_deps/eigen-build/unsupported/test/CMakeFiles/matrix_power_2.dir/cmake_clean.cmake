@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/matrix_power_2_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/matrix_power_2_autogen.dir/ParseCache.txt"
+  "matrix_power_2_autogen"
   "CMakeFiles/matrix_power_2.dir/matrix_power.cpp.o"
   "CMakeFiles/matrix_power_2.dir/matrix_power.cpp.o.d"
+  "CMakeFiles/matrix_power_2.dir/matrix_power_2_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/matrix_power_2.dir/matrix_power_2_autogen/mocs_compilation.cpp.o.d"
   "matrix_power_2"
   "matrix_power_2.pdb"
 )

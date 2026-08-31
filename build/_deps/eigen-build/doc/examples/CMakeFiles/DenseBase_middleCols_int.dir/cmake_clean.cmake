@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/DenseBase_middleCols_int_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/DenseBase_middleCols_int_autogen.dir/ParseCache.txt"
+  "DenseBase_middleCols_int_autogen"
   "CMakeFiles/DenseBase_middleCols_int.dir/DenseBase_middleCols_int.cpp.o"
   "CMakeFiles/DenseBase_middleCols_int.dir/DenseBase_middleCols_int.cpp.o.d"
+  "CMakeFiles/DenseBase_middleCols_int.dir/DenseBase_middleCols_int_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/DenseBase_middleCols_int.dir/DenseBase_middleCols_int_autogen/mocs_compilation.cpp.o.d"
   "DenseBase_middleCols_int"
   "DenseBase_middleCols_int.pdb"
 )

@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/test_sparseLU_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/test_sparseLU_autogen.dir/ParseCache.txt"
+  "test_sparseLU_autogen"
   "CMakeFiles/test_sparseLU.dir/test_sparseLU.cpp.o"
   "CMakeFiles/test_sparseLU.dir/test_sparseLU.cpp.o.d"
+  "CMakeFiles/test_sparseLU.dir/test_sparseLU_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/test_sparseLU.dir/test_sparseLU_autogen/mocs_compilation.cpp.o.d"
   "test_sparseLU"
   "test_sparseLU.pdb"
 )

@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/qr_colpivoting_5_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/qr_colpivoting_5_autogen.dir/ParseCache.txt"
+  "qr_colpivoting_5_autogen"
   "CMakeFiles/qr_colpivoting_5.dir/qr_colpivoting.cpp.o"
   "CMakeFiles/qr_colpivoting_5.dir/qr_colpivoting.cpp.o.d"
+  "CMakeFiles/qr_colpivoting_5.dir/qr_colpivoting_5_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/qr_colpivoting_5.dir/qr_colpivoting_5_autogen/mocs_compilation.cpp.o.d"
   "qr_colpivoting_5"
   "qr_colpivoting_5.pdb"
 )

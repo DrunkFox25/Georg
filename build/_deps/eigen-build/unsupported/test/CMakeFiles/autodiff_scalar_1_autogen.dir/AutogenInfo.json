@@ -1,0 +1,104 @@
+{
+	"BUILD_DIR" : "/workspaces/Georg/build/_deps/eigen-build/unsupported/test/autodiff_scalar_1_autogen",
+	"CMAKE_BINARY_DIR" : "/workspaces/Georg/build",
+	"CMAKE_CURRENT_BINARY_DIR" : "/workspaces/Georg/build/_deps/eigen-build/unsupported/test",
+	"CMAKE_CURRENT_SOURCE_DIR" : "/workspaces/Georg/build/_deps/eigen-src/unsupported/test",
+	"CMAKE_EXECUTABLE" : "/usr/bin/cmake",
+	"CMAKE_LIST_FILES" : 
+	[
+		"/workspaces/Georg/build/_deps/eigen-src/unsupported/test/CMakeLists.txt",
+		"/usr/share/cmake-3.22/Modules/FindThreads.cmake",
+		"/usr/share/cmake-3.22/Modules/CheckLibraryExists.cmake",
+		"/usr/share/cmake-3.22/Modules/CheckIncludeFile.cmake",
+		"/usr/share/cmake-3.22/Modules/CheckCSourceCompiles.cmake",
+		"/usr/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake",
+		"/usr/share/cmake-3.22/Modules/FindPackageMessage.cmake",
+		"/workspaces/Georg/build/_deps/eigen-src/cmake/FindGoogleHash.cmake",
+		"/usr/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake",
+		"/usr/share/cmake-3.22/Modules/FindPackageMessage.cmake",
+		"/workspaces/Georg/build/_deps/eigen-src/cmake/FindAdolc.cmake",
+		"/usr/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake",
+		"/usr/share/cmake-3.22/Modules/FindPackageMessage.cmake",
+		"/workspaces/Georg/build/_deps/eigen-src/cmake/FindMPREAL.cmake",
+		"/usr/share/cmake-3.22/Modules/CMakeFindDependencyMacro.cmake",
+		"/workspaces/Georg/build/_deps/eigen-src/cmake/FindMPFR.cmake",
+		"/usr/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake",
+		"/usr/share/cmake-3.22/Modules/FindPackageMessage.cmake",
+		"/workspaces/Georg/build/_deps/eigen-src/cmake/FindFFTW.cmake",
+		"/usr/share/cmake-3.22/Modules/CMakeFindDependencyMacro.cmake",
+		"/usr/share/cmake-3.22/Modules/FindPkgConfig.cmake",
+		"/usr/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake",
+		"/usr/share/cmake-3.22/Modules/FindPackageMessage.cmake",
+		"/usr/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake",
+		"/usr/share/cmake-3.22/Modules/FindPackageMessage.cmake",
+		"/usr/share/cmake-3.22/Modules/FindCUDA.cmake",
+		"/usr/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake",
+		"/usr/share/cmake-3.22/Modules/FindPackageMessage.cmake",
+		"/usr/share/cmake-3.22/Modules/FindCUDA/select_compute_arch.cmake"
+	],
+	"CMAKE_SOURCE_DIR" : "/workspaces/Georg",
+	"DEP_FILE" : "",
+	"DEP_FILE_RULE_NAME" : "",
+	"HEADERS" : [],
+	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
+	"INCLUDE_DIR" : "/workspaces/Georg/build/_deps/eigen-build/unsupported/test/autodiff_scalar_1_autogen/include",
+	"MOC_COMPILATION_FILE" : "/workspaces/Georg/build/_deps/eigen-build/unsupported/test/autodiff_scalar_1_autogen/mocs_compilation.cpp",
+	"MOC_DEFINITIONS" : [],
+	"MOC_DEPEND_FILTERS" : 
+	[
+		[
+			"Q_PLUGIN_METADATA",
+			"[\n][ \t]*Q_PLUGIN_METADATA[ \t]*\\([^\\)]*FILE[ \t]*\"([^\"]+)\""
+		]
+	],
+	"MOC_INCLUDES" : 
+	[
+		"/workspaces/Georg/build/_deps/eigen-src",
+		"/workspaces/Georg/build/_deps/eigen-src/test",
+		"/workspaces/Georg/build/_deps/eigen-src/unsupported",
+		"/workspaces/Georg/build/_deps/eigen-src/Eigen",
+		"/workspaces/Georg/build/_deps/eigen-build/test",
+		"/usr/include/c++/11",
+		"/usr/include/x86_64-linux-gnu/c++/11",
+		"/usr/include/c++/11/backward",
+		"/usr/lib/gcc/x86_64-linux-gnu/11/include",
+		"/usr/local/include",
+		"/usr/include/x86_64-linux-gnu",
+		"/usr/include"
+	],
+	"MOC_MACRO_NAMES" : [ "Q_OBJECT", "Q_GADGET", "Q_NAMESPACE", "Q_NAMESPACE_EXPORT" ],
+	"MOC_OPTIONS" : [],
+	"MOC_PATH_PREFIX" : false,
+	"MOC_PREDEFS_CMD" : 
+	[
+		"/usr/bin/g++",
+		"-dM",
+		"-E",
+		"-c",
+		"/usr/share/cmake-3.22/Modules/CMakeCXXCompilerABI.cpp"
+	],
+	"MOC_PREDEFS_FILE" : "/workspaces/Georg/build/_deps/eigen-build/unsupported/test/autodiff_scalar_1_autogen/moc_predefs.h",
+	"MOC_RELAXED_MODE" : false,
+	"MOC_SKIP" : [],
+	"MULTI_CONFIG" : false,
+	"PARALLEL" : 1,
+	"PARSE_CACHE_FILE" : "/workspaces/Georg/build/_deps/eigen-build/unsupported/test/CMakeFiles/autodiff_scalar_1_autogen.dir/ParseCache.txt",
+	"QT_MOC_EXECUTABLE" : "/usr/lib/qt6/libexec/moc",
+	"QT_UIC_EXECUTABLE" : "/usr/lib/qt6/libexec/uic",
+	"QT_VERSION_MAJOR" : 6,
+	"QT_VERSION_MINOR" : 2,
+	"SETTINGS_FILE" : "/workspaces/Georg/build/_deps/eigen-build/unsupported/test/CMakeFiles/autodiff_scalar_1_autogen.dir/AutogenUsed.txt",
+	"SOURCES" : 
+	[
+		[
+			"/workspaces/Georg/build/_deps/eigen-src/unsupported/test/autodiff_scalar.cpp",
+			"MU",
+			null
+		]
+	],
+	"UIC_OPTIONS" : [],
+	"UIC_SEARCH_PATHS" : [],
+	"UIC_SKIP" : [],
+	"UIC_UI_FILES" : [],
+	"VERBOSITY" : 0
+}

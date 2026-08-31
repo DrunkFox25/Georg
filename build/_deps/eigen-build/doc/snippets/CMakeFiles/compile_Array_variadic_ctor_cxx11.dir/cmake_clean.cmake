@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/compile_Array_variadic_ctor_cxx11_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/compile_Array_variadic_ctor_cxx11_autogen.dir/ParseCache.txt"
+  "compile_Array_variadic_ctor_cxx11_autogen"
   "CMakeFiles/compile_Array_variadic_ctor_cxx11.dir/compile_Array_variadic_ctor_cxx11.cpp.o"
   "CMakeFiles/compile_Array_variadic_ctor_cxx11.dir/compile_Array_variadic_ctor_cxx11.cpp.o.d"
+  "CMakeFiles/compile_Array_variadic_ctor_cxx11.dir/compile_Array_variadic_ctor_cxx11_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/compile_Array_variadic_ctor_cxx11.dir/compile_Array_variadic_ctor_cxx11_autogen/mocs_compilation.cpp.o.d"
   "compile_Array_variadic_ctor_cxx11"
   "compile_Array_variadic_ctor_cxx11.pdb"
 )

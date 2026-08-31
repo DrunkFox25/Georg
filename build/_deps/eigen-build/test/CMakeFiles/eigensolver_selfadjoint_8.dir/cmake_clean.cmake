@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/eigensolver_selfadjoint_8_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/eigensolver_selfadjoint_8_autogen.dir/ParseCache.txt"
+  "eigensolver_selfadjoint_8_autogen"
   "CMakeFiles/eigensolver_selfadjoint_8.dir/eigensolver_selfadjoint.cpp.o"
   "CMakeFiles/eigensolver_selfadjoint_8.dir/eigensolver_selfadjoint.cpp.o.d"
+  "CMakeFiles/eigensolver_selfadjoint_8.dir/eigensolver_selfadjoint_8_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/eigensolver_selfadjoint_8.dir/eigensolver_selfadjoint_8_autogen/mocs_compilation.cpp.o.d"
   "eigensolver_selfadjoint_8"
   "eigensolver_selfadjoint_8.pdb"
 )

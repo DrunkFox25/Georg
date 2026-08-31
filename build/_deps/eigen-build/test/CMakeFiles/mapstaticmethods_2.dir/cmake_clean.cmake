@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/mapstaticmethods_2_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/mapstaticmethods_2_autogen.dir/ParseCache.txt"
+  "mapstaticmethods_2_autogen"
   "CMakeFiles/mapstaticmethods_2.dir/mapstaticmethods.cpp.o"
   "CMakeFiles/mapstaticmethods_2.dir/mapstaticmethods.cpp.o.d"
+  "CMakeFiles/mapstaticmethods_2.dir/mapstaticmethods_2_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/mapstaticmethods_2.dir/mapstaticmethods_2_autogen/mocs_compilation.cpp.o.d"
   "mapstaticmethods_2"
   "mapstaticmethods_2.pdb"
 )

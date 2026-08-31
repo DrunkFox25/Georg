@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/compile_Cwise_minus_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/compile_Cwise_minus_autogen.dir/ParseCache.txt"
+  "compile_Cwise_minus_autogen"
   "CMakeFiles/compile_Cwise_minus.dir/compile_Cwise_minus.cpp.o"
   "CMakeFiles/compile_Cwise_minus.dir/compile_Cwise_minus.cpp.o.d"
+  "CMakeFiles/compile_Cwise_minus.dir/compile_Cwise_minus_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/compile_Cwise_minus.dir/compile_Cwise_minus_autogen/mocs_compilation.cpp.o.d"
   "compile_Cwise_minus"
   "compile_Cwise_minus.pdb"
 )

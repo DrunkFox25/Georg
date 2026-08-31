@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/block_on_const_type_actually_const_1_ok_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/block_on_const_type_actually_const_1_ok_autogen.dir/ParseCache.txt"
+  "block_on_const_type_actually_const_1_ok_autogen"
   "CMakeFiles/block_on_const_type_actually_const_1_ok.dir/block_on_const_type_actually_const_1.cpp.o"
   "CMakeFiles/block_on_const_type_actually_const_1_ok.dir/block_on_const_type_actually_const_1.cpp.o.d"
+  "CMakeFiles/block_on_const_type_actually_const_1_ok.dir/block_on_const_type_actually_const_1_ok_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/block_on_const_type_actually_const_1_ok.dir/block_on_const_type_actually_const_1_ok_autogen/mocs_compilation.cpp.o.d"
   "block_on_const_type_actually_const_1_ok"
   "block_on_const_type_actually_const_1_ok.pdb"
 )

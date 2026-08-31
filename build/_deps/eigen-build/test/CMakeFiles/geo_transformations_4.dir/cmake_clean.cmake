@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/geo_transformations_4_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/geo_transformations_4_autogen.dir/ParseCache.txt"
+  "geo_transformations_4_autogen"
   "CMakeFiles/geo_transformations_4.dir/geo_transformations.cpp.o"
   "CMakeFiles/geo_transformations_4.dir/geo_transformations.cpp.o.d"
+  "CMakeFiles/geo_transformations_4.dir/geo_transformations_4_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/geo_transformations_4.dir/geo_transformations_4_autogen/mocs_compilation.cpp.o.d"
   "geo_transformations_4"
   "geo_transformations_4.pdb"
 )

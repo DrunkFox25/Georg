@@ -1,0 +1,104 @@
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_Wshorten64to32 failed with the following output:
+Change Dir: /workspaces/Georg/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_15dfc/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_15dfc.dir/build.make CMakeFiles/cmTC_15dfc.dir/build
+gmake[1]: Entering directory '/workspaces/Georg/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_15dfc.dir/src.cxx.o
+/usr/bin/g++ -DCOMPILER_SUPPORT_Wshorten64to32  -std=c++03 -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wunused-local-typedefs -Wpointer-arith -Wwrite-strings -Wformat-security -Werror   -Wshorten-64-to-32 -std=gnu++23 -o CMakeFiles/cmTC_15dfc.dir/src.cxx.o -c /workspaces/Georg/build/CMakeFiles/CMakeTmp/src.cxx
+g++: error: unrecognized command-line option '-Wshorten-64-to-32'
+gmake[1]: *** [CMakeFiles/cmTC_15dfc.dir/build.make:78: CMakeFiles/cmTC_15dfc.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory '/workspaces/Georg/build/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_15dfc/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_Wcpp11extensions failed with the following output:
+Change Dir: /workspaces/Georg/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_b3090/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_b3090.dir/build.make CMakeFiles/cmTC_b3090.dir/build
+gmake[1]: Entering directory '/workspaces/Georg/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_b3090.dir/src.cxx.o
+/usr/bin/g++ -DCOMPILER_SUPPORT_Wcpp11extensions  -std=c++03 -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wunused-local-typedefs -Wpointer-arith -Wwrite-strings -Wformat-security -Wlogical-op -Wenum-conversion -Werror   -Wc++11-extensions -std=gnu++23 -o CMakeFiles/cmTC_b3090.dir/src.cxx.o -c /workspaces/Georg/build/CMakeFiles/CMakeTmp/src.cxx
+g++: error: unrecognized command-line option '-Wc++11-extensions'; did you mean '-fms-extensions'?
+gmake[1]: *** [CMakeFiles/cmTC_b3090.dir/build.make:78: CMakeFiles/cmTC_b3090.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory '/workspaces/Georg/build/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_b3090/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_wd981 failed with the following output:
+Change Dir: /workspaces/Georg/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_49f60/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_49f60.dir/build.make CMakeFiles/cmTC_49f60.dir/build
+gmake[1]: Entering directory '/workspaces/Georg/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_49f60.dir/src.cxx.o
+/usr/bin/g++ -DCOMPILER_SUPPORT_wd981  -std=c++03 -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wunused-local-typedefs -Wpointer-arith -Wwrite-strings -Wformat-security -Wlogical-op -Wenum-conversion -Wdouble-promotion -Wshadow -Wno-psabi -Wno-variadic-macros -Wno-long-long -fno-check-new -fno-common -fstrict-aliasing -Werror   -wd981 -std=gnu++23 -o CMakeFiles/cmTC_49f60.dir/src.cxx.o -c /workspaces/Georg/build/CMakeFiles/CMakeTmp/src.cxx
+g++: error: unrecognized command-line option '-wd981'
+gmake[1]: *** [CMakeFiles/cmTC_49f60.dir/build.make:78: CMakeFiles/cmTC_49f60.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory '/workspaces/Georg/build/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_49f60/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_wd2304 failed with the following output:
+Change Dir: /workspaces/Georg/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_a0913/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_a0913.dir/build.make CMakeFiles/cmTC_a0913.dir/build
+gmake[1]: Entering directory '/workspaces/Georg/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_a0913.dir/src.cxx.o
+/usr/bin/g++ -DCOMPILER_SUPPORT_wd2304  -std=c++03 -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wunused-local-typedefs -Wpointer-arith -Wwrite-strings -Wformat-security -Wlogical-op -Wenum-conversion -Wdouble-promotion -Wshadow -Wno-psabi -Wno-variadic-macros -Wno-long-long -fno-check-new -fno-common -fstrict-aliasing -Werror   -wd2304 -std=gnu++23 -o CMakeFiles/cmTC_a0913.dir/src.cxx.o -c /workspaces/Georg/build/CMakeFiles/CMakeTmp/src.cxx
+g++: error: unrecognized command-line option '-wd2304'
+gmake[1]: *** [CMakeFiles/cmTC_a0913.dir/build.make:78: CMakeFiles/cmTC_a0913.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory '/workspaces/Georg/build/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_a0913/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_STRICTANSI failed with the following output:
+Change Dir: /workspaces/Georg/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_1471a/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_1471a.dir/build.make CMakeFiles/cmTC_1471a.dir/build
+gmake[1]: Entering directory '/workspaces/Georg/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_1471a.dir/src.cxx.o
+/usr/bin/g++ -DCOMPILER_SUPPORT_STRICTANSI  -std=c++03 -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wunused-local-typedefs -Wpointer-arith -Wwrite-strings -Wformat-security -Wlogical-op -Wenum-conversion -Wdouble-promotion -Wshadow -Wno-psabi -Wno-variadic-macros -Wno-long-long -fno-check-new -fno-common -fstrict-aliasing -Werror   -strict-ansi -std=gnu++23 -o CMakeFiles/cmTC_1471a.dir/src.cxx.o -c /workspaces/Georg/build/CMakeFiles/CMakeTmp/src.cxx
+g++: error: unrecognized command-line option '-strict-ansi'; did you mean '-fstrict-enums'?
+gmake[1]: *** [CMakeFiles/cmTC_1471a.dir/build.make:78: CMakeFiles/cmTC_1471a.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory '/workspaces/Georg/build/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_1471a/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_Qunusedarguments failed with the following output:
+Change Dir: /workspaces/Georg/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_f9a5f/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_f9a5f.dir/build.make CMakeFiles/cmTC_f9a5f.dir/build
+gmake[1]: Entering directory '/workspaces/Georg/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_f9a5f.dir/src.cxx.o
+/usr/bin/g++ -DCOMPILER_SUPPORT_Qunusedarguments  -std=c++03 -pedantic -Wall -Wextra -Wundef -Wcast-align -Wchar-subscripts -Wnon-virtual-dtor -Wunused-local-typedefs -Wpointer-arith -Wwrite-strings -Wformat-security -Wlogical-op -Wenum-conversion -Wdouble-promotion -Wshadow -Wno-psabi -Wno-variadic-macros -Wno-long-long -fno-check-new -fno-common -fstrict-aliasing -Werror   -Qunused-arguments -std=gnu++23 -o CMakeFiles/cmTC_f9a5f.dir/src.cxx.o -c /workspaces/Georg/build/CMakeFiles/CMakeTmp/src.cxx
+g++: error: unrecognized command-line option '-Qunused-arguments'
+gmake[1]: *** [CMakeFiles/cmTC_f9a5f.dir/build.make:78: CMakeFiles/cmTC_f9a5f.dir/src.cxx.o] Error 1
+gmake[1]: Leaving directory '/workspaces/Georg/build/CMakeFiles/CMakeTmp'
+gmake: *** [Makefile:127: cmTC_f9a5f/fast] Error 2
+
+
+Source file was:
+int main() { return 0; }
+Looking for a Fortran compiler failed with the following output:
+-- The Fortran compiler identification is unknown
+CMake Error at CMakeLists.txt:2 (project):
+  No CMAKE_Fortran_COMPILER could be found.
+
+  Tell CMake where to find the compiler by setting either the environment
+  variable "FC" or the CMake cache entry CMAKE_Fortran_COMPILER to the full
+  path to the compiler, or to the compiler name if it is in the PATH.
+
+
+-- Configuring incomplete, errors occurred!
+See also "/workspaces/Georg/build/_deps/eigen-build/test/CMakeFiles/CheckFortran/CMakeFiles/CMakeOutput.log".
+See also "/workspaces/Georg/build/_deps/eigen-build/test/CMakeFiles/CheckFortran/CMakeFiles/CMakeError.log".
+

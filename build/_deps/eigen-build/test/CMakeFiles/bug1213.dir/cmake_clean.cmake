@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/bug1213_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/bug1213_autogen.dir/ParseCache.txt"
+  "bug1213_autogen"
   "CMakeFiles/bug1213.dir/bug1213.cpp.o"
   "CMakeFiles/bug1213.dir/bug1213.cpp.o.d"
+  "CMakeFiles/bug1213.dir/bug1213_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/bug1213.dir/bug1213_autogen/mocs_compilation.cpp.o.d"
   "CMakeFiles/bug1213.dir/bug1213_main.cpp.o"
   "CMakeFiles/bug1213.dir/bug1213_main.cpp.o.d"
   "bug1213"

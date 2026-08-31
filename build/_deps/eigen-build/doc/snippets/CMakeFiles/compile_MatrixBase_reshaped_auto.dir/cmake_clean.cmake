@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/compile_MatrixBase_reshaped_auto_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/compile_MatrixBase_reshaped_auto_autogen.dir/ParseCache.txt"
+  "compile_MatrixBase_reshaped_auto_autogen"
   "CMakeFiles/compile_MatrixBase_reshaped_auto.dir/compile_MatrixBase_reshaped_auto.cpp.o"
   "CMakeFiles/compile_MatrixBase_reshaped_auto.dir/compile_MatrixBase_reshaped_auto.cpp.o.d"
+  "CMakeFiles/compile_MatrixBase_reshaped_auto.dir/compile_MatrixBase_reshaped_auto_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/compile_MatrixBase_reshaped_auto.dir/compile_MatrixBase_reshaped_auto_autogen/mocs_compilation.cpp.o.d"
   "compile_MatrixBase_reshaped_auto"
   "compile_MatrixBase_reshaped_auto.pdb"
 )

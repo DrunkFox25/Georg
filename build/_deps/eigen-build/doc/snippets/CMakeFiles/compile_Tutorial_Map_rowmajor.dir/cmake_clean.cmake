@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/compile_Tutorial_Map_rowmajor_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/compile_Tutorial_Map_rowmajor_autogen.dir/ParseCache.txt"
+  "compile_Tutorial_Map_rowmajor_autogen"
   "CMakeFiles/compile_Tutorial_Map_rowmajor.dir/compile_Tutorial_Map_rowmajor.cpp.o"
   "CMakeFiles/compile_Tutorial_Map_rowmajor.dir/compile_Tutorial_Map_rowmajor.cpp.o.d"
+  "CMakeFiles/compile_Tutorial_Map_rowmajor.dir/compile_Tutorial_Map_rowmajor_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/compile_Tutorial_Map_rowmajor.dir/compile_Tutorial_Map_rowmajor_autogen/mocs_compilation.cpp.o.d"
   "compile_Tutorial_Map_rowmajor"
   "compile_Tutorial_Map_rowmajor.pdb"
 )

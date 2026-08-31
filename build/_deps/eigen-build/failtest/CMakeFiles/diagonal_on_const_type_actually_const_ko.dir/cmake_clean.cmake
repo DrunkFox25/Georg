@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/diagonal_on_const_type_actually_const_ko_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/diagonal_on_const_type_actually_const_ko_autogen.dir/ParseCache.txt"
+  "diagonal_on_const_type_actually_const_ko_autogen"
   "CMakeFiles/diagonal_on_const_type_actually_const_ko.dir/diagonal_on_const_type_actually_const.cpp.o"
   "CMakeFiles/diagonal_on_const_type_actually_const_ko.dir/diagonal_on_const_type_actually_const.cpp.o.d"
+  "CMakeFiles/diagonal_on_const_type_actually_const_ko.dir/diagonal_on_const_type_actually_const_ko_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/diagonal_on_const_type_actually_const_ko.dir/diagonal_on_const_type_actually_const_ko_autogen/mocs_compilation.cpp.o.d"
   "diagonal_on_const_type_actually_const_ko"
   "diagonal_on_const_type_actually_const_ko.pdb"
 )

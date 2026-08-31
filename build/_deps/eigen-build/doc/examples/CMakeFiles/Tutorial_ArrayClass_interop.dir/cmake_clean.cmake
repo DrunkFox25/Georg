@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/Tutorial_ArrayClass_interop_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/Tutorial_ArrayClass_interop_autogen.dir/ParseCache.txt"
+  "Tutorial_ArrayClass_interop_autogen"
   "CMakeFiles/Tutorial_ArrayClass_interop.dir/Tutorial_ArrayClass_interop.cpp.o"
   "CMakeFiles/Tutorial_ArrayClass_interop.dir/Tutorial_ArrayClass_interop.cpp.o.d"
+  "CMakeFiles/Tutorial_ArrayClass_interop.dir/Tutorial_ArrayClass_interop_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/Tutorial_ArrayClass_interop.dir/Tutorial_ArrayClass_interop_autogen/mocs_compilation.cpp.o.d"
   "Tutorial_ArrayClass_interop"
   "Tutorial_ArrayClass_interop.pdb"
 )

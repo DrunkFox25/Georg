@@ -1,0 +1,58 @@
+{
+	"backtrace" : 0,
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : 
+		[
+			"build/_deps/eigen-src/doc/snippets/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			}
+		]
+	},
+	"id" : "compile_MatrixBase_topRightCorner_int_int_autogen::@3ea0e4f07543691bf0ff",
+	"isGeneratorProvided" : true,
+	"name" : "compile_MatrixBase_topRightCorner_int_int_autogen",
+	"paths" : 
+	{
+		"build" : "_deps/eigen-build/doc/snippets",
+		"source" : "build/_deps/eigen-src/doc/snippets"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				1
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/_deps/eigen-build/doc/snippets/CMakeFiles/compile_MatrixBase_topRightCorner_int_int_autogen",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "build/_deps/eigen-build/doc/snippets/CMakeFiles/compile_MatrixBase_topRightCorner_int_int_autogen.rule",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "UTILITY"
+}

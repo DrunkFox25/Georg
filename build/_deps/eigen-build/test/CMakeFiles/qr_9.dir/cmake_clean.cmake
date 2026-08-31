@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/qr_9_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/qr_9_autogen.dir/ParseCache.txt"
+  "qr_9_autogen"
   "CMakeFiles/qr_9.dir/qr.cpp.o"
   "CMakeFiles/qr_9.dir/qr.cpp.o.d"
+  "CMakeFiles/qr_9.dir/qr_9_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/qr_9.dir/qr_9_autogen/mocs_compilation.cpp.o.d"
   "qr_9"
   "qr_9.pdb"
 )

@@ -1,0 +1,13 @@
+TEST 1
+NVARS 2
+VARS x y
+VALS 0 0
+FIXED 0 0
+CONSTR 2
+POLY x + y - 1
+POLY x + 2
+DONE
+
+> runn 100
+> query
+> exit

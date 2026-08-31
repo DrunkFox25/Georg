@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/compile_GeneralizedEigenSolver_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/compile_GeneralizedEigenSolver_autogen.dir/ParseCache.txt"
+  "compile_GeneralizedEigenSolver_autogen"
   "CMakeFiles/compile_GeneralizedEigenSolver.dir/compile_GeneralizedEigenSolver.cpp.o"
   "CMakeFiles/compile_GeneralizedEigenSolver.dir/compile_GeneralizedEigenSolver.cpp.o.d"
+  "CMakeFiles/compile_GeneralizedEigenSolver.dir/compile_GeneralizedEigenSolver_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/compile_GeneralizedEigenSolver.dir/compile_GeneralizedEigenSolver_autogen/mocs_compilation.cpp.o.d"
   "compile_GeneralizedEigenSolver"
   "compile_GeneralizedEigenSolver.pdb"
 )

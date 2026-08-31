@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/array_replicate_2_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/array_replicate_2_autogen.dir/ParseCache.txt"
+  "array_replicate_2_autogen"
   "CMakeFiles/array_replicate_2.dir/array_replicate.cpp.o"
   "CMakeFiles/array_replicate_2.dir/array_replicate.cpp.o.d"
+  "CMakeFiles/array_replicate_2.dir/array_replicate_2_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/array_replicate_2.dir/array_replicate_2_autogen/mocs_compilation.cpp.o.d"
   "array_replicate_2"
   "array_replicate_2.pdb"
 )

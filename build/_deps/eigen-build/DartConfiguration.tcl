@@ -11,17 +11,16 @@ BuildDirectory: /workspaces/Georg/build/_deps/eigen-build
 CostDataFile: 
 
 # Site is something like machine.domain, i.e. pragmatic.crd
-Site: codespaces-6ca863
+Site: codespaces-c83a46
 
 # Build name is osname-revision-compiler, i.e. Linux-2.4.2-2smp-c++
-BuildName: linux-6.8.0-1052-azure-_-13.3.0-sse2-64bit
+BuildName: linux-6.8.0-1052-azure-g++-11.4.0-sse2-64bit
 
 # Subprojects
 LabelsForSubprojects: 
 
 # Submission information
 SubmitURL: http://my.cdash.org/submit.php?project=Eigen
-SubmitInactivityTimeout: 
 
 # Dashboard start time
 NightlyStartTime: 00:00:00 UTC
@@ -63,8 +62,8 @@ UpdateOptions:
 UpdateType: git
 
 # Compiler info
-Compiler: /usr/bin/c++
-CompilerVersion: 13.3.0
+Compiler: /usr/bin/g++
+CompilerVersion: 11.4.0
 
 # Dynamic analysis (MemCheck)
 PurifyCommand: 
@@ -76,7 +75,7 @@ CudaSanitizerCommand:
 CudaSanitizerCommandOptions: 
 MemoryCheckType: 
 MemoryCheckSanitizerOptions: 
-MemoryCheckCommand: /usr/bin/valgrind
+MemoryCheckCommand: MEMORYCHECK_COMMAND-NOTFOUND
 MemoryCheckCommandOptions: 
 MemoryCheckSuppressionFile: 
 

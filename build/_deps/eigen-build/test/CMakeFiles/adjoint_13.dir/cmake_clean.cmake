@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/adjoint_13_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/adjoint_13_autogen.dir/ParseCache.txt"
+  "adjoint_13_autogen"
   "CMakeFiles/adjoint_13.dir/adjoint.cpp.o"
   "CMakeFiles/adjoint_13.dir/adjoint.cpp.o.d"
+  "CMakeFiles/adjoint_13.dir/adjoint_13_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/adjoint_13.dir/adjoint_13_autogen/mocs_compilation.cpp.o.d"
   "adjoint_13"
   "adjoint_13.pdb"
 )

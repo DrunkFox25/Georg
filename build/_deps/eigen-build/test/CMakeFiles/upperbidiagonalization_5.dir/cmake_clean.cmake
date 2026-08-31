@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/upperbidiagonalization_5_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/upperbidiagonalization_5_autogen.dir/ParseCache.txt"
+  "upperbidiagonalization_5_autogen"
   "CMakeFiles/upperbidiagonalization_5.dir/upperbidiagonalization.cpp.o"
   "CMakeFiles/upperbidiagonalization_5.dir/upperbidiagonalization.cpp.o.d"
+  "CMakeFiles/upperbidiagonalization_5.dir/upperbidiagonalization_5_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/upperbidiagonalization_5.dir/upperbidiagonalization_5_autogen/mocs_compilation.cpp.o.d"
   "upperbidiagonalization_5"
   "upperbidiagonalization_5.pdb"
 )

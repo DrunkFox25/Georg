@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/partialpivlu_int_ok_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/partialpivlu_int_ok_autogen.dir/ParseCache.txt"
+  "partialpivlu_int_ok_autogen"
   "CMakeFiles/partialpivlu_int_ok.dir/partialpivlu_int.cpp.o"
   "CMakeFiles/partialpivlu_int_ok.dir/partialpivlu_int.cpp.o.d"
+  "CMakeFiles/partialpivlu_int_ok.dir/partialpivlu_int_ok_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/partialpivlu_int_ok.dir/partialpivlu_int_ok_autogen/mocs_compilation.cpp.o.d"
   "partialpivlu_int_ok"
   "partialpivlu_int_ok.pdb"
 )

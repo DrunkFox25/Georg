@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/bdcsvd_10_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/bdcsvd_10_autogen.dir/ParseCache.txt"
+  "bdcsvd_10_autogen"
   "CMakeFiles/bdcsvd_10.dir/bdcsvd.cpp.o"
   "CMakeFiles/bdcsvd_10.dir/bdcsvd.cpp.o.d"
+  "CMakeFiles/bdcsvd_10.dir/bdcsvd_10_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/bdcsvd_10.dir/bdcsvd_10_autogen/mocs_compilation.cpp.o.d"
   "bdcsvd_10"
   "bdcsvd_10.pdb"
 )

@@ -1,6 +1,11 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/eigensolver_int_ko_autogen.dir/AutogenUsed.txt"
+  "CMakeFiles/eigensolver_int_ko_autogen.dir/ParseCache.txt"
+  "eigensolver_int_ko_autogen"
   "CMakeFiles/eigensolver_int_ko.dir/eigensolver_int.cpp.o"
   "CMakeFiles/eigensolver_int_ko.dir/eigensolver_int.cpp.o.d"
+  "CMakeFiles/eigensolver_int_ko.dir/eigensolver_int_ko_autogen/mocs_compilation.cpp.o"
+  "CMakeFiles/eigensolver_int_ko.dir/eigensolver_int_ko_autogen/mocs_compilation.cpp.o.d"
   "eigensolver_int_ko"
   "eigensolver_int_ko.pdb"
 )

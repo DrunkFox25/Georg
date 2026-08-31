@@ -10,7 +10,6 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
 find_package(Qt6 REQUIRED COMPONENTS Widgets Core Gui)
-qt_standard_project_setup()
 
 include(FetchContent)
 FetchContent_Declare(
@@ -20,7 +19,7 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(Eigen)
 
-add_executable(geo GeorgEngine.cpp)
+add_executable(geo main.cpp GeorgEngine.cpp)
 
 target_link_libraries(geo PRIVATE 
     Eigen3::Eigen
