@@ -1429,7 +1429,9 @@ CMakeFiles/geo.dir/main.cpp.o: ../main.cpp \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qlocale.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qvariant.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qguiapplication_platform.h \
-  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
+  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QLineEdit \
+  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlineedit.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qframe.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qpalette.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qbrush.h \
@@ -1438,11 +1440,16 @@ CMakeFiles/geo.dir/main.cpp.o: ../main.cpp \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qfontinfo.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qsizepolicy.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qkeysequence.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/qtextcursor.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/qtextformat.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/qpen.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/qtextoption.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget \
+  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QPushButton \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qpushbutton.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractbutton.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qicon.h \
-  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QVBoxLayout \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qboxlayout.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlayout.h \
@@ -1451,20 +1458,75 @@ CMakeFiles/geo.dir/main.cpp.o: ../main.cpp \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qgridlayout.h \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QLabel \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlabel.h \
-  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qframe.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qpicture.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qiodevice.h \
   /usr/include/x86_64-linux-gnu/qt6/QtGui/qtextdocument.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/qurl.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/QDebug \
-  /usr/include/x86_64-linux-gnu/qt6/QtCore/qdebug.h
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/qdebug.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QPlainTextEdit \
+  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qplaintextedit.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtextedit.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractscrollarea.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/qabstracttextdocumentlayout.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/qtextlayout.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/qevent.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/qpointer.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/qeventpoint.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/qvector2d.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/qvectornd.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/qpointingdevice.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/qinputdevice.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/qscreen.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/QList \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/qlist.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/QObject \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/qobject.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/QRect \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/qrect.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/QSize \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/qsize.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/QSizeF \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/QTransform \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/qtransform.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/qglyphrun.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/qrawfont.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/qfontdatabase.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/QPaintEvent \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/qevent.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/QPainter \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/qpainter.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/QPen \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/qpen.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/QBrush \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/qbrush.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/QPolygon \
+  /usr/include/x86_64-linux-gnu/qt6/QtGui/qpolygon.h \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/QPoint \
+  /usr/include/x86_64-linux-gnu/qt6/QtCore/qpoint.h
 
+
+/usr/include/x86_64-linux-gnu/qt6/QtGui/QPainter:
+
+/usr/include/x86_64-linux-gnu/qt6/QtGui/qrawfont.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtGui/QTransform:
+
+/usr/include/x86_64-linux-gnu/qt6/QtCore/QObject:
+
+/usr/include/x86_64-linux-gnu/qt6/QtGui/qinputdevice.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtGui/qeventpoint.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtCore/QPoint:
+
+/usr/include/x86_64-linux-gnu/qt6/QtGui/qtextlayout.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QPlainTextEdit:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/QDebug:
 
 /usr/include/x86_64-linux-gnu/qt6/QtGui/qtextdocument.h:
-
-/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qframe.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlabel.h:
 
@@ -1476,6 +1538,8 @@ CMakeFiles/geo.dir/main.cpp.o: ../main.cpp \
 
 /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractbutton.h:
 
+/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget:
+
 /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qsizepolicy.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtGui/qfontinfo.h:
@@ -1484,7 +1548,9 @@ CMakeFiles/geo.dir/main.cpp.o: ../main.cpp \
 
 /usr/include/x86_64-linux-gnu/qt6/QtWidgets/qwidget.h:
 
-/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QWidget:
+/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qframe.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtWidgets/QLineEdit:
 
 /usr/include/x86_64-linux-gnu/qt6/QtGui/qinputmethod.h:
 
@@ -1508,6 +1574,8 @@ CMakeFiles/geo.dir/main.cpp.o: ../main.cpp \
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qpoint.h:
 
+/usr/include/x86_64-linux-gnu/qt6/QtGui/qglyphrun.h:
+
 /usr/include/x86_64-linux-gnu/qt6/QtGui/qwindowdefs.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qcoreapplication_platform.h:
@@ -1530,6 +1598,8 @@ CMakeFiles/geo.dir/main.cpp.o: ../main.cpp \
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qnativeinterface.h:
 
+/usr/include/x86_64-linux-gnu/qt6/QtGui/QPaintEvent:
+
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qbindingstorage.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qobject_impl.h:
@@ -1539,6 +1609,8 @@ CMakeFiles/geo.dir/main.cpp.o: ../main.cpp \
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qtaggedpointer.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qdatastream.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtGui/qabstracttextdocumentlayout.h:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/qcompare.h:
 
@@ -1652,6 +1724,8 @@ _deps/eigen-src/Eigen/src/SparseLU/SparseLU_panel_dfs.h:
 
 _deps/eigen-src/Eigen/src/SparseLU/SparseLU_relax_snode.h:
 
+/usr/include/x86_64-linux-gnu/qt6/QtGui/qvectornd.h:
+
 _deps/eigen-src/Eigen/src/SparseLU/SparseLU_heap_relax_snode.h:
 
 _deps/eigen-src/Eigen/src/SparseLU/SparseLU_Memory.h:
@@ -1659,6 +1733,8 @@ _deps/eigen-src/Eigen/src/SparseLU/SparseLU_Memory.h:
 _deps/eigen-src/Eigen/src/SparseCore/SparseColEtree.h:
 
 _deps/eigen-src/Eigen/src/SparseLU/SparseLUImpl.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtGui/qtextcursor.h:
 
 _deps/eigen-src/Eigen/src/SparseLU/SparseLU_Structs.h:
 
@@ -1684,6 +1760,8 @@ _deps/eigen-src/Eigen/src/SparseCore/TriangularSolver.h:
 
 _deps/eigen-src/Eigen/src/SparseCore/SparseTriangularView.h:
 
+/usr/include/x86_64-linux-gnu/qt6/QtGui/qpointingdevice.h:
+
 _deps/eigen-src/Eigen/src/SparseCore/SparseProduct.h:
 
 _deps/eigen-src/Eigen/src/SparseCore/SparseSparseProductWithPruning.h:
@@ -1699,6 +1777,8 @@ _deps/eigen-src/Eigen/src/SparseCore/SparseView.h:
 _deps/eigen-src/Eigen/src/SparseCore/SparseRedux.h:
 
 _deps/eigen-src/Eigen/src/SparseCore/SparseDot.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtGui/qtextoption.h:
 
 _deps/eigen-src/Eigen/src/SparseCore/SparseTranspose.h:
 
@@ -1735,6 +1815,8 @@ _deps/eigen-src/Eigen/src/Core/products/TriangularSolverVector.h:
 _deps/eigen-src/Eigen/src/Core/products/TriangularSolverMatrix.h:
 
 _deps/eigen-src/Eigen/src/Core/products/SelfadjointRank2Update.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qplaintextedit.h:
 
 _deps/eigen-src/Eigen/src/Core/products/SelfadjointProduct.h:
 
@@ -1797,6 +1879,8 @@ _deps/eigen-src/Eigen/src/Core/Diagonal.h:
 /usr/include/x86_64-linux-gnu/qt6/QtGui/qguiapplication.h:
 
 /usr/include/x86_64-linux-gnu/bits/sched.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtGui/qscreen.h:
 
 _deps/eigen-src/Eigen/src/Core/GeneralProduct.h:
 
@@ -1982,6 +2066,8 @@ _deps/eigen-src/Eigen/src/Core/util/IntegralConstant.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
 
+/usr/include/x86_64-linux-gnu/qt6/QtGui/qpen.h:
+
 /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
 
 /usr/include/c++/11/bits/fs_fwd.h:
@@ -2020,7 +2106,11 @@ _deps/eigen-src/Eigen/src/Core/Product.h:
 
 /usr/include/x86_64-linux-gnu/bits/siginfo-consts.h:
 
+/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qlineedit.h:
+
 /usr/include/x86_64-linux-gnu/bits/xopen_lim.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qtextedit.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/limits.h:
 
@@ -2111,6 +2201,8 @@ _deps/eigen-src/Eigen/src/SparseCore/SparseFuzzy.h:
 _deps/eigen-src/Eigen/src/Core/BandMatrix.h:
 
 /usr/include/c++/11/tr1/legendre_function.tcc:
+
+/usr/include/x86_64-linux-gnu/qt6/QtCore/qpointer.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h:
 
@@ -2294,6 +2386,8 @@ _deps/eigen-src/Eigen/src/Core/MapBase.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/struct_timeval.h:
 
+/usr/include/x86_64-linux-gnu/qt6/QtGui/QPen:
+
 /usr/include/c++/11/typeindex:
 
 _deps/eigen-src/Eigen/src/SparseCore/SparseCwiseBinaryOp.h:
@@ -2301,6 +2395,8 @@ _deps/eigen-src/Eigen/src/SparseCore/SparseCwiseBinaryOp.h:
 _deps/eigen-src/Eigen/src/Core/Map.h:
 
 /usr/include/x86_64-linux-gnu/asm/errno.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtCore/QSizeF:
 
 /usr/include/c++/11/bits/stl_deque.h:
 
@@ -2398,6 +2494,8 @@ _deps/eigen-src/Eigen/src/Core/Transpositions.h:
 
 /usr/include/c++/11/bits/concept_check.h:
 
+/usr/include/x86_64-linux-gnu/qt6/QtGui/qfontdatabase.h:
+
 /usr/lib/gcc/x86_64-linux-gnu/11/include/stdarg.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
@@ -2411,6 +2509,8 @@ _deps/eigen-src/Eigen/src/Core/PermutationMatrix.h:
 /usr/include/x86_64-linux-gnu/bits/endian.h:
 
 /usr/include/x86_64-linux-gnu/bits/mathcalls.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtGui/QBrush:
 
 /usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
 
@@ -2488,6 +2588,8 @@ _deps/eigen-src/Eigen/src/SparseCore/SparseMatrixBase.h:
 
 /usr/include/c++/11/array:
 
+/usr/include/x86_64-linux-gnu/qt6/QtWidgets/qabstractscrollarea.h:
+
 /usr/include/x86_64-linux-gnu/bits/iscanonical.h:
 
 /usr/include/c++/11/ext/string_conversions.h:
@@ -2538,6 +2640,8 @@ _deps/eigen-src/Eigen/src/SparseCore/SparseAssign.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/ctype_base.h:
 
+/usr/include/x86_64-linux-gnu/qt6/QtGui/qevent.h:
+
 _deps/eigen-src/Eigen/src/SparseCore/SparseRef.h:
 
 /usr/include/c++/11/bits/streambuf_iterator.h:
@@ -2557,6 +2661,8 @@ _deps/eigen-src/Eigen/src/SparseCore/SparseRef.h:
 /usr/include/c++/11/ostream:
 
 _deps/eigen-src/Eigen/src/Core/functors/StlFunctors.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtGui/qtextformat.h:
 
 /usr/include/c++/11/bits/ostream.tcc:
 
@@ -2644,6 +2750,8 @@ _deps/eigen-src/Eigen/src/Core/util/ConfigureVectorization.h:
 
 /usr/include/c++/11/bits/stl_uninitialized.h:
 
+/usr/include/x86_64-linux-gnu/qt6/QtCore/QSize:
+
 ../GeorgEngine.cpp:
 
 /usr/include/c++/11/bits/vector.tcc:
@@ -2661,6 +2769,8 @@ _deps/eigen-src/Eigen/src/Core/CwiseUnaryOp.h:
 /usr/include/c++/11/bits/fstream.tcc:
 
 /usr/include/c++/11/bits/locale_facets_nonio.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtGui/qpainter.h:
 
 /usr/include/x86_64-linux-gnu/c++/11/bits/time_members.h:
 
@@ -2712,6 +2822,8 @@ _deps/eigen-src/Eigen/Sparse:
 
 /usr/include/c++/11/bit:
 
+/usr/include/x86_64-linux-gnu/qt6/QtGui/qvector2d.h:
+
 /usr/include/c++/11/ext/concurrence.h:
 
 _deps/eigen-src/Eigen/src/Core/products/TriangularMatrixVector.h:
@@ -2729,6 +2841,8 @@ _deps/eigen-src/Eigen/src/Core/Solve.h:
 /usr/include/c++/11/bits/random.tcc:
 
 /usr/include/c++/11/bits/atomic_base.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtCore/QRect:
 
 /usr/include/c++/11/syncstream:
 
@@ -2803,6 +2917,8 @@ _deps/eigen-src/Eigen/src/Core/AssignEvaluator.h:
 /usr/include/c++/11/bits/mask_array.h:
 
 /usr/include/c++/11/ratio:
+
+/usr/include/x86_64-linux-gnu/qt6/QtGui/QPolygon:
 
 /usr/include/c++/11/thread:
 
@@ -2931,6 +3047,8 @@ _deps/eigen-src/Eigen/src/Core/arch/SSE/MathFunctions.h:
 _deps/eigen-src/Eigen/src/Core/arch/SSE/Complex.h:
 
 _deps/eigen-src/Eigen/src/Core/functors/NullaryFunctors.h:
+
+/usr/include/x86_64-linux-gnu/qt6/QtCore/QList:
 
 _deps/eigen-src/Eigen/src/Core/functors/AssignmentFunctors.h:
 

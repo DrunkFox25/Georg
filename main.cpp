@@ -1,46 +1,115 @@
 #include "GeorgEngine.hpp"
 
 #include <QApplication>
+#include <QLineEdit>
 #include <QWidget>
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QDebug>
-
+#include <QPlainTextEdit>
+#include <QPaintEvent>
+#include <QPainter>
+#include <QPen>
+#include <QBrush>
+#include <QPolygon>
+#include <QPoint>
 
 using namespace std;
 
-int main(int argc, char *argv[]) {
-    // 1. Initialize the GUI application context
+
+class GeorgCanvas : public QWidget{
+protected:
+    void paintEvent(QPaintEvent *event) override {
+        Q_UNUSED(event); 
+
+        QPainter painter(this);
+
+        painter.setRenderHint(QPainter::Antialiasing);
+
+        QPen pen;
+        pen.setColor(Qt::blue);
+        pen.setWidth(4);
+        pen.setStyle(Qt::SolidLine);
+        painter.setPen(pen);
+
+        QBrush brush;
+        brush.setColor(Qt::yellow);
+        brush.setStyle(Qt::SolidPattern);
+        painter.setBrush(brush);
+
+
+        painter.drawLine(10, 10, 380, 10);
+
+        painter.drawRect(20, 40, 150, 100);
+
+        brush.setColor(Qt::red);
+        painter.setBrush(brush);
+
+        painter.drawEllipse(220, 40, 150, 100);
+
+        QPolygon triangle;
+        triangle << QPoint(200, 160)   // Top point
+                 << QPoint(100, 260)   // Bottom-left point
+                 << QPoint(300, 260);  // Bottom-right point
+        
+        brush.setColor(Qt::green);
+        painter.setBrush(brush);
+        painter.drawPolygon(triangle);
+
+        return;
+    }
+};
+
+
+int main(int argc, char *argv[]){
     QApplication app(argc, argv);
 
-    // 2. Create a main window widget
     QWidget mainWindow;
     mainWindow.setWindowTitle("Qt Codespaces Engine");
-    mainWindow.resize(400, 300);
+    mainWindow.resize(800, 600);
 
-    // 3. Create structural layouts and interactive widgets
     QVBoxLayout *layout = new QVBoxLayout(&mainWindow);
     
-    QLabel *titleLabel = new QLabel("Hello from Native Qt6!", &mainWindow);
+    QLabel *titleLabel = new QLabel("Georg - Georgebra 2", &mainWindow);
     titleLabel->setAlignment(Qt::AlignCenter);
     titleLabel->setStyleSheet("font-size: 18px; font-weight: bold; color: #2c3e50;");
-    
-    QPushButton *actionButton = new QPushButton("Click Me", &mainWindow);
-    actionButton->setStyleSheet("padding: 10px; background-color: #3498db; color: white; border-radius: 5px;");
+
+    QPlainTextEdit *logDisplay = new QPlainTextEdit(&mainWindow);
+    logDisplay->setReadOnly(true);
+    logDisplay->setLineWrapMode(QPlainTextEdit::WidgetWidth);
+    logDisplay->appendPlainText("Log");
+
+    QPlainTextEdit *stateIn = new QPlainTextEdit(&mainWindow);
+
+    QPushButton *regenButton = new QPushButton("Regen State", &mainWindow);
+
+    QLineEdit *cmdLine = new QLineEdit(&mainWindow);
+
+    GeorgCanvas *canvas = new GeorgCanvas();
+    canvas->setMinimumSize(300, 200);
 
     layout->addWidget(titleLabel);
-    layout->addWidget(actionButton);
+    layout->addWidget(logDisplay);
+    layout->addWidget(stateIn);
+    layout->addWidget(regenButton);
+    layout->addWidget(cmdLine);
+    layout->addWidget(canvas);
 
-    // Connect button click event to a lambda routine
-    QObject::connect(actionButton, &QPushButton::clicked, [&]() {
-        titleLabel->setText("It Works! Button Triggered.");
-        actionButton->setText("Clicked!");
+    QObject::connect(regenButton, &QPushButton::clicked, [&](){
+        regenButton->setText("Loading New State");
+        string state = logDisplay->toPlainText().toStdString();
+        //string out = testing(state);
+        //logDisplay->appendPlainText(QString::fromStdString(out));
+        regenButton->setText("Regen State");
+    });
+
+    QObject::connect(cmdLine, &QLineEdit::returnPressed, [&](){
+        string cmd = cmdLine->text().toStdString(); // Retrieve the text
+        logDisplay->appendPlainText(QString::fromStdString("ran " + cmd));
     });
 
     mainWindow.show();
-
-	//testing();
 
     return app.exec();
 }
