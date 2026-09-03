@@ -2,13 +2,13 @@
   "name": "Qt6 C++ Env",
   "image": "mcr.microsoft.com/devcontainers/base:ubuntu-22.04",
   "features": {
-    "ghcr.io/devcontainers/features/desktop-lite:1": {},
+    "ghcr.io/devcontainers/features/desktop-lite:1": {}
   },
   "forwardPorts": [
-    6767/*https://youtu.be/40SnEd1RWUU?t=161*/
+    6080
   ],
   "portsAttributes": {
-    "6767": {
+    "6080": {
       "label": "VNC Desktop",
       "onAutoForward": "silent"
     }
@@ -23,5 +23,8 @@
       ]
     }
   },
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y python3-pip libgl1-mesa-dev libxkbcommon-x11-0 libegl1-mesa && pip3 install aqtinstall && python3 -m aqt install-qt linux desktop 6.7.2 gcc_64 -O /workspaces/${localWorkspaceFolderBasename}/qt",
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y cmake python3-pip libgl1-mesa-dev libxkbcommon-x11-0 libxcb-cursor0 libxcb-icccm4 libxcb-keysyms1 libegl1-mesa && pip3 install aqtinstall && python3 -m aqt install-qt linux desktop 6.7.2 linux_gcc_64 -O /workspaces/${localWorkspaceFolderBasename}/qt"
 }
+
+
+/*Port 6767: https://youtu.be/40SnEd1RWUU?t=161*/

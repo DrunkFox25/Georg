@@ -71,38 +71,11 @@ struct GeorgCanvas : public QWidget{
 
 
 
-/*
-{
-    "vars" : {
-        "varname" : [
-            "fixed",/nothing
-            value
-        ],
-    },
-    "func" : {
-        "funcname": "expression using $0, $1, $2, ..." -> 0 indexed, not 1 indexed
-    },
-    "constr" : [
-        {
-            "type" : "general"/"poly"
-            "expression" : ".."
-        },...
-    ],
-    "draw" : [
-        {
-            "type" : "",
-            "varlist" : [""],
-            "color" : hex reader idk,
-            "thickness" :
-        },...
-    ],
-    "cmds" : [
-        "strings"
-    ]
-}
-*/
+
 struct drawcmd{
-    drawmcmd(){}
+    int temp;
+
+    drawcmd(){}
     drawcmd(QJsonObject obj){}
 };
 
@@ -120,7 +93,17 @@ struct Interface{
 
 
     int readcmd(string cmd){
-        vector<string> cmdargs = views::split(cmd, ' ') | ranges::to<vector<string>>();
+        vector<string> cmdargs;
+        string curr;
+
+        for(auto &c : cmd){
+            if(isspace(c)){
+                if(!curr.empty()) cmdargs.push_back(curr);
+                curr.clear();
+            }
+            else curr += c;
+        }
+        if(!curr.empty()) cmdargs.push_back(curr);
 
         if(cmdargs[0] == "regen") D.regen();
         else if(cmdargs[0] == "run"){
@@ -179,7 +162,7 @@ struct Interface{
         QJsonObject vars = rootObj["vars"].toObject();
         QJsonObject funcs = rootObj["func"].toObject();
         QJsonArray constrs = rootObj["constr"].toArray();
-        QJsonArray draw = rootObj["draw"].toArray();
+        QJsonArray draws = rootObj["draw"].toArray();
         QJsonArray cmds = rootObj["draw"].toArray();
 
         S.rsN(constrs.size());
@@ -212,10 +195,8 @@ struct Interface{
             //do parentheses matching first
             QJsonObject cnstr = constrs[i].toObject();
             if(cnstr["type"] != "POLY") log << "fuck you; it's not a bug yet; so don't even try with them general expressions yet\n" << flush;
-            string poly = cnstr["expression"].toString().toStdString();
-            constr &C = S.constrs[i];
+            string polystr = cnstr["expression"].toString().toStdString();
             vector<int> &opnums = S.constrOpNums[i];
-            vector<int> match(poly.size(), -1);
 
             struct polyword{
                 char type;
@@ -250,7 +231,7 @@ struct Interface{
                     if(!isalnum(c)){
                         if(isalpha(currWord[0])){
                             if(varnames.count(currWord)) curr.push_back(polyword(2, varnames[currWord]));
-                            else if(parsedFuncs.count(currentWord)){gonnabefunc = true; funcit = parsedFuncs[currWord].begin();}
+                            else if(parsedFuncs.count(currWord)){gonnabefunc = true; funcit = parsedFuncs[currWord].begin();}
                             else{log << "dumbass can't even remeber thier own variable names\n" << flush; return 2;}
                         }
                         if(currWord[0] == '$'){
@@ -279,18 +260,18 @@ struct Interface{
                 }
 
                 varstack.push_back(curr);
-                return varstack.size()-1;
-            }
+                return (int)(varstack.size()-1);
+            };
 
-            auto it = poly.beign();
-            vector<int> fstack();
+            auto it = polystr.begin();
+            vector<int> fstack;
             readpoly(it, fstack);
 
-            if(it != poly.end()){log << "fuckass doesn't know how to use parethisys. how tf do you spell that tho actually?\n" << flush; return 2;}
+            if(it != polystr.end()){log << "fuckass doesn't know how to use parethisys. how tf do you spell that tho actually?\n" << flush; return 2;}
 
             for(auto &expr : varstack){
-                for(auto &[type, val] : expr){
-                    if(type == 2) S.constrOpNums[i].push_back(val);
+                for(auto &word : expr){
+                    if(word.type == 2) S.constrOpNums[i].push_back(word.varindex);
                 }
             }
 
@@ -304,10 +285,10 @@ struct Interface{
             for(int j = 0; j < S.constrOpNums[i].size(); j++) invOpNum[S.constrOpNums[i][j]] = j;
 
             for(auto &expr : varstack){
-                for(auto &[type, val] : expr){
-                    if(type == 2) val = invOpNum[val];
+                for(auto &word : expr){
+                    if(word.type == 2) word.varindex = invOpNum[word.varindex];
                 }
-                expr.push_back(-1, '\0');
+                expr.push_back(polyword(-1, '\0'));
             }
 
             vector<orderedPoly<cplx>> polystack(varstack.size(), orderedPoly<cplx>(S.constrOpNums[i].size()));//coeff is after terms as this way sorting helps us
@@ -331,7 +312,7 @@ struct Interface{
                                 coeff *= pow(expr[k].val, expr[k+2].val);
                                 k += 2;
                             }
-                            else ceoff *= expr[k].val;
+                            else coeff *= expr[k].val;
                         }
                         else if(expr[k].type == 2){
                             if(expr[k+1].type == 1 && expr[k+1].c == '^'){
@@ -364,18 +345,18 @@ struct Interface{
                     }
 
                     orderedPoly<cplx> out(S.constrOpNums[i].size());
-                    out.add_term(coeff, purevals);
+                    out.add_term(coeff, purevars);
                     for(auto &i : stackindex) out = out*polystack[i];
                     polystack[j] += out;
                 }
                 polystack[j].compress();
             }
-            S.constrs[i] = reinterpret_cast<poly<cplx>>(polystack[polystack.size()-1]);
+            S.constrs[i] = polystack[polystack.size()-1];
         }
 
-        for(QJsonValue &val : draws) drawer.push_back(drawcmd(val.toObject()));
+        for(QJsonValue val : draws) drawer.push_back(drawcmd(val.toObject()));
 
-        for(QJsonValue &val : cmds){
+        for(QJsonValue val : cmds){
             int out = readcmd(val.toString().toStdString());
             if(out){
                 log << "exiting setup, bad cmd\n" << flush;
@@ -458,7 +439,7 @@ int main(int argc, char *argv[]){
 
     QWidget mainWindow;
     mainWindow.setWindowTitle("Georg");
-    mainWindow.resize(800, 600);
+    mainWindow.resize(1200, 800);
 
     QVBoxLayout *layout = new QVBoxLayout(&mainWindow);
     
@@ -489,11 +470,18 @@ int main(int argc, char *argv[]){
     QTextEditStream Qlog(logDisplay);
     TeeStream logs(Qlog, cout);
 
+    ifstream regenStateEx("regenstateex.txt");
+    if (!regenStateEx.is_open()) Qlog << "Error: Could not open the file: " << "regenstateex.txt" << "\n" << endl;
+    stringstream buffer;
+    buffer << regenStateEx.rdbuf();
+    stateIn->insertPlainText(QString::fromStdString(buffer.str()));
+    regenStateEx.close();
+
     Interface inter(logs);
 
     QObject::connect(regenButton, &QPushButton::clicked, [&](){
         regenButton->setText("Loading New State");
-        inter.regenState(logDisplay->toPlainText().toStdString());
+        inter.regenState(stateIn->toPlainText().toStdString());
         regenButton->setText("Regen State");
     });
 

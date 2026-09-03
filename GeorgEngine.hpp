@@ -8,6 +8,12 @@
 
 struct constr : public poly<cplx>{//this is temporary for now
 	void update(const std::vector<cplx> &in, cplx &val, std::vector<cplx> &dir){evalValAndDir(in, val, dir);}
+
+	constr& operator=(const orderedPoly<cplx>& rhs){
+		P = rhs.P;
+		numvars = rhs.numvars;
+		return *this;
+	}
 };
 
 
