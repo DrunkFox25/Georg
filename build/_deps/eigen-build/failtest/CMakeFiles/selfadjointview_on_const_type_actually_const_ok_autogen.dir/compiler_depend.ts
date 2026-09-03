@@ -1,2 +1,0 @@
-# CMAKE generated file: DO NOT EDIT!
-# Timestamp file for custom commands dependencies management for selfadjointview_on_const_type_actually_const_ok_autogen.

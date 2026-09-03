@@ -1,1 +1,0 @@
-/usr/bin/g++ -g CMakeFiles/geo.dir/geo_autogen/mocs_compilation.cpp.o CMakeFiles/geo.dir/main.cpp.o CMakeFiles/geo.dir/GeorgEngine.cpp.o -o geo  /usr/lib/x86_64-linux-gnu/libQt6Widgets.so.6.2.4 /usr/lib/x86_64-linux-gnu/libQt6Gui.so.6.2.4 /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.2.4 /usr/lib/x86_64-linux-gnu/libGLX.so /usr/lib/x86_64-linux-gnu/libOpenGL.so 
