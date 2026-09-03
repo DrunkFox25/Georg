@@ -64,12 +64,35 @@ struct numbering{
 		if(!m.count(x)) return -1;
 		return m[x];
 	}
+
+	size_t size(){return sz;}
 };
 
+template<typename T>
+struct binumbering{
+	std::map<T, int> m;
+	std::vector<T> v;
+
+	int operator()(T x){
+		if(!m.count(x)){m[x] = v.size(); v.push_back(x);}
+		return sz;
+	}
+
+	int operator[](T x){
+		if(!m.count(x)) return -1;
+		return m[x];
+	}
+
+	int operator[](int x){
+		return v[x];
+	}
+
+	size_t size(){return v.size();}
+};
 
 template<typename T = double>
 struct poly{
-	int numvars;
+	int numvars = 0;
 	std::vector<std::pair<T, std::vector<int>>> P;
 
 	poly(){}
@@ -87,16 +110,46 @@ struct poly{
 
 	template<typename T2>
 	T2 operator()(const std::vector<T2> &in){return eval(in);}
+
+	void add_term(T coeff, const std::vector<int>& terms);
 };
+
+template<typename T = double>
+struct orderedPoly : public poly{
+	void compress();
+};
+
+template<typename T>
+poly<T> operator+(const poly<T>& lhs, const poly<T>& rhs);
+
+template<typename T>
+poly<T>& operator+=(poly<T>& lhs, const poly<T>& rhs);
+
+template<typename T>
+orderedPoly<T> operator+(const orderedPoly<T>& lhs, const orderedPoly<T>& rhs);
+
+template<typename T>
+poly<T>& operator+=(poly<T>& lhs, const poly<T>& rhs);
+
+
+
+template<typename T>
+poly<T> operator*(const poly<T>& lhs, const poly<T>& rhs);
+
+template<typename T>
+orderedPoly<T> operator*(const orderedPoly<T>& lhs, const orderedPoly<T>& rhs);
 
 
 
 template<typename T>
 std::ostream& operator<<(std::ostream &out, poly<T> &P);
 
+cplx stoc(std::string str);
+
+int isop(char c);
+
 
 //defs
-
 
 
 template<typename T>
@@ -214,6 +267,9 @@ void poly<T>::evalValAndDir(const std::vector<T2> &in, T2 &val, std::vector<T2> 
 }
 
 template<typename T>
+void poly<T>::add_term(T coeff, const std::vector<int>& terms){P.push_back(coeff, terms);}
+
+template<typename T>
 std::ostream& operator<<(std::ostream &out, poly<T> &P){
 	std::vector<std::string> vars;
 	if(P.numvars <= 26){
@@ -236,3 +292,138 @@ std::ostream& operator<<(std::ostream &out, poly<T> &P){
 	out << ")";
 	return out;
 }
+
+template<typename T>
+poly<T> operator+(const poly<T>& lhs, const poly<T>& rhs){
+	std::assert(lhs.numvars == rhs.numvars);
+	poly<T> out(lhs.numvars);
+	out.P.resize(lhs.P.size()+rhs.P.size(), {(T)1, std::vector<int>(out.numvars)});
+	std::copy(lhs.begin(), lhs.end(), out.begin());
+	std::copy(rhs.begin(), rhs.end(), out.begin()+lhs.P.size());
+	return out;
+}
+
+template<typename T>
+poly<T>& operator+=(poly<T>& lhs, const poly<T>& rhs){
+	std::assert(lhs.numvars == rhs.numvars);
+	lhs.P.resize(lhs.P.size()+rhs.P.size(), {(T)1, std::vector<int>(lhs.numvars)});
+	std::copy(rhs.begin(), rhs.end(), lhs.end()-rhs.size());
+	return lhs;
+}
+
+template<typename T>
+orderedPoly<T> operator+(const orderedPoly<T>& lhs, const orderedPoly<T>& rhs){
+	std::assert(lhs.numvars == rhs.numvars);
+	orderedPoly<T> out(lhs.numvars);
+	out.P.resize(lhs.P.size()+rhs.P.size(), {(T)1, std::vector<int>(out.numvars)});
+
+	int a = 0, b = 0, c = 0;
+	while(a != lhs.size() && b != rhs.size()){
+		if(lhs[a] < rhs[b]) out[c++] = lhs[a++];
+		else if(lhs[a] > rhs[b]) out[c++] = rhs[b++];
+		else{out[c] = lhs[a++]; out[c++].first += rhs[b++].first;}
+	}
+	if(a == lhs.size()){std::copy(rhs.begin()+b, rhs.end(), out.begin()+c); c += rhs.size()-b;}
+	else{std::copy(lhs.begin()+a, lhs.end(), out.begin()+c); c += lhs.size()-a;}
+	out.P.resize(c);
+	return out;
+}
+
+template<typename T>
+poly<T>& operator+=(poly<T>& lhs, const poly<T>& rhs){return (lhs = lhs+rhs);}
+
+
+template<typename T>
+poly<T> operator*(const poly<T>& lhs, const poly<T>& rhs){
+	std::assert(lhs.numvars == rhs.numvars);
+	poly<T> out(lhs.numvars);
+	out.P.resize(lhs.P.size()*rhs.P.size(), {(T)1, std::vector<int>(out.numvars)});
+	for(int i = 0; i < lhs.P.size(); i++){
+		for(int j = 0; j < rhs.P.size(); j++){
+			out.P[i*rhs.P.size()+j].first = lhs.P[i].first*rhs.P[j]*first;
+			for(int k = 0; k < out.numvars; k++) out.P[i*rhs.P.size()+j].second[k] = lhs.P[i].second[k]+rhs.P[j]*second[k];
+		}
+	}
+	return out;
+}
+
+template<typename T>
+orderedPoly<T>& operator*(const orderedPoly<T>& lhs, const orderedPoly<T>& rhs){
+	std::assert(lhs.numvars == rhs.numvars);
+	int pos = 0;
+	orderedPoly<T> out(lhs.numvars);
+	out.P.resize(lhs.P.size()*rhs.P.size(), {(T)1, std::vector<int>(out.numvars)});
+
+	std::vector<int> curr(lhs.P.size(), 0);
+
+	int sz = 1;
+	while(sz < lhs.P.size()) sz *= 2;
+	std::vector<int> bin(2*sz);//bin tree
+	for(int i = sz; i < 2*sz; i++) bin[i] = i-sz;
+	for(int i = sz-1; i > 0; i--) bin[i] = bin[2*i];
+
+	vector<int> vars(out.numvars);
+	while(bin[1] != -1){
+		int best = bin[1];
+		for(int k = 0; k < out.numvars; k++) vars[k] = lhs.P[best].second[k]+rhs.P[curr[best]].second[k];
+		out.P[pos++] = {lhs.P[best].first*rhs.P[curr[best]].first, vars};
+		curr[best]++;
+		if(curr[best] >= rhs.P.size()) curr[best] = -1;
+		int i = sz+best;
+		while(i){
+			bool dir = true;
+			if(bin[2*i] == -1){bin[i] = bin[2*i+1]; i /= 2; continue;}
+			if(bin[2*i+1] == -1){bin[i] = bin[2*i]; i /= 2; continue;}
+			for(int k = 0; k < out.numvars; k++){
+				int a = lhs.P[bin[2*i]][k]+rhs.P[curr[bin[2*i]]][k];
+				int b = lhs.P[bin[2*i+1]][k]+rhs.P[curr[bin[2*i+1]]][k];
+				if(a != b){dir = (a<b); break;}
+			}
+			if(dir) bin[i] = bin[2*i];
+			else bin[i] = bin[2*i+1];
+			i /= 2;
+		}
+	}
+	return out;
+}
+
+template<typename T>
+void orderedPoly<T>::compress(){
+	int j = 0;
+	for(int i = 1; i < P.size(); i++){
+		if(P[i].second == P[j].second) P[j].first += P[i].first;
+		else{
+			if(P[j].first != (T)0) j++;
+			if(i != j) P[j] = P[i];
+		}
+	}
+	if(P[j].first != (T)0) j++;
+
+	P.resize(j);
+}
+
+inline constexpr cplx stoc(std::string str){//Formats: just a double, (a,b) a+bi a,b a;b a b
+	//holy fuck typing str,std,stod was painful. kept typing wrong one
+	bool hasi = str.contains('i');
+    str = std::regex_replace(str, std::regex("[,;+]"), " ");
+    str = std::regex_replace(str, std::regex("[()i]"), "");
+    str = std::regex_replace(str, std::regex("-"), " -");
+	//should just be two space seperated numbers
+	
+	std::size_t stopi = 0;
+	double val = std::stod(str, &stopi);
+	str = str.substr(stopi+1);
+
+	if(std::all_of(str.begin(), str.end(), [](unsigned char ch){return std::isspace(ch);})){
+		if(!hasi) return cplx(val, 0);
+		else return cplx(0, val);
+	}
+
+	return cplx(val, stod(str));
+}
+
+inline int isop(char c){
+	return (c == '^' || c == '+' || c == '*' || c == '-' || c == '/');
+}
+
+//move TeeStream here

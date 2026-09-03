@@ -11,7 +11,7 @@ struct constr : public poly<cplx>{//this is temporary for now
 };
 
 
-struct state{
+struct State{
 	int n, numvars;
 	std::vector<cplx> vars;
 	std::vector<bool> fixed;
@@ -50,9 +50,8 @@ struct state{
 };//any changes to state other then to vars requires regenerating the decent engine
 
 
-
 struct decentEngine{
-	state& S;
+	State &S;
 
 	std::vector<int> renamed;
 
@@ -69,7 +68,7 @@ struct decentEngine{
 
 	std::mt19937 gen;
 
-	decentEngine(state &s);
+	decentEngine(State& s);
 
 	double update();
 
@@ -82,6 +81,3 @@ struct decentEngine{
 	int descend();
 };
 
-
-
-int testing(std::istream& in);

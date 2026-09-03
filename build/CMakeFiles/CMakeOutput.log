@@ -1043,3 +1043,18 @@ gmake[1]: Leaving directory '/workspaces/Georg/build/CMakeFiles/CMakeTmp'
 
 Source file was:
 int main() { return 0; }
+Performing C++ SOURCE FILE Test COMPILER_SUPPORT_std=cpp03 succeeded with the following output:
+Change Dir: /workspaces/Georg/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake -f Makefile cmTC_32c0f/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_32c0f.dir/build.make CMakeFiles/cmTC_32c0f.dir/build
+gmake[1]: Entering directory '/workspaces/Georg/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_32c0f.dir/src.cxx.o
+/usr/bin/g++ -DCOMPILER_SUPPORT_std=cpp03  -std=c++03 -std=gnu++23 -o CMakeFiles/cmTC_32c0f.dir/src.cxx.o -c /workspaces/Georg/build/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_32c0f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_32c0f.dir/link.txt --verbose=1
+/usr/bin/g++ CMakeFiles/cmTC_32c0f.dir/src.cxx.o -o cmTC_32c0f 
+gmake[1]: Leaving directory '/workspaces/Georg/build/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+int main() { return 0; }

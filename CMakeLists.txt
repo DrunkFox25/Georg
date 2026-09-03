@@ -2,14 +2,22 @@ cmake_minimum_required(VERSION 3.16)
 
 project(Geogebra2 LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Widgets Core Gui)
+if(DEFINED ENV{CODESPACES})
+    file(GLOB QT_SEARCH_PATH "${CMAKE_CURRENT_SOURCE_DIR}/Qt/6.[789].*/gcc_64")
+    if(QT_SEARCH_PATH)
+        list(APPEND CMAKE_PREFIX_PATH "${QT_SEARCH_PATH}")
+        message(STATUS "Auto-detected valid Qt version at: ${QT_SEARCH_PATH}")
+    endif()
+endif()
+
+find_package(Qt6 6.7 REQUIRED COMPONENTS Widgets Core Gui)# 6767676767
 
 include(FetchContent)
 FetchContent_Declare(
@@ -27,3 +35,10 @@ target_link_libraries(geo PRIVATE
     Qt6::Gui
     Qt6::Widgets
 )
+
+
+
+
+
+
+
