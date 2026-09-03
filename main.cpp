@@ -439,7 +439,7 @@ int main(int argc, char *argv[]){
 
     QWidget mainWindow;
     mainWindow.setWindowTitle("Georg");
-    mainWindow.resize(1200, 800);
+    mainWindow.resize(1000, 700);
 
     QVBoxLayout *layout = new QVBoxLayout(&mainWindow);
     
