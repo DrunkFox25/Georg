@@ -10,6 +10,9 @@
 
 inline std::random_device rd;
 
+inline std::ostream* log_def;
+#define Log *log_def//don't forget to flush or the widget never updates
+
 template<typename T>
 std::ostream& operator<<(std::ostream &out, std::vector<T> &vec);
 
@@ -29,6 +32,15 @@ struct point{//need to template this
 	constexpr int sqNorm() const {
 		return x*x+y*y;
 	}
+};
+
+template<typename T>
+struct rect{
+	T left, right, down, up;
+
+	rect(){}
+
+	rect(T l, T r, T d, T u) : left(l), right(r), down(d), up(u) {}
 };
 
 std::istream& operator>>(std::istream& in, point& p);
@@ -357,14 +369,16 @@ orderedPoly<T> operator*(const orderedPoly<T>& lhs, const orderedPoly<T>& rhs){
 	assert(lhs.numvars == rhs.numvars);
 	int pos = 0;
 	orderedPoly<T> out(lhs.numvars);
+	if(lhs.P.empty() || rhs.P.empty()) return out;
+
 	out.P.resize(lhs.P.size()*rhs.P.size(), {(T)1, std::vector<int>(out.numvars)});
 
 	std::vector<int> curr(lhs.P.size(), 0);
 
 	int sz = 1;
 	while(sz < lhs.P.size()) sz *= 2;
-	std::vector<int> bin(2*sz);//bin tree
-	for(int i = sz; i < 2*sz; i++) bin[i] = i-sz;
+	std::vector<int> bin(2*sz, -1);//bin tree
+	for(int i = sz; i < sz+lhs.P.size(); i++) bin[i] = i-sz;
 	for(int i = sz-1; i > 0; i--) bin[i] = bin[2*i];
 
 	std::vector<int> vars(out.numvars);
@@ -373,8 +387,11 @@ orderedPoly<T> operator*(const orderedPoly<T>& lhs, const orderedPoly<T>& rhs){
 		for(int k = 0; k < out.numvars; k++) vars[k] = lhs.P[best].second[k]+rhs.P[curr[best]].second[k];
 		out.P[pos++] = {lhs.P[best].first*rhs.P[curr[best]].first, vars};
 		curr[best]++;
-		if(curr[best] >= rhs.P.size()) curr[best] = -1;
-		int i = sz+best;
+		if(curr[best] >= rhs.P.size()){
+			curr[best] = -1;
+			bin[sz+best] = -1;
+		}
+		int i = (sz+best)/2;
 		while(i){
 			bool dir = true;
 			if(bin[2*i] == -1){bin[i] = bin[2*i+1]; i /= 2; continue;}
@@ -394,6 +411,8 @@ orderedPoly<T> operator*(const orderedPoly<T>& lhs, const orderedPoly<T>& rhs){
 
 template<typename T>
 void orderedPoly<T>::compress(){
+	if(this->P.empty()) return;
+
 	int j = 0;
 	for(int i = 1; i < this->P.size(); i++){
 		if(this->P[i].second == this->P[j].second) this->P[j].first += this->P[i].first;
@@ -411,6 +430,8 @@ void orderedPoly<T>::compress(){
 
 inline cplx stoc(std::string str){//Formats: just a double, (a,b) a+bi a,b a;b a b
 	//holy fuck typing str,std,stod was painful. kept typing wrong one
+	//Log << "stoc call: " << str << "\n" << std::flush;
+
 	bool hasi = (str.find('i') != std::string::npos);
     str = std::regex_replace(str, std::regex("[,;+]"), " ");
     str = std::regex_replace(str, std::regex("[()i]"), "");
@@ -419,7 +440,7 @@ inline cplx stoc(std::string str){//Formats: just a double, (a,b) a+bi a,b a;b a
 	
 	std::size_t stopi = 0;
 	double val = std::stod(str, &stopi);
-	str = str.substr(stopi+1);
+	str = str.substr(stopi);
 
 	if(std::all_of(str.begin(), str.end(), [](unsigned char ch){return std::isspace(ch);})){
 		if(!hasi) return cplx(val, 0);
@@ -433,4 +454,34 @@ inline int isop(char c){
 	return (c == '^' || c == '+' || c == '*' || c == '-' || c == '/');
 }
 
-//move TeeStream here
+struct TeeStream : public std::ostream {
+    struct TeeBuf : public std::streambuf {
+        TeeBuf(std::streambuf* buf1, std::streambuf* buf2) : m_buf1(buf1), m_buf2(buf2) {}
+
+        virtual int_type overflow(int_type c) override {
+            if (c == traits_type::eof()) {
+                return traits_type::not_eof(c);
+            }
+            
+            bool ok1 = m_buf1->sputc(c) != traits_type::eof();
+            bool ok2 = m_buf2->sputc(c) != traits_type::eof();
+
+            return (ok1 && ok2) ? c : traits_type::eof();
+        }
+
+        virtual int sync() override {
+            int res1 = m_buf1->pubsync();
+            int res2 = m_buf2->pubsync();
+            return (res1 == 0 && res2 == 0) ? 0 : -1;
+        }
+
+        std::streambuf* m_buf1;
+        std::streambuf* m_buf2;
+    };
+
+    TeeBuf m_tbuf;
+
+    TeeStream(std::ostream& stream1, std::ostream& stream2) : std::ostream(&m_tbuf), m_tbuf(stream1.rdbuf(), stream2.rdbuf()) {}
+
+	TeeStream(std::ostream* stream1, std::ostream* stream2) : std::ostream(&m_tbuf), m_tbuf(stream1->rdbuf(), stream2->rdbuf()) {}
+};

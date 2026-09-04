@@ -1,0 +1,39 @@
+{
+    "name" : "Test 7: Complex",
+    "vars" : {
+        "a" : [1.0],
+        "b" : [-1.0]
+    },
+    "func" : {},
+    "constr" : [
+        {
+            "type" : "POLY",
+            "expression" : "a+b"
+        },
+        {
+            "type" : "POLY",
+            "expression" : "ab-1"
+        }
+    ],
+    "draw" : [],
+    "valuedisplay" : [
+        {
+            "type" : "COMPLEX",
+            "varlist" : ["a", "b"],
+            "modifable" : [true, false],
+            "range" : {
+                "from" : -2,
+                "to" : 2,
+                "fromi" : -2,
+                "toi" : 2
+            }
+        }
+    ],
+    "cmds" : [
+        "regen",
+        "runn 30",
+        "query"
+    ],
+    "comments" : []
+}
+

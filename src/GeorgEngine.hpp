@@ -3,31 +3,18 @@
 #include "util.hpp"
 #include <Eigen/Sparse>
 #include <Eigen/SparseLU>
-
-
-
-struct constr : public poly<cplx>{//this is temporary for now
-	void update(const std::vector<cplx> &in, cplx &val, std::vector<cplx> &dir){evalValAndDir(in, val, dir);}
-
-	constr& operator=(const orderedPoly<cplx>& rhs){
-		P = rhs.P;
-		numvars = rhs.numvars;
-		return *this;
-	}
-};
+#include "expression.cpp"
 
 
 struct State{
-	int n, numvars;
+	int n = 0, numvars = 0;
 	std::vector<cplx> vars;
 	std::vector<bool> fixed;
 
-	std::vector<std::vector<int>> constrOpNums;//must be in increasing order or it will break Eigen
+	std::vector<expression> constrs;
 
-	std::vector<cplx> constrVal;
-	std::vector<std::vector<cplx>> constrDir;
-
-	std::vector<constr> constrs;
+	cplx currval;//where the value goes
+	std::vector<cplx> currdir;//must be of size big enough to handle all dirivitives being in here
 
 	void rsNumvars(int Numvars){
 		numvars = Numvars;
@@ -36,29 +23,30 @@ struct State{
 		return;
 	}
 
-	void rsN(int N){
-		n = N;
-		constrOpNums.resize(n);
-		constrVal.resize(n);
-		constrDir.resize(n);
-		constrs.resize(n);
+	void add(expression C){
+		constrs.push_back(C);
+		if(currdir.size() < C.numvars) currdir.resize(C.numvars);
+		n++;
 		return;
 	}
 
-	void updateVals(){//temp
-		for(int i = 0; i < n; i++){
-			std::vector<cplx> val(constrOpNums[i].size());
-			for(int j = 0; j < constrOpNums[i].size(); j++) val[j] = vars[constrOpNums[i][j]];
+	void update(int i){
+		constrs[i].update(vars, currval, currdir);
+		return;
+	}
 
-			constrs[i].update(val, constrVal[i], constrDir[i]);
-		}
+	void clear(){
+		n = 0;
+		numvars = 0;
+		vars.clear();
+		fixed.clear();
+		constrs.clear();
+		currdir.clear();
 	}
 };//any changes to state other then to vars requires regenerating the decent engine
 
 
-struct decentEngine{
-	State &S;
-
+struct decentEngine : public State{
 	std::vector<int> renamed;
 
 	std::vector<cplx> nzval;
@@ -74,7 +62,7 @@ struct decentEngine{
 
 	std::mt19937 gen;
 
-	decentEngine(State& s);
+	decentEngine();
 
 	double update();
 

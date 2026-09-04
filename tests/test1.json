@@ -1,0 +1,44 @@
+{
+    "name" : "Test 1: Linear Equations",
+    "vars" : {
+        "x" : [0],
+        "y" : [0]
+    },
+    "func" : {},
+    "constr" : [
+        {
+            "type" : "POLY",
+            "expression" : "x+y-1"
+        },
+        {
+            "type" : "POLY",
+            "expression" : "x+2"
+        }
+    ],
+    "draws" : [],
+    "valuedisplay" : [
+        {
+            "type" : "SLIDER",
+            "varlist" : ["x", "y"],
+            "modif" : true,
+            "range" : [
+                {
+                    "from" : -3,
+                    "to" : 3
+                },
+                {
+                    "from" : -2,
+                    "to" : 4
+                }
+            ]
+        }
+    ],
+    "cmds" : [
+        "regen",
+        "runn 5",
+        "query"
+    ],
+    "comments" : [
+        "label for type value defaults to the values"
+    ]
+}

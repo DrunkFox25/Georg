@@ -1,0 +1,136 @@
+{
+    "name" : "Test 6: Altitude",
+    "vars" : {
+        "ax" : [2],
+        "ay" : [0],
+        "bx" : [-1],
+        "by" : [1.732],
+        "cx" : [-1],
+        "cy" : [-1.732],
+        "dx" : [-1, "fixed"],
+        "dy" : [0, "fixed"],
+        "ex" : [0.5, "fixed"],
+        "ey" : [-0.866, "fixed"],
+        "fx" : [0.5, "fixed"],
+        "fy" : [0.866, "fixed"]
+    },
+    "func" : {
+        "dist2" : "($1-$3)^2+($2-$4)^2",
+        "area2" : "$3*$6 - $3*$2 + $5*$2 - $5*$4 + $1*$4 - $1*$6"
+    },
+    "constr" : [
+        {
+            "type" : "POLY",
+            "expression" : "area2(bx,by,cx,cy,dx,dy)"
+        },
+        {
+            "type" : "POLY",
+            "expression" : "area2(cx,cy,ax,ay,ex,ey)"
+        },
+        {
+            "type" : "POLY",
+            "expression" : "area2(ax,ay,bx,by,fx,fy)"
+        },
+        {
+            "type" : "POLY",
+            "expression" : "(bx-cx)*(ax-dx)+(by-cy)*(ay-dy)"
+        },
+        {
+            "type" : "POLY",
+            "expression" : "(cx-ax)*(bx-ex)+(cy-ay)*(by-ey)"
+        },
+        {
+            "type" : "POLY",
+            "expression" : "(ax-bx)*(cx-fx)+(ay-by)*(cy-fy)"
+        }
+    ],
+    "draw" : [
+        {
+            "type" : "POINT",
+            "varlist" : ["ax", "ay"],
+            "label" : "A"
+        },
+        {
+            "type" : "POINT",
+            "varlist" : ["bx", "by"],
+            "label" : "B"
+        },
+        {
+            "type" : "POINT",
+            "varlist" : ["cx", "cy"],
+            "label" : "C"
+        },
+        {
+            "type" : "POINT",
+            "varlist" : ["dx", "dy"],
+            "label" : "D"
+        },
+        {
+            "type" : "POINT",
+            "varlist" : ["ex", "ey"],
+            "label" : "E"
+        },
+        {
+            "type" : "POINT",
+            "varlist" : ["fx", "fy"],
+            "label" : "F"
+        },
+        {
+            "type" : "SEGMENT",
+            "varlist" : ["bx", "by", "cx", "cy"],
+            "label" : "a"
+        },
+        {
+            "type" : "SEGMENT",
+            "varlist" : ["cx", "cy", "ax", "ay"],
+            "label" : "b"
+        },
+        {
+            "type" : "SEGMENT",
+            "varlist" : ["ax", "ay", "bx", "by"],
+            "label" : "c"
+        },
+        {
+            "type" : "SEGMENT",
+            "varlist" : ["ax", "ay", "dx", "dy"]
+        },
+        {
+            "type" : "SEGMENT",
+            "varlist" : ["bx", "by", "ex", "ey"]
+        },
+        {
+            "type" : "SEGMENT",
+            "varlist" : ["cx", "cy", "fx", "fy"]
+        },
+        {
+            "type" : "ANGLE",
+            "varlist" : ["ax", "ay", "dx", "dy", "bx", "by"]
+        },
+        {
+            "type" : "ANGLE",
+            "varlist" : ["bx", "by", "ex", "ey", "cx", "cy"]
+        },
+        {
+            "type" : "ANGLE",
+            "varlist" : ["cx", "cy", "fx", "fy", "ax", "ay"]
+        }
+    ],
+    "valuedisplay" : "auto",
+    "cmds" : [
+        "regen",
+        "modify dx -1.1",
+        "runn 10",
+        "query",
+        "modify dx -1.2",
+        "runn 10",
+        "query",
+        "modify dx -1.3",
+        "runn 10",
+        "query",
+        "modify dx -1.4",
+        "runn 10",
+        "query"
+    ],
+    "comments" : []
+}
+

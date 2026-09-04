@@ -1,0 +1,49 @@
+{
+    "name" : "Test 4: Exponential",
+    "vars" : {
+        "a" : [1.1],
+        "b" : [1.2],
+        "c" : [1.3],
+        "d" : [1.2]
+    },
+    "func" : {},
+    "constr" : [
+        {
+            "type" : "POLY",
+            "expression" : "a^3-b"
+        },
+        {
+            "type" : "POLY",
+            "expression" : "b^4-c"
+        },
+        {
+            "type" : "POLY",
+            "expression" : "c^2-d"
+        },
+        {
+            "type" : "POLY",
+            "expression" : "d^3-a"
+        }
+    ],
+    "draw" : [],
+    "valuedisplay" : [
+        {
+            "type" : "COMPLEX",
+            "varlist" : ["a", "b", "c", "d"],
+            "names" : ["aadsfdgczzx", "safdc", "c", "erszxcd"],
+            "modifable" : [true, false, false, false],
+            "range" : {
+                "from" : -2,
+                "to" : 2,
+                "fromi" : -2,
+                "toi" : 2
+            }
+        }
+    ],
+    "cmds" : [
+        "regen",
+        "runn 10",
+        "query"
+    ],
+    "comments" : []
+}

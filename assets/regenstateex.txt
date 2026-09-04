@@ -1,0 +1,29 @@
+{
+    "vars" : {
+        "varname" : [
+            value here (must be first list item), -> if complex write a string
+            "fixed"/nothing
+        ],
+    },
+    "func" : {//these also support constant variables as a function of the vars
+        "funcname" : "expression using $1, $2, $3, ..." -> 1 indexed, not 0 indexed
+    },
+    "constr" : [
+        {
+            "type" : "GENERAL"/"POLY"
+            "expression" : ".."
+        },...
+    ],
+    "draw" : [
+        {//not done yet
+            "type" : "",
+            "varlist" : [""],
+            "color" : hex reader idk,
+            "thickness" :
+        },...
+    ],
+    "cmds" : [
+        "strings"
+    ],
+    "comments" : this entire thing is ignored
+}

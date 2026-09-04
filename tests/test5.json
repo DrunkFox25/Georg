@@ -1,0 +1,108 @@
+{
+    "name" : "Test 5: Lines And Triangles",
+    "vars" : {
+        "ax" : [0.3],
+        "ay" : [0.6],
+        "bx" : [0.4],
+        "by" : [-0.2],
+        "cx" : [-0.4],
+        "cy" : [0.1],
+        "R" : [0.8, "fixed"]
+    },
+    "func" : {
+        "dist2" : "($1-$3)^2+($2-$4)^2"
+    },
+    "constr" : [
+        {
+            "type" : "POLY",
+            "expression" : "0.5ax+0.5-ay"
+        },
+        {
+            "type" : "POLY",
+            "expression" : "2bx-1-by"
+        },
+        {
+            "type" : "POLY",
+            "expression" : "-3cx-1-cy"
+        },
+        {
+            "type" : "POLY",
+            "expression" : "dist2(ax,ay,bx,by)-R^2"
+        },
+        {
+            "type" : "POLY",
+            "expression" : "dist2(bx,by,cx,cy)-R^2"
+        },
+        {
+            "type" : "POLY",
+            "expression" : "dist2(cx,cy,ax,ay)-R^2"
+        }
+    ],
+    "draw" : [
+        {
+            "type" : "POINT",
+            "varlist" : ["ax", "ay"],
+            "label" : "A"
+        },
+        {
+            "type" : "POINT",
+            "varlist" : ["bx", "by"],
+            "label" : "B"
+        },
+        {
+            "type" : "POINT",
+            "varlist" : ["cx", "cy"],
+            "label" : "C"
+        },
+        {
+            "type" : "LINE",
+            "varlist" : ["0.5", "0.5"],
+            "label" : "a"
+        },
+        {
+            "type" : "LINE",
+            "varlist" : ["2", "-1"],
+            "label" : "b"
+        },
+        {
+            "type" : "LINE",
+            "varlist" : ["-3", "-1"],
+            "label" : "c"
+        },
+        {
+            "type" : "SEGMENT",
+            "varlist" : ["ax", "ay", "bx", "by"],
+            "label" : {
+                "type" : "POLY",
+                "expression" : "dist2(ax, ay, by, by)"
+            }
+        },
+        {
+            "type" : "SEGMENT",
+            "varlist" : ["bx", "by", "cx", "cy"],
+            "label" : {
+                "type" : "POLY",
+                "expression" : "dist2(bx, by, cy, cy)"
+            }
+        },
+        {
+            "type" : "SEGMENT",
+            "varlist" : ["cx", "cy", "ax", "ay"],
+            "label" : {
+                "type" : "POLY",
+                "expression" : "dist2(cx, cy, ay, ay)"
+            }
+        }
+    ],
+    "valuedisplay" : "auto",
+    "cmds" : [
+        "regen",
+        "runn 20",
+        "query"
+    ],
+    "comments" : [
+        "type for draw in label can be string -> default behaviour",
+        "auto means a valuelist with all variables"
+    ]
+}
+

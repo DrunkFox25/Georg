@@ -1,0 +1,37 @@
+{
+    "name" : "Test 8: Drawing",
+    "vars" : {
+        "X" : [0.0, "fixed"]
+    },
+    "func" : {},
+    "constr" : [],
+    "draw" : [
+        {
+            "type" : "SET",
+            "color" : "red",
+            "width" : "10",
+            "style" : "dot"
+        },
+        {
+            "type" : "IMPLICIT",
+            "varlist" : ["x", "y", {
+                "type" : "POLY",
+                "expression" : "x^2-y^2-X"
+            }]
+        }
+    ],
+    "valuedisplay" : [
+        {
+            "type" : "SLIDER",
+            "varlist" : ["X"],
+            "modifable" : true,
+            "range" : {
+                "from" : -5,
+                "to" : 5
+            }
+        }
+    ],
+    "cmds" : [],
+    "comments" : []
+}
+

@@ -27,7 +27,7 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(Eigen)
 
-add_executable(geo main.cpp GeorgEngine.cpp)
+add_executable(geo src/main.cpp src/GeorgEngine.cpp src/reader.cpp src/util.cpp src/GeorgInterface.cpp src/expression.cpp)
 
 target_link_libraries(geo PRIVATE 
     Eigen3::Eigen

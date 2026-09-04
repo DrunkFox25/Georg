@@ -15,23 +15,23 @@ https://godbolt.org/#g:!((g:!((g:!((h:codeEditor,i:(filename:'1',fontScale:14,fo
 
 
 
-decentEngine::decentEngine(State &s) : S(s){
+decentEngine::decentEngine(){
 	gen.seed(rd());
 }
 
 double decentEngine::update(){
-	S.updateVals();
 
 	double maxdist = 0;
 
-	int cnt = 0;
-	for(int coni = 0; coni < S.n; coni++){
-		b_vals[coni] = -S.constrVal[coni];
+	auto curr = nzval.begin();
+	for(int coni = 0; coni < n; coni++){
+		State::update(coni);
+		
+		maxdist = max(maxdist, abs(currval));
+		b_vals[coni] = -currval;
 
-		maxdist = max(maxdist, abs(S.constrVal[coni]));
-
-		for(int i = 0; i < S.constrOpNums[coni].size(); i++){
-			if(!S.fixed[S.constrOpNums[coni][i]]) nzval[cnt++] = S.constrDir[coni][i];
+		for(int i = 0; i < constrs[coni].numvars; i++){
+			if(!fixed[constrs[coni].opnums[i]]) *curr++ = currdir[i];
 		}
 	}
 
@@ -39,18 +39,20 @@ double decentEngine::update(){
 }
 
 void decentEngine::regen(){
-	renamed.resize(S.numvars, -1); int unfixed = 0;
-	for(int i = 0; i < S.numvars; i++){
-		if(!S.fixed[i]) renamed[i] = unfixed++;
+	renamed.resize(numvars, -1); int unfixed = 0;
+	for(int i = 0; i < numvars; i++){
+		if(!fixed[i]) renamed[i] = unfixed++;
 	}
 
-	b_vals.resize(S.n);
-	x_vals.resize(S.n);
+	b_vals.resize(n);
+	x_vals.resize(n);
+
+	colind.clear();
 
 	int nnz = 0;
-	rowptr.resize(S.n+1); rowptr[0] = 0;
-	for(int coni = 0; coni < S.n; coni++){
-		for(auto &opnum : S.constrOpNums[coni]){
+	rowptr.resize(n+1); rowptr[0] = 0;
+	for(int coni = 0; coni < n; coni++){
+		for(auto &opnum : constrs[coni].opnums){
 			if(renamed[opnum] != -1){
 				colind.push_back(renamed[opnum]);
 				nnz++;
@@ -61,15 +63,15 @@ void decentEngine::regen(){
 
 	nzval.resize(nnz);
 
-	A_Trans = make_unique<Eigen::Map<Eigen::SparseMatrix<cplx, Eigen::ColMajor>>>(S.n, S.n, nnz, rowptr.data(), colind.data(), nzval.data());
+	A_Trans = make_unique<Eigen::Map<Eigen::SparseMatrix<cplx, Eigen::ColMajor>>>(n, n, nnz, rowptr.data(), colind.data(), nzval.data());
 
 	solver.setPivotThreshold(1.0);
 	solver.analyzePattern(*A_Trans);
 }
 
 void decentEngine::addNoise(uniform_real_distribution<double> db){
-	for(int i = 0; i < S.numvars; i++){
-		if(!S.fixed[i]) S.vars[i] += cplx(db(gen), db(gen));
+	for(int i = 0; i < numvars; i++){
+		if(!fixed[i]) vars[i] += cplx(db(gen), db(gen));
 	}
 
 	return;
@@ -82,25 +84,20 @@ void decentEngine::addNoise(double db){
 int decentEngine::descend(){
 	solver.factorize(*A_Trans);
 	if(solver.info() != Eigen::Success){
-		cerr << "Solver failed: " << solver.info() << "\n" << flush;
-		cerr << "n: " << S.n << "\ncolind: " << colind << "\nrowptr: " << rowptr << "\nnzval: " << nzval << "\n" << flush;
+		Log << "Solver failed: " << solver.info() << "\n" << flush;
+		Log << "n: " << n << "\ncolind: " << colind << "\nrowptr: " << rowptr << "\nnzval: " << nzval << "\n" << flush;
 		return solver.info();
 	}
 	
 	Eigen::Map<Eigen::VectorXcd>(x_vals.data(), x_vals.size()) = solver.transpose().solve(Eigen::Map<Eigen::VectorXcd>(b_vals.data(), b_vals.size()));
 
-	for(int i = 0; i < S.numvars; i++){
-		if(renamed[i] != -1) S.vars[i] += x_vals[renamed[i]];
+	for(int i = 0; i < numvars; i++){
+		if(renamed[i] != -1) vars[i] += x_vals[renamed[i]];
 	}
 
-	for(int i = 0; i < S.numvars; i++){
-		if(abs(S.vars[i].imag()) < 1e-30) S.vars[i].imag(0);
+	for(int i = 0; i < numvars; i++){
+		if(abs(vars[i].imag()) < 1e-30) vars[i].imag(0);
 	}
 
 	return Eigen::Success;
 }
-
-
-
-
-

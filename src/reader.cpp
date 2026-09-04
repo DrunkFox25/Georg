@@ -1,0 +1,441 @@
+#include "reader.hpp"
+
+int Reader::readcmd(string cmd, decentEngine &D){//acts on decent engine
+    vector<string> cmdargs;
+    string curr;
+
+    for(auto &c : cmd){
+        if(isspace(c)){
+            if(!curr.empty()) cmdargs.push_back(curr);
+            curr.clear();
+        }
+        else curr += c;
+    }
+    if(!curr.empty()) cmdargs.push_back(curr);
+
+    if(cmdargs[0] == "regen") D.regen();
+    else if(cmdargs[0] == "run"){
+        D.addNoise(1e-25);
+        double diff = D.update();
+
+        Log << "Diff: " << diff << "\n";
+
+        if(D.descend() != Eigen::Success) return 1;
+        
+        Log << "Change: " << D.x_vals << "\n";
+    }
+    else if(cmdargs[0] == "runn"){
+        int n = stoi(cmdargs[1]);
+        while(n--){
+            D.addNoise(1e-25);
+            double diff = D.update();
+
+            Log << "Diff: " << diff << "\n";
+
+            if(D.descend() != Eigen::Success) return 1;
+
+            Log << "Change: " << D.x_vals << "\n";
+
+            if(diff < 1e-15){
+                Log << "diff small exiting early" << "\n";
+                break;
+            }
+        }
+    }
+    else if(cmdargs[0] == "query"){
+        Log << "Vars: " << D.vars << "\n";
+    }
+    else if(cmdargs[0] == "modify"){
+        int var;
+        if(isalpha(cmdargs[1][0])) var = varnames[cmdargs[1]];
+        else var = stoi(cmdargs[1]);
+        D.vars[var] = stoc(cmdargs[2]);
+    }
+    Log << flush;
+    return 0;
+}
+
+
+int Reader::regenState(string state, vector<string> &cmdsout, vector<Reader::drawcmd> &drawer, vector<Reader::disp> &display, State &S){//does not touch D, only S
+    S.clear();
+    //todo: make all tests work
+    //make diff a default variable
+
+    //add some way to display diff
+
+    QByteArray rawJson = QByteArray::fromStdString(state);
+    QJsonParseError parseError;
+    QJsonDocument jsonDoc = QJsonDocument::fromJson(rawJson, &parseError);
+    Log << "JSON Parsed with ";
+    if(parseError.error != QJsonParseError::NoError){Log << "error: " << parseError.errorString().toStdString() << "\n" << flush; return 1;}
+    Log << "no error\n " << flush;
+    if(!jsonDoc.isObject()){Log << "erm aktushally nevermind that shit your json is not a object you braindead pigfucker\n" << flush; return 1;}
+
+    QJsonObject rootObj = jsonDoc.object();
+
+    string testname = rootObj["name"].toString().toStdString();
+
+    Log << "loading " << testname << "\n" << flush;
+
+    QJsonObject vars = rootObj["vars"].toObject();
+
+    S.rsNumvars(vars.size());
+
+    const QStringList varnamesJson = vars.keys();
+    for(int i = 0; i < varnamesJson.size(); i++){
+        const QString &var = varnamesJson[i];
+        string stdvar = var.toStdString();
+        varnames[stdvar] = i;
+        namevars.push_back(stdvar);
+
+        QJsonArray varshitidkfucknamingshit = vars[var].toArray();
+        QJsonValue val = varshitidkfucknamingshit[0];
+
+        if(val.isString()) S.vars[i] = stoc(val.toString().toStdString());
+        else S.vars[i] = val.toDouble();
+
+        for(QJsonValue value : varshitidkfucknamingshit){
+            if(value.isString() && value.toString() == "fixed") S.fixed[i] = true;
+            if(value.isBool() && value.toBool()) S.fixed[i] = true;
+        }
+    }
+
+    QJsonObject funcs = rootObj["func"].toObject();
+
+    for(const QString &funcname : funcs.keys()) parsedFuncs[funcname.toStdString()] = funcs[funcname].toString().toStdString()+'\0';
+
+    QJsonArray constrs = rootObj["constr"].toArray();
+
+    for(int i = 0; i < constrs.size(); i++){
+        expression C;
+        int out = createExpr(constrs[i].toObject()["type"].toString().toStdString(), constrs[i].toObject()["expression"].toString().toStdString(), C);
+        if(out != 0) return out;
+        S.add(C);
+    }
+
+    QJsonArray draws = rootObj["draws"].toArray();
+
+    for(QJsonValue val : draws){
+        QJsonObject ob = val.toObject();
+        drawcmd curr;
+
+        if(ob.contains("color")) curr.color.fromString(ob["color"].toString());
+        if(ob.contains("width")) curr.width = ob["width"].toDouble();
+        if(ob.contains("style")){
+            string st = ob["style"].toString().toStdString();
+            if(st == "nopen") curr.style = 0;
+            if(st == "solid") curr.style = 1;
+            if(st == "dash") curr.style = 2;
+            if(st == "dot") curr.style = 3;
+            if(st == "dashdot") curr.style = 4;
+            if(st == "dashdotdot") curr.style = 5;
+            if(st == "custom") curr.style = 6;//not done yet
+        }
+        if(ob.contains("label")){
+            if(ob["label"].isString()) curr.labelstr = ob["label"].toString().toStdString();
+            else{
+                expression C;
+                int out = createExpr(ob["label"].toObject()["type"].toString().toStdString(), ob["label"].toObject()["expression"].toString().toStdString(), C);
+                if(out != 0) return out;
+                curr.labelexp = C;
+            }
+        }
+
+
+        string type = ob["type"].toString().toStdString();
+
+        if(type == "SET"){
+            curr.type = 0;
+            drawer.push_back(curr);
+            continue;
+        }
+
+        QJsonArray vlist = ob["varlist"].toArray();
+        for(auto v : vlist){
+            if(v.isDouble()) curr.vars.push_back(expression(v.toDouble()));
+            if(v.isString()){
+                string vstr = v.toString().toStdString();
+                if(varnames.count(vstr) > 0){
+                    expression C;
+                    C.numvars = 1;
+                    C.P.push_back({1, {1}});
+                    C.opnums = {varnames[vstr]};
+                    curr.vars.push_back(C);
+                }
+                else{
+                    curr.vars.push_back(expression(stoc(vstr)));
+                }
+            }
+            else{
+                expression C;
+                int out = createExpr(v.toObject()["type"].toString().toStdString(), v.toObject()["expression"].toString().toStdString(), C);
+                if(out != 0) return out;
+                curr.vars.push_back(C);
+            }
+        }
+
+        if(type == "POINT") curr.type = 1;
+        if(type == "LINE") curr.type = 2;
+        if(type == "SEGMENT") curr.type = 3;
+        if(type == "RAY") curr.type = 4;
+        if(type == "CIRCLE") curr.type = 5;
+        if(type == "ELLIPSE") curr.type = 6;
+        if(type == "ARC") curr.type = 7;
+        if(type == "ANGLE") curr.type = 8;
+        if(type == "IMPLICIT") curr.type = 9;
+
+        drawer.push_back(curr);
+    }
+
+    auto tempvaldisp = rootObj["valuedisplay"];
+    bool doauto = false;
+    QJsonArray valuedisp;
+    if(tempvaldisp.isString() && tempvaldisp.toString().toStdString() == "auto"){
+        //slider(s) 1, valuelist 0, complex 2
+        disp displ;
+        displ.type = 0;
+        displ.name = namevars;
+        displ.vars.resize(namevars.size());
+        for(int i = 0; i < namevars.size(); i++) displ.vars[i] = i;
+        displ.modify.resize(namevars.size(), true);
+        display = {displ};
+    }
+    else{
+        valuedisp = rootObj["valuedisplay"].toArray();
+        for(QJsonValue val : valuedisp){
+            QJsonObject ob = val.toObject();
+            QString t = ob["type"].toString();
+            QJsonArray ar = ob["varlist"].toArray();
+            QJsonArray names;
+            if(!ob.contains("names")) names = ar;
+            else names = ob["names"].toArray();
+            disp displ;//valuelist (vlist) 0, slider(s) 1, complex 2
+            for(auto x : ar) displ.vars.push_back(varnames[x.toString().toStdString()]);
+            for(auto x : names) displ.name.push_back(x.toString().toStdString());
+            if(ob.contains("modif")){
+                QJsonValue modif = ob["modif"];
+                if(modif.isBool()) displ.modify.resize(ar.size(), modif.toBool());
+                else{
+                    for(auto x : modif.toArray()) displ.modify.push_back(x.toBool());
+                }
+            }
+            else displ.modify.resize(ar.size(), true);
+            if(t == "VLIST"){
+                displ.type = 0;
+            }
+            else if(t == "SLIDER"){
+                displ.type = 1;
+                if(ob["range"].isArray()){
+                    for(auto r : ob["range"].toArray()){
+                        displ.ranges.push_back({r.toObject()["from"].toDouble(), r.toObject()["to"].toDouble()});
+                    }
+                }
+                else{
+                    displ.ranges.resize(ar.size(), {ob["range"].toObject()["from"].toDouble(), ob["range"].toObject()["to"].toDouble()});
+                }
+            }
+            else if(t == "COMPLEX"){
+                displ.type = 2;
+                auto r = ob["range"].toObject();
+                displ.crange.left = r["from"].toDouble();
+                displ.crange.right = r["to"].toDouble();
+                displ.crange.down = r["fromi"].toDouble();
+                displ.crange.up = r["toi"].toDouble();
+            }
+
+            display.push_back(displ);
+        }
+    }
+
+
+    QJsonArray cmds = rootObj["cmds"].toArray();
+
+    for(QJsonValue val : cmds) cmdsout.push_back(val.toString().toStdString());
+
+    return 0;
+}
+
+int Reader::createExpr(string exprtype, string polystr, expression &C){//maybe at some point don't expand functions, just leave them as is, like in polystack
+    if(exprtype != "POLY"){Log << "fuck you; it's not a bug yet; so don't even try with them general expressions yet\n" << flush; return 1;}
+
+    int numvars = namevars.size();
+
+    struct polyword{
+        char type;
+        union{
+            char c;
+            int varindex;
+            int varstackindex;
+            cplx val;
+        };
+
+        polyword(char t, cplx v) : type(t), val(v){}
+        polyword(char t, char C) : type(t), c(C){}
+        polyword(char t, int v) : type(t), varindex(v){}
+    };
+
+    typedef vector<polyword> simpleexpr;
+
+    vector<simpleexpr> varstack;
+
+    polystr += '\0';
+
+    int out = 0;
+
+    std::function<int(std::string::iterator&, const std::vector<int>&)> readpoly;
+    readpoly = [&](string::iterator &it, const vector<int> &fstack){//sry I rly had no other viable choice
+        simpleexpr curr;
+        string currWord = "";
+        bool gonnabefunc = false;
+        string::iterator funcit;
+
+
+        while(true){
+            char c = *it++;
+
+            if(!currWord.empty() && (isalpha(c) ? isdigit(currWord[0]) : !(c == '.' || isdigit(c)))){
+                //Log << "word: " << currWord << "\n" << flush;
+                if(isalpha(currWord[0])){
+                    if(varnames.count(currWord)) curr.push_back(polyword(2, varnames[currWord]));
+                    else if(parsedFuncs.count(currWord)){gonnabefunc = true; funcit = parsedFuncs[currWord].begin();}
+                    else{Log << "dumbass can't even remeber thier own variable names\n" << flush; out = 2;}
+                }
+                else if(currWord[0] == '$'){
+                    int index = stoi(currWord.substr(1))-1;
+                    if(index == -1){Log << "blud doesn't know what not 0 indexed means, from here the read is corrupted\n" << flush; out = 6; index = 0;};
+                    curr.push_back(polyword(3, fstack[index]));
+                }
+                else{
+                    curr.push_back(polyword(0, stoc(currWord)));
+                }
+                currWord.clear();
+            }
+
+            if(isspace(c)){}
+            else if(isop(c)) curr.push_back(polyword(1, c));
+            else if(c == '('){
+                if(gonnabefunc){
+                    vector<int> funcstack;
+                    while(*(it-1) != ')') funcstack.push_back(readpoly(it, fstack));
+                    curr.push_back(polyword(3, readpoly(funcit, funcstack)));
+                }
+                else{
+                    curr.push_back(polyword(3, readpoly(it, fstack)));
+                }
+            }
+            else if(c == ')' || c == ',' || c == '\0') break;
+            else currWord += c;
+        }
+
+        varstack.push_back(curr);
+        return varstack.size()-1;
+    };
+
+    if(out != 0) return out;
+
+    auto it = polystr.begin();
+    vector<int> fstack;
+    readpoly(it, fstack);
+
+    if(it != polystr.end()){Log << "fuckass doesn't know how to use parethisys. how tf do you spell that tho actually?\n"; return 8;}
+
+    vector<int>& varsused = C.opnums;
+
+    for(auto &expr : varstack){//if you uncomment these you get a clean af log of varstack
+        //Log << "{";
+        for(auto &word : expr){
+
+            //Log << (int)word.type << ": ";
+            //if(word.type == 0) Log << word.val;
+            //else if(word.type == 1) Log << word.c;
+            //else Log << word.varindex;
+            //Log << ", ";
+
+            if(word.type == 2) varsused.push_back(word.varindex);
+        }
+        //Log << "},\n" << flush;
+    }
+
+    sort(varsused.begin(), varsused.end());
+    varsused.erase(unique(varsused.begin(), varsused.end()), varsused.end());
+
+    int numvarsused = varsused.size();
+
+    vector<int> invOpNum(numvars, -1);
+    for(int j = 0; j < numvarsused; j++) invOpNum[varsused[j]] = j;
+
+    for(auto &expr : varstack){
+        for(auto &word : expr){
+            if(word.type == 2) word.varindex = invOpNum[word.varindex];
+        }
+        expr.push_back(polyword(-1, '\0'));
+    }
+
+    vector<orderedPoly<cplx>> polystack(varstack.size(), orderedPoly<cplx>(numvarsused));
+
+    for(int j = 0; j < varstack.size(); j++){
+        vector<polyword> &expr = varstack[j];
+
+        int k = 0;
+        while(k < expr.size()-1){
+            cplx coeff = 1;
+            vector<int> stackindex = {};
+            vector<int> purevars(numvarsused, 0);
+            
+            for(; expr[k].type == 1; k++){
+                if(expr[k].c == '-') coeff *= -1;
+            }
+            while(k < expr.size()-1){
+                if(expr[k].type == 0){
+                    if(expr[k+1].type == 1 && expr[k+1].c == '^'){
+                        if(expr[k+2].type != 0){Log << "dfsfgjfhgnbfdghfgbv\n" << flush; return 4;}
+                        coeff *= pow(expr[k].val, expr[k+2].val);
+                        k += 2;
+                    }
+                    else coeff *= expr[k].val;
+                }
+                else if(expr[k].type == 2){
+                    if(expr[k+1].type == 1 && expr[k+1].c == '^'){
+                        if(expr[k+2].type != 0){Log << "dfsfgjfhgnbfdghfgbv\n" << flush; return 4;}
+                        purevars[expr[k].varindex] += (int)expr[k+2].val.real();
+                        k += 2;
+                    }
+                    else purevars[expr[k].varindex]++;
+                }
+                else if(expr[k].type == 3){
+                    if(expr[k+1].type == 1 && expr[k+1].c == '^'){
+                        if(expr[k+2].type != 0){Log << "dfsfgjfhgnbfdghfgbv\n" << flush; return 4;}
+                        int cnt = expr[k+2].val.real();
+                        while(cnt--) stackindex.push_back(expr[k].varstackindex);
+                        k += 2;
+                    }
+                    else stackindex.push_back(expr[k].varstackindex);
+                }
+                else if(expr[k].type == 1){
+                    if(expr[k].c == '-' || expr[k].c == '+') break;
+                    if(expr[k].c == '^'){Log << "bruh\n" << flush; return 5;}
+                    if(expr[k].c == '*'){}
+                    if(expr[k].c == '/'){Log << "divison by error, if you couldn't tell divison is not implemented yet you bafoon\n" << flush; return 3;}
+                }
+                else{
+                    Log << "this branch of the if/else is impossible to reach, congratz\n" << flush;
+                    return 7;
+                }
+                k++;
+            }
+
+            orderedPoly<cplx> out(numvarsused);
+            out.add_term(coeff, purevars);
+            for(auto &i : stackindex) out = out*polystack[i];
+            polystack[j] += out;
+        }
+        polystack[j].compress();
+    }
+
+    C.numvars = C.opnums.size();
+    C.P = polystack[polystack.size()-1].P;
+
+    Log << "expr successfully read\n" << flush;
+    
+    return 0;
+}

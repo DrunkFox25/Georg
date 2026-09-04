@@ -1,0 +1,96 @@
+{
+    "name" : "Test 3: Incidents",
+    "vars" : {
+        "ax" : [-0.3, "fixed"],
+        "ay" : [-4.7, "fixed"],
+        "bx" : [2.2, "fixed"],
+        "by" : [0.0, "fixed"],
+        "cx" : [7.1, "fixed"],
+        "cy" : [-1.6, "fixed"],
+        "px" : [0.5, "fixed"],
+        "py" : [7.4, "fixed"],
+        "qx" : [-0.1],
+        "qy" : [-1.2],
+        "rx" : [2.6],
+        "ry" : [-1.4],
+        "sx" : [4.9],
+        "sy" : [1.4]
+    },
+    "func" : {
+        "dist2" : "($1-$3)^2+($2-$4)^2",
+        "area2" : "$3*$6 - $3*$2 + $5*$2 - $5*$4 + $1*$4 - $1*$6"
+    },
+    "constr" : [
+        {
+            "type" : "POLY",
+            "expression" : "area2(ax,ay,px,py,qx,qy)"
+        },
+        {
+            "type" : "POLY",
+            "expression" : "area2(bx,by,px,py,rx,ry)"
+        },
+        {
+            "type" : "POLY",
+            "expression" : "area2(cx,cy,px,py,sx,sy)"
+        },
+        {
+            "type" : "POLY",
+            "expression" : "area2(ax,ay,rx,ry,sx,sy)"
+        },
+        {
+            "type" : "POLY",
+            "expression" : "area2(bx,by,qx,qy,sx,sy)"
+        },
+        {
+            "type" : "POLY",
+            "expression" : "area2(cx,cy,qx,qy,rx,ry)"
+        }
+    ],
+    "draw" : [
+        {
+            "type" : "POINT",
+            "varlist" : ["ax", "ay"],
+            "label" : "A"
+        },
+        {
+            "type" : "POINT",
+            "varlist" : ["bx", "by"],
+            "label" : "B"
+        },
+        {
+            "type" : "POINT",
+            "varlist" : ["cx", "cy"],
+            "label" : "C"
+        },
+        {
+            "type" : "POINT",
+            "varlist" : ["px", "py"],
+            "label" : "P"
+        },
+        {
+            "type" : "POINT",
+            "varlist" : ["qx", "qy"],
+            "label" : "Q"
+        },
+        {
+            "type" : "POINT",
+            "varlist" : ["rx", "ry"],
+            "label" : "R"
+        },
+        {
+            "type" : "POINT",
+            "varlist" : ["sx", "sy"],
+            "label" : "S"
+        }
+    ],
+    "valuedisplay" : "auto",
+    "cmds" : [
+        "regen",
+        "runn 100",
+        "query"
+    ],
+    "comments" : [
+        "unlike dist, area2 is 2*area not area^2"
+    ]
+}
+
