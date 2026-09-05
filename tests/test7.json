@@ -12,7 +12,7 @@
         },
         {
             "type" : "POLY",
-            "expression" : "ab-1"
+            "expression" : "a*b-1"
         }
     ],
     "draw" : [],

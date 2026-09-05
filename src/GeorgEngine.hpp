@@ -16,33 +16,13 @@ struct State{
 	cplx currval;//where the value goes
 	std::vector<cplx> currdir;//must be of size big enough to handle all dirivitives being in here
 
-	void rsNumvars(int Numvars){
-		numvars = Numvars;
-		vars.resize(numvars);
-		fixed.resize(numvars);
-		return;
-	}
+	void rsNumvars(int Numvars);
 
-	void add(expression C){
-		constrs.push_back(C);
-		if(currdir.size() < C.numvars) currdir.resize(C.numvars);
-		n++;
-		return;
-	}
+	void add(expression C);
 
-	void update(int i){
-		constrs[i].update(vars, currval, currdir);
-		return;
-	}
+	void update(int i);
 
-	void clear(){
-		n = 0;
-		numvars = 0;
-		vars.clear();
-		fixed.clear();
-		constrs.clear();
-		currdir.clear();
-	}
+	void clear();
 };//any changes to state other then to vars requires regenerating the decent engine
 
 

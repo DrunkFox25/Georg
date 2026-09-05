@@ -100,9 +100,6 @@
         "runn 20",
         "query"
     ],
-    "comments" : [
-        "type for draw in label can be string -> default behaviour",
-        "auto means a valuelist with all variables"
-    ]
+    "comments" : []
 }
 

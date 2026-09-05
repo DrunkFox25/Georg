@@ -5,6 +5,9 @@
 #include <Eigen/SparseLU>
 
 struct expression : public poly<cplx>{//this is temporary for now
+	//make it support seperate mode where it is a string
+	//make it support general expressions
+	//also something maybe like varstack in reader.cpp
 	std::vector<int> opnums;////must be in increasing order or it will break Eigen
 	void update(const std::vector<cplx> &in, cplx &value, std::vector<cplx> &dir){
 		std::vector<cplx> val(numvars);

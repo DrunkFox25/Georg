@@ -2,48 +2,76 @@
 
 #include "main.hpp"
 
-struct Interface{
+//labels for lines should be at the end of the screen
 
-    struct GeorgCanvas : public QWidget{
+namespace Interface{//add tex
+    struct drawcmd{
+        enum {
+            DRAW_NONE,
+            DRAW_SET,
+            DRAW_POINT,
+            DRAW_LINE,
+            DRAW_POINT,
+            DRAW_LINE,
+            DRAW_SEGMENT,
+            DRAW_RAY,
+            DRAW_CIRCLE,
+            DRAW_ELLIPSE,
+            DRAW_ARC,
+            DRAW_ANGLE,
+            DRAW_IMPLICIT
+        } type = DRAW_NONE;
+        std::vector<expression> vars;
+        QColor color = QColor();//invalid by default
+        int width = -1;
+        int style = -1;//Qt::PenStyle would use the enum but no invalid value
+        expression labelexp;
+        std::string labelstr;
+
+        void set(std::string Type);
+
+        drawcmd();
+
+        drawcmd(QJsonObject ob, Reader &R);//update to make this more safe
+    };
+
+    struct dispcmd{
+        enum {
+            DISP_VALUE_LIST,
+            DISP_SLIDER,
+            DISP_COMPLEX
+        } type = DISP_VALUE_LIST;
+        int sz = 0;
+        std::vector<std::string> name;
+        std::vector<int> vars;
+        std::vector<bool> modify;
+        std::vector<pair<double, double>> ranges;
+        rect<double> crange;
+
+        void set(std::string Type);
+
+        dispcmd();
+
+        dispcmd(std::string Type);
+
+        dispcmd(std::vector<std::string> Name, std::vector<int> Vars, std::vector<bool> Modify);
+
+        dispcmd(QJsonObject ob);//update to make this more safe
+    };
+
+    typedef std::vector<drawcmd> drawList;
+    typedef std::vector<dispcmd> dispList;
+
+    struct GeorgCanvas{
+        drawList drawer;
+
+        void paint(QPainter painter);
+    };
+
+    struct GeorgCanvasWidget : public QWidget, public GeorgCanvas{
         using QWidget::QWidget;
 
-        void paintEvent(QPaintEvent *event) override {
-            Q_UNUSED(event); 
-
-            QPainter painter(this);
-            painter.setRenderHint(QPainter::Antialiasing);
-            QPen pen;
-            QBrush brush;
-
-            pen.setColor(Qt::blue);
-            pen.setWidth(4);
-            pen.setStyle(Qt::SolidLine);
-
-            brush.setColor(Qt::yellow);
-            brush.setStyle(Qt::SolidPattern);
-
-            painter.setPen(pen);//this sends it to gpu
-            painter.setBrush(brush);
-
-            painter.drawLine(10, 10, 380, 10);
-            painter.drawRect(20, 40, 150, 100);
-
-            brush.setColor(Qt::red);
-            painter.setBrush(brush);
-
-            painter.drawEllipse(220, 40, 150, 100);
-
-            QPolygon triangle;
-            triangle << QPoint(200, 160)   // Top point
-                        << QPoint(100, 260)   // Bottom-left point
-                        << QPoint(300, 260);  // Bottom-right point
-            
-            brush.setColor(Qt::green);
-            painter.setBrush(brush);
-            painter.drawPolygon(triangle);
-
-            return;
-        }
+        void paint(QPainter painter);
     };
-};
+}
 

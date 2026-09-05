@@ -1,6 +1,4 @@
 #include "main.hpp"
-#include "GeorgInterface.hpp"
-#include "reader.hpp"
 
 
 
@@ -45,9 +43,9 @@ int main(int argc, char *argv[]){//todo move all code to src
 
     QWidget mainWindow;
     mainWindow.setWindowTitle("Georg");
-    mainWindow.resize(1000, 700);
+    mainWindow.resize(1200, 700);
 
-    QVBoxLayout *layout = new QVBoxLayout(&mainWindow);
+    QGridLayout *layout = new QGridLayout(&mainWindow);
     
     QLabel *titleLabel = new QLabel(&mainWindow);
     QPlainTextEdit *LogDisplay = new QPlainTextEdit(&mainWindow);
@@ -57,18 +55,18 @@ int main(int argc, char *argv[]){//todo move all code to src
     Interface::GeorgCanvas *canvas = new Interface::GeorgCanvas(&mainWindow);
 
     regenButton->setText("Regen State");
-    canvas->setMinimumSize(300, 200);
 
     titleLabel->setText("Georg - Geogebra 2");
     titleLabel->setAlignment(Qt::AlignCenter);
     titleLabel->setStyleSheet("font-size: 18px; font-weight: bold; color: #2c3e50;");
 
-    layout->addWidget(titleLabel);
-    layout->addWidget(LogDisplay);
-    layout->addWidget(stateIn);
-    layout->addWidget(regenButton);
-    layout->addWidget(cmdLine);
-    layout->addWidget(canvas);
+    // Span argument: (widget, startRow, startColumn, rowSpan, columnSpan)
+    layout->addWidget(titleLabel, 0, 0, 1, 10);
+    layout->addWidget(LogDisplay, 1, 5, 9, 5);
+    layout->addWidget(stateIn, 1, 0, 9, 5);
+    layout->addWidget(regenButton, 10, 0, 1, 3);
+    layout->addWidget(cmdLine, 10, 3, 1, 7);
+    layout->addWidget(canvas, 11, 0, 5, 5);
 
     //ofstream Logf("Log.txt");
     LogDisplay->setReadOnly(true);
@@ -77,7 +75,7 @@ int main(int argc, char *argv[]){//todo move all code to src
     TeeStream qlog(QLog, cout);
     log_def = &qlog;
 
-    string fname = "tests/test5.json";//"assets/regenstateex.txt"
+    string fname = "tests/test6.json";//"assets/regenstateex.txt"
     ifstream regenStateEx(fname);
     if (!regenStateEx.is_open()) Log << "Error: Could not open the file: " << fname << "\n" << endl;
     stringstream buffer;
@@ -86,8 +84,8 @@ int main(int argc, char *argv[]){//todo move all code to src
     regenStateEx.close();
 
     Reader R;
-    vector<Reader::drawcmd> drawer;
-    vector<Reader::disp> display;
+    vector<Interface::drawcmd> drawer;
+    vector<Interface::disp> display;
     decentEngine D;
 
     QObject::connect(regenButton, &QPushButton::clicked, [&](){

@@ -38,7 +38,5 @@
         "runn 5",
         "query"
     ],
-    "comments" : [
-        "label for type value defaults to the values"
-    ]
+    "comments" : []
 }

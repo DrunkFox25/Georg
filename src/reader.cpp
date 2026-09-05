@@ -56,7 +56,7 @@ int Reader::readcmd(string cmd, decentEngine &D){//acts on decent engine
 }
 
 
-int Reader::regenState(string state, vector<string> &cmdsout, vector<Reader::drawcmd> &drawer, vector<Reader::disp> &display, State &S){//does not touch D, only S
+int Reader::regenState(string state, vector<string> &cmdsout, Interface::drawList &drawer, Interface::disp &display, State &S){//does not touch D, only S
     S.clear();
     //todo: make all tests work
     //make diff a default variable
@@ -115,138 +115,18 @@ int Reader::regenState(string state, vector<string> &cmdsout, vector<Reader::dra
 
     QJsonArray draws = rootObj["draws"].toArray();
 
-    for(QJsonValue val : draws){
-        QJsonObject ob = val.toObject();
-        drawcmd curr;
+    for(QJsonValue val : draws) drawer.push_back(drawcmd(val.toObject(), *this));
 
-        if(ob.contains("color")) curr.color.fromString(ob["color"].toString());
-        if(ob.contains("width")) curr.width = ob["width"].toDouble();
-        if(ob.contains("style")){
-            string st = ob["style"].toString().toStdString();
-            if(st == "nopen") curr.style = 0;
-            if(st == "solid") curr.style = 1;
-            if(st == "dash") curr.style = 2;
-            if(st == "dot") curr.style = 3;
-            if(st == "dashdot") curr.style = 4;
-            if(st == "dashdotdot") curr.style = 5;
-            if(st == "custom") curr.style = 6;//not done yet
-        }
-        if(ob.contains("label")){
-            if(ob["label"].isString()) curr.labelstr = ob["label"].toString().toStdString();
-            else{
-                expression C;
-                int out = createExpr(ob["label"].toObject()["type"].toString().toStdString(), ob["label"].toObject()["expression"].toString().toStdString(), C);
-                if(out != 0) return out;
-                curr.labelexp = C;
-            }
-        }
+    QJsonValue valdisp = rootObj["valuedisplay"];
+    if(valdisp.isString() && valdisp.toString().toStdString() == "auto"){
+        vector<int> displvars(namevars.size());
+        for(int i = 0; i < namevars.size(); i++) displvars[i] = i;
 
-
-        string type = ob["type"].toString().toStdString();
-
-        if(type == "SET"){
-            curr.type = 0;
-            drawer.push_back(curr);
-            continue;
-        }
-
-        QJsonArray vlist = ob["varlist"].toArray();
-        for(auto v : vlist){
-            if(v.isDouble()) curr.vars.push_back(expression(v.toDouble()));
-            if(v.isString()){
-                string vstr = v.toString().toStdString();
-                if(varnames.count(vstr) > 0){
-                    expression C;
-                    C.numvars = 1;
-                    C.P.push_back({1, {1}});
-                    C.opnums = {varnames[vstr]};
-                    curr.vars.push_back(C);
-                }
-                else{
-                    curr.vars.push_back(expression(stoc(vstr)));
-                }
-            }
-            else{
-                expression C;
-                int out = createExpr(v.toObject()["type"].toString().toStdString(), v.toObject()["expression"].toString().toStdString(), C);
-                if(out != 0) return out;
-                curr.vars.push_back(C);
-            }
-        }
-
-        if(type == "POINT") curr.type = 1;
-        if(type == "LINE") curr.type = 2;
-        if(type == "SEGMENT") curr.type = 3;
-        if(type == "RAY") curr.type = 4;
-        if(type == "CIRCLE") curr.type = 5;
-        if(type == "ELLIPSE") curr.type = 6;
-        if(type == "ARC") curr.type = 7;
-        if(type == "ANGLE") curr.type = 8;
-        if(type == "IMPLICIT") curr.type = 9;
-
-        drawer.push_back(curr);
-    }
-
-    auto tempvaldisp = rootObj["valuedisplay"];
-    bool doauto = false;
-    QJsonArray valuedisp;
-    if(tempvaldisp.isString() && tempvaldisp.toString().toStdString() == "auto"){
-        //slider(s) 1, valuelist 0, complex 2
-        disp displ;
-        displ.type = 0;
-        displ.name = namevars;
-        displ.vars.resize(namevars.size());
-        for(int i = 0; i < namevars.size(); i++) displ.vars[i] = i;
-        displ.modify.resize(namevars.size(), true);
-        display = {displ};
+        display = {Interface::dispcmd(namevars, displvars, vector<bool>(namevars.size(), true))};
     }
     else{
-        valuedisp = rootObj["valuedisplay"].toArray();
-        for(QJsonValue val : valuedisp){
-            QJsonObject ob = val.toObject();
-            QString t = ob["type"].toString();
-            QJsonArray ar = ob["varlist"].toArray();
-            QJsonArray names;
-            if(!ob.contains("names")) names = ar;
-            else names = ob["names"].toArray();
-            disp displ;//valuelist (vlist) 0, slider(s) 1, complex 2
-            for(auto x : ar) displ.vars.push_back(varnames[x.toString().toStdString()]);
-            for(auto x : names) displ.name.push_back(x.toString().toStdString());
-            if(ob.contains("modif")){
-                QJsonValue modif = ob["modif"];
-                if(modif.isBool()) displ.modify.resize(ar.size(), modif.toBool());
-                else{
-                    for(auto x : modif.toArray()) displ.modify.push_back(x.toBool());
-                }
-            }
-            else displ.modify.resize(ar.size(), true);
-            if(t == "VLIST"){
-                displ.type = 0;
-            }
-            else if(t == "SLIDER"){
-                displ.type = 1;
-                if(ob["range"].isArray()){
-                    for(auto r : ob["range"].toArray()){
-                        displ.ranges.push_back({r.toObject()["from"].toDouble(), r.toObject()["to"].toDouble()});
-                    }
-                }
-                else{
-                    displ.ranges.resize(ar.size(), {ob["range"].toObject()["from"].toDouble(), ob["range"].toObject()["to"].toDouble()});
-                }
-            }
-            else if(t == "COMPLEX"){
-                displ.type = 2;
-                auto r = ob["range"].toObject();
-                displ.crange.left = r["from"].toDouble();
-                displ.crange.right = r["to"].toDouble();
-                displ.crange.down = r["fromi"].toDouble();
-                displ.crange.up = r["toi"].toDouble();
-            }
-
-            display.push_back(displ);
-        }
+        for(QJsonValue val : valdisp.toArray()) display.push_back(Interface::dispcmd(val.toObject()));
     }
-
 
     QJsonArray cmds = rootObj["cmds"].toArray();
 

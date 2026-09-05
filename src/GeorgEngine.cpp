@@ -7,8 +7,33 @@ testing:
 https://godbolt.org/#g:!((g:!((g:!((h:codeEditor,i:(filename:'1',fontScale:14,fontUsePx:'0',j:1,lang:c%2B%2B,source:'//+Type+your+code+here,+or+load+an+example.%0Aint+square(int+num)+%7B%0A++++return+num+*+num%3B%0A%7D'),l:'5',n:'0',o:'C%2B%2B+source+%231',t:'0')),k:50,l:'4',n:'0',o:'',s:0,t:'0'),(g:!((h:executor,i:(argsPanelShown:'0',compilationPanelShown:'0',compiler:g162,compilerName:'',compilerOutShown:'0',execArgs:'',execStdin:'',fontScale:14,fontUsePx:'0',j:1,lang:c%2B%2B,libs:!(),options:'',overrides:!(),runtimeTools:!((name:heaptrack,options:!((name:graph,value:yes)))),source:1,stdinPanelShown:'0',wrap:'1'),l:'5',n:'0',o:'Executor+x86-64+gcc+16.2+(C%2B%2B,+Editor+%231)',t:'0')),k:50,l:'4',n:'0',o:'',s:0,t:'0')),l:'2',n:'0',o:'',t:'0')),version:4
 */
 
+void State::rsNumvars(int Numvars){
+	numvars = Numvars;
+	vars.resize(numvars);
+	fixed.resize(numvars);
+	return;
+}
 
+void State::add(expression C){
+	constrs.push_back(C);
+	if(currdir.size() < C.numvars) currdir.resize(C.numvars);
+	n = constrs.size();
+	return;
+}
 
+void State::update(int i){
+	constrs[i].update(vars, currval, currdir);
+	return;
+}
+
+void State::clear(){
+	n = 0;
+	numvars = 0;
+	vars.clear();
+	fixed.clear();
+	constrs.clear();
+	currdir.clear();
+}
 
 
 
@@ -39,6 +64,8 @@ double decentEngine::update(){
 }
 
 void decentEngine::regen(){
+	Log << "starting decent regen\n" << flush;
+
 	renamed.resize(numvars, -1); int unfixed = 0;
 	for(int i = 0; i < numvars; i++){
 		if(!fixed[i]) renamed[i] = unfixed++;
@@ -67,6 +94,8 @@ void decentEngine::regen(){
 
 	solver.setPivotThreshold(1.0);
 	solver.analyzePattern(*A_Trans);
+
+	Log << "done with decent regen\n" << flush;
 }
 
 void decentEngine::addNoise(uniform_real_distribution<double> db){
