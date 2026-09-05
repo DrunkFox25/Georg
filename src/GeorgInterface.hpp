@@ -32,6 +32,8 @@ namespace Interface{//add tex
 
         drawcmd();
 
+        drawcmd(std::string Type, QColor Color = QColor(), int Width = -1, int Style = -1);
+
         drawcmd(QJsonObject ob, Reader &R);//update to make this more safe
     };
 
@@ -64,6 +66,7 @@ namespace Interface{//add tex
 
     struct GeorgCanvas{
         drawList drawer;
+        State* S;
 
         void paint(QPainter painter);
     };

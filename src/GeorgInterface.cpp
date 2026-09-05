@@ -21,6 +21,8 @@ void Interface::drawcmd::set(std::string Type){
 
 Interface::drawcmd::drawcmd(){}
 
+Interface::drawcmd::drawcmd(std::string Type, QColor Color, int Width, int Style) : color(Color), width(Width), style(Style){set(Type);}
+
 Interface::drawcmd::drawcmd(QJsonObject ob, Reader &R){
     set(ob["type"].toString().toStdString());
 
@@ -131,41 +133,85 @@ Interface::dispcmd::dispcmd(QJsonObject ob, Reader &R){
     }
 }
 
-void Interface::GeorgCanvas::paint(QPainter painter){
+void Interface::GeorgCanvas::paint(QPainter painter){//update this to draw multipule at once using the respective Qt functions; add gpu support for impilicit
+
+    //https://doc.qt.io/qt-6/qpainter.html#drawArc-2
+    //https://doc.qt.io/qt-6/qpainter.html#drawText-3
+    //https://doc.qt.io/qt-6/qpainter.html#drawLine-4
+    //https://doc.qt.io/qt-6/qpainter.html#drawPoint-2
+    //https://doc.qt.io/qt-6/qpainter.html#drawEllipse-4
+
+    //todo: put line labels where it intersects the veiwbox
     painter.setRenderHint(QPainter::Antialiasing);
     QPen pen;
     QBrush brush;
-
-    pen.setColor(Qt::blue);
-    pen.setWidth(4);
-    pen.setStyle(Qt::SolidLine);
-
-    painter.setPen(pen);
     painter.setBrush(brush);
+
 
     for(drawcmd &cmd : drawer){
-        if(cmd.color.isValid()) pen.setColor(cmd.color);
-        if(cmd.width != -1) pen.setWidth(cmd.width);
-        if(cmd.style != -1) pen.setStyle((Qt::PenStyle)cmd.style);
+        bool newpen = false;
+        if(cmd.color.isValid()){pen.setColor(cmd.color); newpen = true;}
+        if(cmd.width != -1){pen.setWidth(cmd.width); newpen = true;}
+        if(cmd.style != -1){pen.setStyle((Qt::PenStyle)cmd.style); newpen = true;}
+        if(newpen) painter.setPen(pen);
+
+        std::vector<double> vals;
+        for(expression &C : cmd.vars) vals.push_back(C.eval(S->vars).real());//gonna check later if cplx -> then not draw it, but for now
+
+        std::string label = cmd.labelstr;
+        if(label.empty()) label = std::to_string(cmd.labelexp.eval(S->vars).real());
+
+        //gotta adjust for veiwbox
+
+        if(cmd.type == drawcmd::DRAW_SET){}
+        else if(cmd.type == drawcmd::DRAW_POINT){
+            painter.drawPoint(vals[0], vals[1]);
+        }
+        else if(cmd.type == drawcmd::DRAW_LINE){
+            //extend out to the edges of the veiwbox
+            //temporaryly just a segment
+            if(vals.size() == 4) painter.drawLine(vals[0], vals[1], vals[2], vals[3]);
+            if(vals.size() == 2) painter.drawLine(-10000, vals[1]-10000*vals[0], 10000, vals[1]+10000*vals[0]);//vals[0]x+vals[1] = y
+            else Log << "draw line with invalid number of variables\n" << std::flush;
+        }
+        else if(cmd.type == drawcmd::DRAW_SEGMENT){
+            //permanently just a segment
+            painter.drawLine(vals[0], vals[1], vals[2], vals[3]);
+        }
+        else if(cmd.type == drawcmd::DRAW_RAY){
+            //temporaryly just a segment
+            painter.drawLine(vals[0], vals[1], vals[2], vals[3]);
+        }
+        else if(cmd.type == drawcmd::DRAW_CIRCLE){
+            painter.drawEllipse(vals[0]-vals[2], vals[1]-vals[2], vals[2]*2, vals[2]*2);
+        }
+        else if(cmd.type == drawcmd::DRAW_ELLIPSE){
+            painter.drawEllipse(vals[0]-vals[2], vals[1]-vals[3], vals[2]*2, vals[3]*2);
+        }
+        else if(cmd.type == drawcmd::DRAW_ARC){
+            painter.drawArc(vals[0]-vals[2], vals[1]-vals[3], vals[2]*2, vals[3]*2, vals[4]*16, (vals[5]-vals[4])*16);
+        }
+        else if(cmd.type == drawcmd::DRAW_ANGLE){
+            //this has 6 variables
+            double angle1 = 180*std::atan2(vals[1]-vals[3], vals[0]-vals[2])/std::numbers::pi;
+            double angle2 = 180*std::atan2(vals[5]-vals[3], vals[4]-vals[2])/std::numbers::pi;
+            angle2 -= angle1;
+            if(std::abs(angle2-90) < 1e-9){
+                painter.save();
+                painter.translate(vals[2], vals[3]);
+                painter.rotate(angle1);
+                painter.drawLine(0, 10, 10, 10);
+                painter.drawLine(10, 10, 10, 0);
+                painter.restore();
+            }
+            else painter.drawArc(vals[2]-10, vals[3]-10, 20, 20, angle1*16, angle2*16);
+        }
+        else if(cmd.type == drawcmd::DRAW_IMPLICIT){
+            Log << "Implicit drawing not supported yet\n" << std::flush;
+        }
+
+        painter.drawText(vals[0], vals[1], QString::fromStdString(label));//probably should be color independent
     }
-
-    painter.drawLine(10, 10, 380, 10);
-    painter.drawRect(20, 40, 150, 100);
-
-    brush.setColor(Qt::red);
-    painter.setBrush(brush);
-
-    painter.drawEllipse(220, 40, 150, 100);
-
-    QPolygon triangle;
-    triangle << QPoint(200, 160)   // Top point
-                << QPoint(100, 260)   // Bottom-left point
-                << QPoint(300, 260);  // Bottom-right point
-    
-    brush.setColor(Qt::green);
-    painter.setBrush(brush);
-    painter.drawPolygon(triangle);
-
     return;
 }
 

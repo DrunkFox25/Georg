@@ -89,10 +89,14 @@ int main(int argc, char *argv[]){//todo move all code to src
     Interface::dispList display;
     decentEngine D;
 
+    canvas -> S = &D;
+
     QObject::connect(regenButton, &QPushButton::clicked, [&](){
         regenButton->setText("Loading New State");
         vector<string> cmds;
         R.regenState(stateIn->toPlainText().toStdString(), cmds, canvas->drawer, display, D);
+        //canvas->update();
+        canvas->repaint();
         for(auto &cmd : cmds) R.readcmd(cmd, D);
         regenButton->setText("Regen State");
     });

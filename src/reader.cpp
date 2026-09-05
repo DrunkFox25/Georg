@@ -58,6 +58,9 @@ int Reader::readcmd(std::string cmd, decentEngine &D){//acts on decent engine
 
 int Reader::regenState(std::string state, std::vector<std::string> &cmdsout, Interface::drawList &drawer, Interface::dispList &display, State &S){//does not touch D, only S
     S.clear();
+    drawer.clear();
+    display.clear();
+    drawer.push_back(Interface::drawcmd("SET", Qt::blue, 4, Qt::SolidLine));
     //todo: make all tests work
     //make diff a default variable
 
