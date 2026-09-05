@@ -31,5 +31,3 @@
 #include "GeorgEngine.hpp"
 #include "GeorgInterface.hpp"
 #include "reader.hpp"
-
-using namespace std;

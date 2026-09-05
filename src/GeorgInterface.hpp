@@ -4,13 +4,13 @@
 
 //labels for lines should be at the end of the screen
 
+struct Reader;
+
 namespace Interface{//add tex
     struct drawcmd{
         enum {
             DRAW_NONE,
             DRAW_SET,
-            DRAW_POINT,
-            DRAW_LINE,
             DRAW_POINT,
             DRAW_LINE,
             DRAW_SEGMENT,
@@ -45,7 +45,7 @@ namespace Interface{//add tex
         std::vector<std::string> name;
         std::vector<int> vars;
         std::vector<bool> modify;
-        std::vector<pair<double, double>> ranges;
+        std::vector<std::pair<double, double>> ranges;
         rect<double> crange;
 
         void set(std::string Type);
@@ -56,7 +56,7 @@ namespace Interface{//add tex
 
         dispcmd(std::vector<std::string> Name, std::vector<int> Vars, std::vector<bool> Modify);
 
-        dispcmd(QJsonObject ob);//update to make this more safe
+        dispcmd(QJsonObject ob, Reader &R);//update to make this more safe
     };
 
     typedef std::vector<drawcmd> drawList;
@@ -71,7 +71,7 @@ namespace Interface{//add tex
     struct GeorgCanvasWidget : public QWidget, public GeorgCanvas{
         using QWidget::QWidget;
 
-        void paint(QPainter painter);
+        void paintEvent(QPaintEvent *event) override;
     };
 }
 

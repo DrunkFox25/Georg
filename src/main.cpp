@@ -1,5 +1,7 @@
 #include "main.hpp"
 
+using namespace std;
+
 
 
 
@@ -52,7 +54,7 @@ int main(int argc, char *argv[]){//todo move all code to src
     QPlainTextEdit *stateIn = new QPlainTextEdit(&mainWindow);
     QPushButton *regenButton = new QPushButton(&mainWindow);
     QLineEdit *cmdLine = new QLineEdit(&mainWindow);
-    Interface::GeorgCanvas *canvas = new Interface::GeorgCanvas(&mainWindow);
+    Interface::GeorgCanvasWidget *canvas = new Interface::GeorgCanvasWidget(&mainWindow);
 
     regenButton->setText("Regen State");
 
@@ -84,14 +86,13 @@ int main(int argc, char *argv[]){//todo move all code to src
     regenStateEx.close();
 
     Reader R;
-    vector<Interface::drawcmd> drawer;
-    vector<Interface::disp> display;
+    Interface::dispList display;
     decentEngine D;
 
     QObject::connect(regenButton, &QPushButton::clicked, [&](){
         regenButton->setText("Loading New State");
         vector<string> cmds;
-        R.regenState(stateIn->toPlainText().toStdString(), cmds, drawer, display, D);
+        R.regenState(stateIn->toPlainText().toStdString(), cmds, canvas->drawer, display, D);
         for(auto &cmd : cmds) R.readcmd(cmd, D);
         regenButton->setText("Regen State");
     });

@@ -64,7 +64,7 @@ double decentEngine::update(){
 }
 
 void decentEngine::regen(){
-	Log << "starting decent regen\n" << flush;
+	Log << "starting decent regen\n" << std::flush;
 
 	renamed.resize(numvars, -1); int unfixed = 0;
 	for(int i = 0; i < numvars; i++){
@@ -95,7 +95,7 @@ void decentEngine::regen(){
 	solver.setPivotThreshold(1.0);
 	solver.analyzePattern(*A_Trans);
 
-	Log << "done with decent regen\n" << flush;
+	Log << "done with decent regen\n" << std::flush;
 }
 
 void decentEngine::addNoise(uniform_real_distribution<double> db){
@@ -113,8 +113,8 @@ void decentEngine::addNoise(double db){
 int decentEngine::descend(){
 	solver.factorize(*A_Trans);
 	if(solver.info() != Eigen::Success){
-		Log << "Solver failed: " << solver.info() << "\n" << flush;
-		Log << "n: " << n << "\ncolind: " << colind << "\nrowptr: " << rowptr << "\nnzval: " << nzval << "\n" << flush;
+		Log << "Solver failed: " << solver.info() << "\n" << std::flush;
+		Log << "n: " << n << "\ncolind: " << colind << "\nrowptr: " << rowptr << "\nnzval: " << nzval << "\n" << std::flush;
 		return solver.info();
 	}
 	

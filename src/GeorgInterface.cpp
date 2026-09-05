@@ -27,7 +27,7 @@ Interface::drawcmd::drawcmd(QJsonObject ob, Reader &R){
     if(ob.contains("color")) color.fromString(ob["color"].toString());
     if(ob.contains("width")) width = ob["width"].toDouble();
     if(ob.contains("style")){
-        string st = ob["style"].toString().toStdString();
+        std::string st = ob["style"].toString().toStdString();
         if(st == "nopen") style = 0;
         if(st == "solid") style = 1;
         if(st == "dash") style = 2;
@@ -46,18 +46,18 @@ Interface::drawcmd::drawcmd(QJsonObject ob, Reader &R){
         }
     }
 
-    if(type == DRAW_SET) return *this;
+    if(type == DRAW_SET) return;
 
     QJsonArray vlist = ob["varlist"].toArray();
     for(auto v : vlist){
         if(v.isDouble()) vars.push_back(expression(v.toDouble()));
         if(v.isString()){
-            string vstr = v.toString().toStdString();
-            if(varnames.count(vstr) > 0){
+            std::string vstr = v.toString().toStdString();
+            if(R.varnames.count(vstr) > 0){
                 expression C;
                 C.numvars = 1;
                 C.P.push_back({1, {1}});
-                C.opnums = {varnames[vstr]};
+                C.opnums = {R.varnames[vstr]};
                 vars.push_back(C);
             }
             else{
@@ -87,15 +87,15 @@ Interface::dispcmd::dispcmd(std::string Type){set(Type);}
 
 Interface::dispcmd::dispcmd(std::vector<std::string> Name, std::vector<int> Vars, std::vector<bool> Modify) : sz(Vars.size()), name(std::move(Name)), vars(std::move(Vars)), modify(std::move(Modify)){}
 
-Interface::dispcmd::dispcmd(QJsonObject ob){
-    set(ob["type"].toString());
+Interface::dispcmd::dispcmd(QJsonObject ob, Reader &R){
+    set(ob["type"].toString().toStdString());
 
     QJsonArray varlist = ob["varlist"].toArray();
     QJsonArray names;
-    if(!ob.contains("names")) names = ar;
+    if(!ob.contains("names")) names = varlist;
     else names = ob["names"].toArray();
 
-    for(auto x : varlist) vars.push_back(varnames[x.toString().toStdString()]);
+    for(auto x : varlist) vars.push_back(R.varnames[x.toString().toStdString()]);
     for(auto x : names) name.push_back(x.toString().toStdString());
 
     sz = vars.size();
@@ -169,8 +169,8 @@ void Interface::GeorgCanvas::paint(QPainter painter){
     return;
 }
 
-void Interface::GeorgCanvasWidget::paintEvent(QPaintEvent *event) override {
+void Interface::GeorgCanvasWidget::paintEvent(QPaintEvent *event){
     Q_UNUSED(event);
 
-    return this->paint(QPainter(*this));
+    return this->paint(QPainter(this));
 }
