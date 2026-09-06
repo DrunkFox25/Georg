@@ -15,15 +15,15 @@
     "constr" : [
         {
             "type" : "POLY",
-            "expression" : "0.5ax+0.5-ay"
+            "expression" : "-ax+2ay-1"
         },
         {
             "type" : "POLY",
-            "expression" : "2bx-1-by"
+            "expression" : "2bx-by-1"
         },
         {
             "type" : "POLY",
-            "expression" : "-3cx-1-cy"
+            "expression" : "-3cx-cy-1"
         },
         {
             "type" : "POLY",
@@ -56,17 +56,17 @@
         },
         {
             "type" : "LINE",
-            "varlist" : ["0.5", "0.5"],
+            "varlist" : [-1, 0, 0, 0.5],
             "label" : "a"
         },
         {
             "type" : "LINE",
-            "varlist" : ["2", "-1"],
+            "varlist" : [0.5, 0, 0, -1],
             "label" : "b"
         },
         {
             "type" : "LINE",
-            "varlist" : ["-3", "-1"],
+            "varlist" : [-0.3333333333, 0, 0, -1],
             "label" : "c"
         },
         {

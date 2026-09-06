@@ -27,13 +27,22 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(Eigen)
 
-add_executable(geo src/main.cpp src/GeorgEngine.cpp src/reader.cpp src/util.cpp src/GeorgInterface.cpp src/expression.cpp)
+FetchContent_Declare(
+    JKQTPlotter6
+    GIT_REPOSITORY https://github.com/jkriege2/JKQtPlotter.git
+    GIT_TAG        v5.0.0
+)
+
+FetchContent_MakeAvailable(JKQTPlotter6)
+
+add_executable(geo src/main.cpp src/GeorgEngine.cpp src/reader.cpp src/util.cpp src/GeorgInterface.cpp src/expression.cpp src/util.cpp)
 
 target_link_libraries(geo PRIVATE 
     Eigen3::Eigen
     Qt6::Core
     Qt6::Gui
     Qt6::Widgets
+    JKQTPlotter6::JKQTPlotter6
 )
 
 

@@ -19,8 +19,8 @@
     "valuedisplay" : [
         {
             "type" : "COMPLEX",
-            "varlist" : ["a", "b"],
-            "modifable" : [true, false],
+            "vlist" : ["a", "b"],
+            "modif" : [true, false],
             "range" : {
                 "from" : -2,
                 "to" : 2,

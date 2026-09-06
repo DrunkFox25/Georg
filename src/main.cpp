@@ -6,61 +6,23 @@ using namespace std;
 
 
 
-
-
-
-struct QTextEditStream : public std::streambuf, public std::ostream {
-    QPlainTextEdit *m_textEdit;
-    std::string m_buffer;
-
-    QTextEditStream() : std::ostream(this), m_textEdit(nullptr) {}
-
-    QTextEditStream(QPlainTextEdit *textEdit) : std::ostream(this), m_textEdit(textEdit){}
-
-    virtual std::streambuf::int_type overflow(std::streambuf::int_type v) override {
-        if (v == std::streambuf::traits_type::eof()) return std::streambuf::traits_type::not_eof(v);
-
-        char c = std::streambuf::traits_type::to_char_type(v);
-        m_buffer.push_back(c);
-
-        return v;
-    }
-
-    virtual int sync() override {
-        flushToWidget();
-        return 0;
-    }
-
-    void flushToWidget() {
-        if (!m_buffer.empty()){
-            m_textEdit->moveCursor(QTextCursor::End);
-            m_textEdit->insertPlainText(QString::fromStdString(m_buffer));
-            m_buffer.clear();
-        }
-    }
-};
-
-int main(int argc, char *argv[]){//todo move all code to src
+int main(int argc, char *argv[]){//todo clean ts up
+    //add std::move to the entire codebase as it is lacking with many vector copies
     QApplication app(argc, argv);
-
-    QWidget mainWindow;
-    mainWindow.setWindowTitle("Georg");
-    mainWindow.resize(1200, 700);
-
-    QGridLayout *layout = new QGridLayout(&mainWindow);
     
-    QLabel *titleLabel = new QLabel(&mainWindow);
-    QPlainTextEdit *LogDisplay = new QPlainTextEdit(&mainWindow);
-    QPlainTextEdit *stateIn = new QPlainTextEdit(&mainWindow);
-    QPushButton *regenButton = new QPushButton(&mainWindow);
-    QLineEdit *cmdLine = new QLineEdit(&mainWindow);
-    Interface::GeorgCanvasWidget *canvas = new Interface::GeorgCanvasWidget(&mainWindow);
+    QWidget *mainWindow = new QWidget();
+    mainWindow->setWindowTitle("Georg");
+    mainWindow->resize(1200, 700);
 
-    regenButton->setText("Regen State");
+    QLabel *titleLabel = new QLabel(mainWindow);
+    QPlainTextEdit *LogDisplay = new QPlainTextEdit(mainWindow);
+    QPlainTextEdit *stateIn = new QPlainTextEdit(mainWindow);
+    QPushButton *regenButton = new QPushButton(mainWindow);
+    QLineEdit *cmdLine = new QLineEdit(mainWindow);
+    Interface::GeorgCanvas *canvas = new Interface::GeorgCanvas(mainWindow);
+    QScrollArea *displScrollArea = new QScrollArea(mainWindow);
 
-    titleLabel->setText("Georg - Geogebra 2");
-    titleLabel->setAlignment(Qt::AlignCenter);
-    titleLabel->setStyleSheet("font-size: 18px; font-weight: bold; color: #2c3e50;");
+    QGridLayout *layout = new QGridLayout(mainWindow);
 
     // Span argument: (widget, startRow, startColumn, rowSpan, columnSpan)
     layout->addWidget(titleLabel, 0, 0, 1, 10);
@@ -69,24 +31,22 @@ int main(int argc, char *argv[]){//todo move all code to src
     layout->addWidget(regenButton, 10, 0, 1, 3);
     layout->addWidget(cmdLine, 10, 3, 1, 7);
     layout->addWidget(canvas, 11, 0, 5, 5);
+    layout->addWidget(displScrollArea, 11, 5, 5, 5);
 
-    //ofstream Logf("Log.txt");
+    regenButton->setText("Regen State");
+
+    titleLabel->setText("Georg - Geogebra 2");
+    titleLabel->setAlignment(Qt::AlignCenter);
+    titleLabel->setStyleSheet("font-size: 18px; font-weight: bold; color: #2c3e50;");
+
     LogDisplay->setReadOnly(true);
     //LogDisplay->setLineWrapMode(QPlainTextEdit::WidgetWidth);
-    QTextEditStream QLog(LogDisplay);
-    TeeStream qlog(QLog, cout);
-    log_def = &qlog;
 
-    string fname = "tests/test6.json";//"assets/regenstateex.txt"
-    ifstream regenStateEx(fname);
-    if (!regenStateEx.is_open()) Log << "Error: Could not open the file: " << fname << "\n" << endl;
-    stringstream buffer;
-    buffer << regenStateEx.rdbuf();
-    stateIn->insertPlainText(QString::fromStdString(buffer.str()));
-    regenStateEx.close();
+    //add on select to the the complex display
+
+    stateIn->insertPlainText(QString::fromStdString(getFile("tests/test7.json").str()));//"assets/regenstateex.txt"
 
     Reader R;
-    Interface::dispList display;
     decentEngine D;
 
     canvas -> S = &D;
@@ -94,10 +54,13 @@ int main(int argc, char *argv[]){//todo move all code to src
     QObject::connect(regenButton, &QPushButton::clicked, [&](){
         regenButton->setText("Loading New State");
         vector<string> cmds;
+        Interface::dispList display;
         R.regenState(stateIn->toPlainText().toStdString(), cmds, canvas->drawer, display, D);
-        //canvas->update();
-        canvas->repaint();
+        
+        canvas->repaint();//canvas->update() is safer but this is a garentee
+
         for(auto &cmd : cmds) R.readcmd(cmd, D);
+
         regenButton->setText("Regen State");
     });
 
@@ -108,7 +71,12 @@ int main(int argc, char *argv[]){//todo move all code to src
         cmdLine->clear();
     });
 
-    mainWindow.show();
+    mainWindow->show();
+
+    //ofstream Logf("Log.txt");
+    Set_Log(new TeeStream(new Interface::QTextEditStream(LogDisplay), &cout));
+
+    Log << "Georg - Geogebra 2\n" << std::flush;
 
     return app.exec();
 }
@@ -118,4 +86,7 @@ int main(int argc, char *argv[]){//todo move all code to src
 
 
 //{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{{if you uncomment this it is a dope af rainbow}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}
+
+
+
 

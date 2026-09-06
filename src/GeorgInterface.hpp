@@ -7,74 +7,42 @@
 struct Reader;
 
 namespace Interface{//add tex
-    struct drawcmd{
-        enum {
-            DRAW_NONE,
-            DRAW_SET,
-            DRAW_POINT,
-            DRAW_LINE,
-            DRAW_SEGMENT,
-            DRAW_RAY,
-            DRAW_CIRCLE,
-            DRAW_ELLIPSE,
-            DRAW_ARC,
-            DRAW_ANGLE,
-            DRAW_IMPLICIT
-        } type = DRAW_NONE;
-        std::vector<expression> vars;
-        QColor color = QColor();//invalid by default
-        int width = -1;
-        int style = -1;//Qt::PenStyle would use the enum but no invalid value
-        expression labelexp;
-        std::string labelstr;
+    struct QTextEditStream : public std::streambuf, public std::ostream {
+        QPlainTextEdit *m_textEdit;
+        std::string m_buffer;
 
-        void set(std::string Type);
+        QTextEditStream();
 
-        drawcmd();
+        QTextEditStream(QPlainTextEdit *textEdit);
 
-        drawcmd(std::string Type, QColor Color = QColor(), int Width = -1, int Style = -1);
+        virtual std::streambuf::int_type overflow(std::streambuf::int_type v) override;
 
-        drawcmd(QJsonObject ob, Reader &R);//update to make this more safe
+        virtual int sync() override;
+
+        void flushToWidget();
     };
 
-    struct dispcmd{
-        enum {
-            DISP_VALUE_LIST,
-            DISP_SLIDER,
-            DISP_COMPLEX
-        } type = DISP_VALUE_LIST;
-        int sz = 0;
-        std::vector<std::string> name;
-        std::vector<int> vars;
-        std::vector<bool> modify;
-        std::vector<std::pair<double, double>> ranges;
-        rect<double> crange;
-
-        void set(std::string Type);
-
-        dispcmd();
-
-        dispcmd(std::string Type);
-
-        dispcmd(std::vector<std::string> Name, std::vector<int> Vars, std::vector<bool> Modify);
-
-        dispcmd(QJsonObject ob, Reader &R);//update to make this more safe
-    };
-
-    typedef std::vector<drawcmd> drawList;
-    typedef std::vector<dispcmd> dispList;
-
-    struct GeorgCanvas{
-        drawList drawer;
+    struct canvas : public QGraphicsView{
         State* S;
 
-        void paint(QPainter painter);
+        QGraphicsScene *m_scene = nullptr;
+
+        void clear();
+
+        canvas(QWidget *parent = nullptr);
+
+        int add(QJsonObject ob, Reader &R, State &S);//update to make this more safe, move this to reader meathod
     };
 
-    struct GeorgCanvasWidget : public QWidget, public GeorgCanvas{
-        using QWidget::QWidget;
+    struct display : public QScrollArea{
+        QWidget *container = nullptr;
+        QVBoxLayout *layout = nullptr;
 
-        void paintEvent(QPaintEvent *event) override;
+        void clear();
+
+        display(QWidget *Parent = nullptr);
+
+        void add(QJsonObject ob, Reader &R);//move this to reader meathod
     };
 }
 

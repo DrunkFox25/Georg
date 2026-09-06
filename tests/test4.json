@@ -29,9 +29,9 @@
     "valuedisplay" : [
         {
             "type" : "COMPLEX",
-            "varlist" : ["a", "b", "c", "d"],
+            "vlist" : ["a", "b", "c", "d"],
             "names" : ["aadsfdgczzx", "safdc", "c", "erszxcd"],
-            "modifable" : [true, false, false, false],
+            "modif" : [true, false, false, false],
             "range" : {
                 "from" : -2,
                 "to" : 2,

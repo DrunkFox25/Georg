@@ -19,7 +19,7 @@
     "valuedisplay" : [
         {
             "type" : "SLIDER",
-            "varlist" : ["x", "y"],
+            "vlist" : ["x", "y"],
             "modif" : true,
             "range" : [
                 {

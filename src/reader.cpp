@@ -27,7 +27,7 @@ int Reader::readcmd(std::string cmd, decentEngine &D){//acts on decent engine
     else if(cmdargs[0] == "runn"){
         int n = stoi(cmdargs[1]);
         while(n--){
-            D.addNoise(1e-25);
+            D.addNoise(1e-25);//make randomness scale with diff
             double diff = D.update();
 
             Log << "Diff: " << diff << "\n";

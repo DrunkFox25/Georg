@@ -4,12 +4,7 @@
 #include "GeorgEngine.hpp"
 #include "GeorgInterface.hpp"
 
-namespace Interface{
-    struct drawcmd;
-    struct dispcmd;
-    typedef std::vector<drawcmd> drawList;
-    typedef std::vector<dispcmd> dispList;
-}
+
 struct Reader{
     std::map<std::string, int> varnames;
     std::vector<std::string> namevars;

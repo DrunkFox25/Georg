@@ -23,7 +23,7 @@
       ]
     }
   },
-  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y cmake git-lfs python3-pip libgl1-mesa-dev libxkbcommon-x11-0 libxcb-cursor0 libxcb-icccm4 libxcb-keysyms1 libegl1-mesa && pip3 install aqtinstall && python3 -m aqt install-qt linux desktop 6.7.2 linux_gcc_64 -O /workspaces/${localWorkspaceFolderBasename}/qt"
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y cmake git-lfs gdb python3-pip libgl1-mesa-dev libxkbcommon-x11-0 libxcb-cursor0 libxcb-icccm4 libxcb-keysyms1 libegl1-mesa && pip3 install aqtinstall && python3 -m aqt install-qt linux desktop 6.7.2 linux_gcc_64 -O /workspaces/${localWorkspaceFolderBasename}/qt"
 }
 
 

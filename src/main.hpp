@@ -21,6 +21,12 @@
 #include <QJsonValue>
 #include <QJsonParseError>
 #include <QRect>
+#include <QScrollArea>
+#include <QSlider>
+#include <QGridLayout>
+#include <QGraphicsView>
+#include <QGraphicsScene>
+#include <QGraphicsEllipseItem>
 
 #include <QRhiWidget>//for later when I will integrate with custom frag shaders
 //#include <rhi/qrhi.h>

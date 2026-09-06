@@ -14,7 +14,8 @@
         },
         {
             "type" : "IMPLICIT",
-            "varlist" : ["x", "y", {
+            "vlist" : [],
+            "implicitf": ["x", "y", {
                 "type" : "POLY",
                 "expression" : "x^2-y^2-X"
             }]
@@ -23,8 +24,8 @@
     "valuedisplay" : [
         {
             "type" : "SLIDER",
-            "varlist" : ["X"],
-            "modifable" : true,
+            "vlist" : ["X"],
+            "modif" : true,
             "range" : {
                 "from" : -5,
                 "to" : 5
