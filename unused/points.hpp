@@ -1,3 +1,6 @@
+//this code is currently unused
+
+
 struct point{//need to template this
 	union{
 		struct {int x, y;};

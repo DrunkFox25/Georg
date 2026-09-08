@@ -1,22 +1,20 @@
-#pragma once
+#ifndef GEORG_SRC_EXPRESSION_HPP_
+#define GEORG_SRC_EXPRESSION_HPP_
 
 #include "util.hpp"
 #include <Eigen/Sparse>
 #include <Eigen/SparseLU>
 
-struct expression : public poly<cplx>{//this is temporary for now
-	//make it support seperate mode where it is a string
-	//make it support general expressions
-	//also something maybe like varstack in reader.cpp
-	std::vector<int> opnums;////must be in increasing order or it will break Eigen
-	void update(const std::vector<cplx> &in, cplx &value, std::vector<cplx> &dir);
-	cplx eval(const std::vector<cplx> &in);
 
-	expression();
-	
-	expression(int val);
-	expression(double val);
-	expression(cplx val);
 
-	expression(cplx coeff, int vari);
+struct expression{
+	//todo: optimize the living shit out of this
+
+	void set(ASTTree &tree/*change this to whatever the lib that shall not be named outputs */, int optimize_flags);
+
+	cplx eval(std::vector<cplx> &in);
+
+	void evalDir(std::vector<cplx> &in, cplx &out, std::vector<cplx> dir){}//maybe make this only one of the dirivitives, but have the tree with eval set up
 };
+
+#endif // GEORG_SRC_EXPRESSION_HPP_

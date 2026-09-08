@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GEORG_SRC_READER_HPP_
+#define GEORG_SRC_READER_HPP_
 
 #include "main.hpp"
 #include "GeorgEngine.hpp"
@@ -14,5 +15,7 @@ struct Reader{
 
     int regenState(std::string state, std::vector<std::string> &cmdsout, Interface::drawList &drawer, Interface::dispList &display, State &S);
 
-    int createExpr(std::string exprtype, std::string polystr, expression &C);//maybe at some point don't expand functions, just leave them as is, like in polystack
+    int createExpr(std::string exprtype, std::string polystr, expression &C);//use this to subsittute in the user defined functions 
 };
+
+#endif // GEORG_SRC_READER_HPP_

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GEORG_SRC_GEORGINTERFACE_HPP_
+#define GEORG_SRC_GEORGINTERFACE_HPP_
 
 #include "main.hpp"
 
@@ -46,3 +47,4 @@ namespace Interface{//add tex
     };
 }
 
+#endif // GEORG_SRC_GEORGINTERFACE_HPP_

@@ -1,39 +1,41 @@
-#pragma once
+#ifndef GEORG_SRC_MAIN_HPP_
+#define GEORG_SRC_MAIN_HPP_
 
+//the ever growing wall of QT
 #include <QApplication>
-#include <QLineEdit>
-#include <QWidget>
-#include <QPushButton>
-#include <QVBoxLayout>
-#include <QLabel>
 #include <QDebug>
-#include <QPlainTextEdit>
+
 #include <QPaintEvent>
 #include <QPainter>
 #include <QPen>
 #include <QBrush>
-#include <QPolygon>
+
 #include <QPoint>
+#include <QRect>
+#include <QPolygon>
+
 #include <QByteArray>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QJsonValue>
 #include <QJsonParseError>
-#include <QRect>
+
+#include <QWidget>
+#include <QLabel>
+#include <QLineEdit>
 #include <QScrollArea>
 #include <QSlider>
+#include <QPlainTextEdit>
+#include <QPushButton>
+
 #include <QGridLayout>
+#include <QVBoxLayout>
+
 #include <QGraphicsView>
 #include <QGraphicsScene>
-#include <QGraphicsEllipseItem>
 
 #include <QRhiWidget>//for later when I will integrate with custom frag shaders
 //#include <rhi/qrhi.h>
 
-#undef emit//qt keyword collision with std emit
-
-
-#include "GeorgEngine.hpp"
-#include "GeorgInterface.hpp"
-#include "reader.hpp"
+#endif // GEORG_SRC_MAIN_HPP_

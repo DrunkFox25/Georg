@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GEORG_SRC_HOLOMORPHENGINE_HPP_
+#define GEORG_SRC_HOLOMORPHENGINE_HPP_
 
 #include "util.hpp"
 #include <Eigen/Sparse>
@@ -55,3 +56,23 @@ struct decentEngine : public State{
 	int descend();
 };
 
+
+
+
+while(n--){//add this to Georg Engine
+	D.addNoise(1e-25);//make randomness scale with diff -> put this loops in engine
+	double diff = D.update();
+
+	Log << "Diff: " << diff << "\n";
+
+	if(D.descend() != Eigen::Success) return 1;
+
+	Log << "Change: " << D.x_vals << "\n";
+
+	if(diff < 1e-15){
+		Log << "diff small exiting early" << "\n";
+		break;
+	}
+}
+
+#endif // GEORG_SRC_HOLOMORPHENGINE_HPP_

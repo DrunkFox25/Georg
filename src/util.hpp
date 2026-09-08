@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GEORG_SRC_UTIL_HPP_
+#define GEORG_SRC_UTIL_HPP_
 
 #include <bits/stdc++.h>
 
@@ -99,9 +100,4 @@ struct TeeStream : public std::ostream{
 };
 
 
-
-
-
-
-#include "points.hpp"
-#include "poly.hpp"
+#endif // GEORG_SRC_UTIL_HPP_
